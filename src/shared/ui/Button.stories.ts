@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import Button from "./Button.vue";
 
-const meta: Meta<typeof Button> = {
+interface ButtonArgs {
+    variant?: "primary" | "outline" | "ghost" | "white" | "outline-white";
+    type?: "button" | "submit";
+    disabled?: boolean;
+    fullWidth?: boolean;
+    label?: string;
+}
+
+const meta: Meta<ButtonArgs> = {
     component: Button,
     tags: ["autodocs"],
     argTypes: {
@@ -12,6 +20,7 @@ const meta: Meta<typeof Button> = {
         type: { control: "select", options: ["button", "submit"] },
         disabled: { control: "boolean" },
         fullWidth: { control: "boolean" },
+        label: { control: "text" },
     },
     render: (args) => ({
         components: { Button },
@@ -21,7 +30,7 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<ButtonArgs>;
 
 export const Primary: Story = { args: { variant: "primary", label: "Primary Button" } };
 export const Outline: Story = { args: { variant: "outline", label: "Outline Button" } };

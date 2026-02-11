@@ -10,7 +10,7 @@ withDefaults(
         href?: string;
         ariaLabel?: string;
     }>(),
-    { icon: Linkedin as unknown as Component }
+    { icon: () => Linkedin, href: undefined, ariaLabel: undefined }
 );
 </script>
 

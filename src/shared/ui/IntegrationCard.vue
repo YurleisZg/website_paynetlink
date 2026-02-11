@@ -9,7 +9,7 @@ withDefaults(
         label: string;
         icon?: Component;
     }>(),
-    { icon: Router as unknown as Component }
+    { icon: () => Router }
 );
 </script>
 

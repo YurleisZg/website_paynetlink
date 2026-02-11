@@ -10,7 +10,7 @@ withDefaults(
         id?: string;
         disabled?: boolean;
     }>(),
-    { type: "text", placeholder: "", modelValue: "" }
+    { type: "text", placeholder: "", modelValue: "", label: undefined, id: undefined }
 );
 
 defineEmits<{

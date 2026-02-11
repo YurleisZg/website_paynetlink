@@ -22,7 +22,7 @@ export const Default: Story = {
         description: "Manage your clients efficiently with automated tools and real-time tracking.",
         linkText: "Learn more →",
         linkHref: "#",
-        icon: Users,
+        icon: Users as never,
     },
 };
 export const Billing: Story = {
@@ -30,13 +30,13 @@ export const Billing: Story = {
         title: "Automated Billing",
         description: "Set up recurring billing and never miss a payment cycle again.",
         linkText: "See how →",
-        icon: CreditCard,
+        icon: CreditCard as never,
     },
 };
 export const NoLink: Story = {
     args: {
         title: "Network Control",
         description: "Full control over your network infrastructure from a single dashboard.",
-        icon: Network,
+        icon: Network as never,
     },
 };

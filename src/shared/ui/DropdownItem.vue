@@ -10,7 +10,7 @@ withDefaults(
         description?: string;
         icon?: Component;
     }>(),
-    { icon: Users as unknown as Component }
+    { icon: () => Users, description: undefined }
 );
 </script>
 

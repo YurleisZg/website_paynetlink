@@ -10,7 +10,7 @@ const props = withDefaults(
         change?: string;
         changeType?: "positive" | "negative";
     }>(),
-    { changeType: "positive" }
+    { changeType: "positive", change: undefined }
 );
 
 const changeColor = computed(() =>

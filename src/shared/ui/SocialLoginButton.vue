@@ -9,7 +9,7 @@ withDefaults(
         label: string;
         icon?: Component;
     }>(),
-    { icon: Globe as unknown as Component }
+    { icon: () => Globe }
 );
 
 defineEmits<{

@@ -12,7 +12,7 @@ withDefaults(
         linkText?: string;
         linkHref?: string;
     }>(),
-    { icon: Users as unknown as Component, linkText: "", linkHref: "#" }
+    { icon: () => Users, linkText: "", linkHref: "#" }
 );
 </script>
 
