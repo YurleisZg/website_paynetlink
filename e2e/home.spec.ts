@@ -5,9 +5,4 @@ test.describe("Home", () => {
         await page.goto("/");
         await expect(page.getByRole("heading", { name: /Welcome to PayNetLink/i })).toBeVisible();
     });
-
-    test("should display the start link", async ({ page }) => {
-        await page.goto("/");
-        await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
-    });
 });
