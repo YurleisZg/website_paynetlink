@@ -10,7 +10,13 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+storybook-static
 *.local
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
 
 # Editor directories and files
 .vscode/*
