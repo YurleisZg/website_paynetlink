@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AppNav } from "@/widgets/AppNav";
-
 defineOptions({
     name: "DefaultLayout",
 });
@@ -8,7 +6,6 @@ defineOptions({
 
 <template>
     <div class="default-layout">
-        <AppNav />
         <main class="flex-1">
             <slot />
         </main>
