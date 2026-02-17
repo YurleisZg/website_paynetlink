@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
     <div
-        class="hidden w-full flex-col justify-center gap-6 bg-primary px-8 py-12 md:flex md:w-[500px] md:gap-8 md:px-[60px] md:py-20"
+        class="hidden w-full flex-col justify-center gap-6 bg-primary px-8 py-12 md:flex md:w-1/2 md:gap-8 md:px-[60px] md:py-20"
     >
         <div class="flex items-center gap-2">
             <Network :size="32" class="text-white" />

@@ -60,7 +60,7 @@ Automatiza, cobra y crece."
 
         <!-- Right Panel - White Background with Login Form -->
         <div
-            class="flex h-full w-full flex-col items-center justify-center gap-8 overflow-y-auto bg-white px-6 py-12 md:px-20"
+            class="flex h-full w-full flex-col items-center justify-center gap-8 overflow-y-auto bg-white px-6 py-12 md:w-1/2 md:px-20"
         >
             <!-- Form Container -->
             <div class="flex w-full max-w-[400px] flex-col gap-8">
