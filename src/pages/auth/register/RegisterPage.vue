@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { RegisterLeftPanel, BaseInput, PasswordInput, Button } from "@/shared/ui";
+import { RegisterLeftPanel, BaseInput, PasswordInput, Button, Logo } from "@/shared/ui";
 
 defineOptions({
     name: "RegisterPage",
 });
-
-const router = useRouter();
 
 const firstName = ref("");
 const lastName = ref("");
@@ -24,11 +21,6 @@ function handleRegister() {
         password: password.value,
     });
 }
-
-function handleGoToLogin() {
-    console.log("Navigating to login");
-    router.push("/login");
-}
 </script>
 
 <template>
@@ -39,10 +31,18 @@ function handleGoToLogin() {
         <!-- Right Panel -->
         <div class="flex w-full items-center overflow-y-auto px-6 py-12 md:w-1/2 md:px-20 md:py-16">
             <div class="mx-auto flex max-w-[400px] flex-col">
+                <!-- Logo (visible only on mobile/tablet) -->
+                <router-link
+                    to="/"
+                    class="mb-8 flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
+                    aria-label="Volver al inicio"
+                >
+                    <Logo size="md" variant="light" />
+                </router-link>
+
                 <!-- Title -->
                 <h1
-                    class="mb-8 text-[32px] font-bold leading-tight text-primary-900"
-                    style="font-family: &quot;Red Hat Display&quot;, sans-serif"
+                    class="mb-8 font-heading text-[28px] font-bold leading-tight text-primary-900 md:text-[36px]"
                 >
                     Crear tu cuenta
                 </h1>
@@ -109,13 +109,9 @@ function handleGoToLogin() {
                 <!-- Footer -->
                 <div class="mt-6 flex items-center justify-center gap-1 text-[14px]">
                     <span class="text-secondary-700">¿Ya tienes cuenta?</span>
-                    <button
-                        type="button"
-                        class="font-medium text-primary hover:underline"
-                        @click="handleGoToLogin"
-                    >
+                    <router-link to="/login" class="font-medium text-primary hover:underline">
                         Inicia sesión
-                    </button>
+                    </router-link>
                 </div>
             </div>
         </div>

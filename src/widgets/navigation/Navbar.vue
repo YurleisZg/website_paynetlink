@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { router } from "@/app/router";
 import { Button, Logo } from "@/shared/ui";
 import { Menu, Search, X } from "lucide-vue-next";
 import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
@@ -71,8 +70,8 @@ const handleClickOutside = (event: MouseEvent) => {
     }
 };
 
-const goTo = (href: string) => {
-    router.push(href);
+// Close overlays when navigating
+const handleNavigation = () => {
     closeMobileMenu();
     closeSearch();
 };
@@ -106,7 +105,7 @@ onUnmounted(() => {
         aria-label="Main navigation"
     >
         <div
-            class="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-0 sm:px-6 lg:px-20"
+            class="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-3 sm:px-6 lg:px-20"
         >
             <!-- Logo and Desktop Navigation -->
             <div class="flex items-center gap-8 lg:gap-10">
@@ -135,8 +134,12 @@ onUnmounted(() => {
                 >
                     <Search :size="20" />
                 </button>
-                <Button variant="ghost" @click="goTo('/login')">Iniciar sesión</Button>
-                <Button variant="primary" @click="goTo('/register')">Prueba gratis</Button>
+                <Button variant="ghost" to="/login" @click="handleNavigation"
+                    >Iniciar sesión</Button
+                >
+                <Button variant="primary" to="/register" @click="handleNavigation"
+                    >Prueba gratis</Button
+                >
             </div>
 
             <!-- Mobile Actions -->
@@ -205,10 +208,10 @@ onUnmounted(() => {
 
                 <!-- Mobile Action Buttons -->
                 <div class="flex flex-col gap-3 p-6">
-                    <Button variant="ghost" full-width @click="goTo('/login')"
+                    <Button variant="ghost" full-width to="/login" @click="handleNavigation"
                         >Iniciar sesión</Button
                     >
-                    <Button variant="primary" full-width @click="goTo('/register')"
+                    <Button variant="primary" full-width to="/register" @click="handleNavigation"
                         >Prueba gratis</Button
                     >
                 </div>

@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue";
+import { createRouter, createMemoryHistory } from "vue-router";
 import Navbar from "./Navbar.vue";
 import type { NavLink } from "./Navbar.vue";
 
@@ -7,6 +8,24 @@ import type { NavLink } from "./Navbar.vue";
 const getFirstElement = <T>(arr: T[]): T => {
     if (arr.length === 0) throw new Error("Expected at least one element");
     return arr[0] as T;
+};
+
+// Create mock router for testing
+const router = createRouter({
+    history: createMemoryHistory(),
+    routes: [
+        { path: "/", name: "home", component: { template: "<div>Home</div>" } },
+        { path: "/login", name: "login", component: { template: "<div>Login</div>" } },
+        { path: "/register", name: "register", component: { template: "<div>Register</div>" } },
+    ],
+});
+
+// Helper function for rendering Navbar with router
+const renderNavbar = (options: { props?: { links?: NavLink[] } } = {}) => {
+    return render(Navbar, {
+        props: options.props || { links: [] },
+        global: { plugins: [router] },
+    });
 };
 
 describe("Navbar", () => {
@@ -28,7 +47,7 @@ describe("Navbar", () => {
 
     describe("Basic Rendering", () => {
         it("renders the logo", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -36,7 +55,7 @@ describe("Navbar", () => {
         });
 
         it("renders desktop navigation links", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -47,7 +66,7 @@ describe("Navbar", () => {
         });
 
         it("renders action buttons in desktop view", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -59,7 +78,7 @@ describe("Navbar", () => {
         });
 
         it("shows hamburger menu button on mobile", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -70,7 +89,7 @@ describe("Navbar", () => {
 
     describe("Mobile Menu Functionality", () => {
         it("toggles mobile menu when hamburger is clicked", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -87,7 +106,7 @@ describe("Navbar", () => {
         });
 
         it("closes mobile menu when clicking outside", async () => {
-            const { container } = render(Navbar, {
+            const { container } = renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -110,7 +129,7 @@ describe("Navbar", () => {
 
     describe("Search Functionality", () => {
         it("renders search button", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -119,7 +138,7 @@ describe("Navbar", () => {
         });
 
         it("opens search overlay when search button is clicked", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -141,7 +160,7 @@ describe("Navbar", () => {
         });
 
         it("search input is visible when search is open", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -155,7 +174,7 @@ describe("Navbar", () => {
         });
 
         it("search input receives focus when opened", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -169,7 +188,7 @@ describe("Navbar", () => {
         });
 
         it("search query is reactive (v-model binding)", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -189,7 +208,7 @@ describe("Navbar", () => {
         });
 
         it("ESC key closes search overlay", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -211,7 +230,7 @@ describe("Navbar", () => {
         });
 
         it("close button closes search overlay", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -232,7 +251,7 @@ describe("Navbar", () => {
         });
 
         it("click outside closes search overlay", async () => {
-            const { container } = render(Navbar, {
+            const { container } = renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -256,7 +275,7 @@ describe("Navbar", () => {
         });
 
         it("search query is cleared when search is closed", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -285,7 +304,7 @@ describe("Navbar", () => {
         });
 
         it("prevents body scroll when search is open", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -308,7 +327,7 @@ describe("Navbar", () => {
         });
 
         it("search button has proper aria-expanded attribute", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -334,7 +353,7 @@ describe("Navbar", () => {
         });
 
         it("search overlay has proper dialog attributes", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -350,7 +369,7 @@ describe("Navbar", () => {
         });
 
         it("displays placeholder text when search is empty", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -363,7 +382,7 @@ describe("Navbar", () => {
         });
 
         it("displays search query feedback", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -381,7 +400,7 @@ describe("Navbar", () => {
         it("search form can be submitted", async () => {
             const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-            const { container } = render(Navbar, {
+            const { container } = renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -412,7 +431,7 @@ describe("Navbar", () => {
 
     describe("Accessibility", () => {
         it("has proper accessibility attributes for navigation", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -421,7 +440,7 @@ describe("Navbar", () => {
         });
 
         it("search button has proper aria-label", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -430,7 +449,7 @@ describe("Navbar", () => {
         });
 
         it("menu button has proper aria attributes", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -440,7 +459,7 @@ describe("Navbar", () => {
         });
 
         it("all interactive elements have focus styles", () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -449,7 +468,7 @@ describe("Navbar", () => {
         });
 
         it("search input has proper type attribute", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -465,7 +484,7 @@ describe("Navbar", () => {
 
     describe("Edge Cases", () => {
         it("handles multiple rapid clicks on search button", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -485,7 +504,7 @@ describe("Navbar", () => {
         it("handles empty search submission", async () => {
             const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -509,7 +528,7 @@ describe("Navbar", () => {
             const addEventListenerSpy = vi.spyOn(document, "addEventListener");
             const removeEventListenerSpy = vi.spyOn(document, "removeEventListener");
 
-            const { unmount } = render(Navbar, {
+            const { unmount } = renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -526,7 +545,7 @@ describe("Navbar", () => {
         });
 
         it("restores body overflow on unmount", () => {
-            const { unmount } = render(Navbar, {
+            const { unmount } = renderNavbar({
                 props: { links: mockNavLinks },
             });
 
@@ -538,7 +557,7 @@ describe("Navbar", () => {
         });
 
         it("handles both mobile menu and search open simultaneously", async () => {
-            render(Navbar, {
+            renderNavbar({
                 props: { links: mockNavLinks },
             });
 

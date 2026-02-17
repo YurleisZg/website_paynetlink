@@ -9,8 +9,8 @@ test.describe("Forgot Password Page", () => {
         test("should display left panel on desktop with correct content", async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
 
-            // Check logo and branding
-            await expect(page.getByText("PayNetLink")).toBeVisible();
+            // Check logo and branding (using first() to select the left panel logo)
+            await expect(page.getByText("PayNetLink").first()).toBeVisible();
             await expect(page.getByText("¿Olvidaste tu contraseña?")).toBeVisible();
             await expect(
                 page.getByText(

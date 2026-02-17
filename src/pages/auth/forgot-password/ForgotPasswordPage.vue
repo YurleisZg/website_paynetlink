@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { AuthLeftPanel, BaseInput, Button, Logo } from "@/shared/ui";
 import { ArrowLeft } from "lucide-vue-next";
-import { AuthLeftPanel, BaseInput, Button } from "@/shared/ui";
+import { ref } from "vue";
 
 defineOptions({ name: "ForgotPasswordPage" });
-
-const router = useRouter();
 
 // Form state
 const email = ref("");
@@ -24,10 +21,6 @@ const handleSubmit = async () => {
         isLoading.value = false;
         // TODO: Implement actual password reset API call
     }, 1500);
-};
-
-const handleBackToLogin = () => {
-    router.push("/login");
 };
 
 const handleResend = () => {
@@ -50,15 +43,23 @@ const handleResend = () => {
         >
             <!-- Form Container -->
             <div class="flex w-full max-w-[400px] flex-col gap-8">
+                <!-- Logo (visible only on mobile/tablet) -->
+                <router-link
+                    to="/"
+                    class="flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
+                    aria-label="Volver al inicio"
+                >
+                    <Logo size="md" variant="light" />
+                </router-link>
+
                 <!-- Back to Login Button -->
-                <button
-                    type="button"
-                    class="flex items-center gap-2 font-body text-sm text-muted transition-colors hover:text-foreground self-start"
-                    @click="handleBackToLogin"
+                <router-link
+                    to="/login"
+                    class="flex items-center gap-2 self-start font-body text-sm text-muted transition-colors hover:text-foreground"
                 >
                     <ArrowLeft :size="16" />
                     <span>Volver al inicio de sesión</span>
-                </button>
+                </router-link>
 
                 <!-- Success State -->
                 <div v-if="isSubmitted" class="flex flex-col gap-6">
@@ -81,7 +82,9 @@ const handleResend = () => {
                                 />
                             </svg>
                         </div>
-                        <h1 class="font-heading text-2xl font-bold text-foreground md:text-[32px]">
+                        <h1
+                            class="font-heading text-[28px] font-bold text-foreground md:text-[36px]"
+                        >
                             Revisa tu correo
                         </h1>
                         <p class="font-body text-sm text-muted md:text-[15px]">
@@ -108,7 +111,9 @@ const handleResend = () => {
                 <div v-else class="flex flex-col gap-8">
                     <!-- Header -->
                     <div class="flex flex-col gap-2 text-center">
-                        <h1 class="font-heading text-2xl font-bold text-foreground md:text-[32px]">
+                        <h1
+                            class="font-heading text-[28px] font-bold text-foreground md:text-[36px]"
+                        >
                             Restablecer contraseña
                         </h1>
                         <p class="font-body text-sm text-muted md:text-[15px]">
@@ -140,12 +145,12 @@ const handleResend = () => {
                     <div class="rounded-lg border border-muted/30 px-4 py-3">
                         <p class="font-body text-xs text-muted leading-relaxed md:text-sm">
                             ¿Sigues teniendo problemas?
-                            <a
-                                href="mailto:soporte@paynetlink.com"
+                            <router-link
+                                to="/contact-sales"
                                 class="font-semibold text-primary hover:underline"
                             >
                                 Contacta con soporte
-                            </a>
+                            </router-link>
                         </p>
                     </div>
                 </div>

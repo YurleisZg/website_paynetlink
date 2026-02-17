@@ -1,35 +1,32 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/vue";
-import { useRouter } from "vue-router";
-import type { Router } from "vue-router";
+import { createRouter, createMemoryHistory } from "vue-router";
 import RegisterPage from "./RegisterPage.vue";
 
-// Mock vue-router
-vi.mock("vue-router", () => ({
-    useRouter: vi.fn(),
-}));
+// Create mock router for testing
+const router = createRouter({
+    history: createMemoryHistory(),
+    routes: [
+        { path: "/", name: "home", component: { template: "<div>Home</div>" } },
+        { path: "/login", name: "login", component: { template: "<div>Login</div>" } },
+    ],
+});
 
 describe("RegisterPage", () => {
-    const mockRouterPush = vi.fn();
-
     beforeEach(() => {
         vi.clearAllMocks();
-        vi.mocked(useRouter).mockReturnValue({
-            push: mockRouterPush,
-        } as unknown as Router);
-
         // Mock console.log
         vi.spyOn(console, "log").mockImplementation(() => {});
     });
 
     describe("Rendering", () => {
         it("renders the page title", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             expect(screen.getByRole("heading", { name: /Crear tu cuenta/i })).toBeDefined();
         });
 
         it("renders all 5 input fields with correct labels", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
 
             expect(screen.getByLabelText("Nombre", { exact: true })).toBeDefined();
             expect(screen.getByLabelText(/Apellido/i)).toBeDefined();
@@ -39,27 +36,27 @@ describe("RegisterPage", () => {
         });
 
         it("renders the submit button with correct text", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             expect(screen.getByRole("button", { name: /Crear cuenta gratis/i })).toBeDefined();
         });
 
         it("renders the terms text", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             expect(
                 screen.getByText(/Al registrarte aceptas nuestros Términos de Servicio/i)
             ).toBeDefined();
         });
 
         it("renders the login link", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             expect(screen.getByText(/¿Ya tienes cuenta\?/i)).toBeDefined();
-            expect(screen.getByRole("button", { name: /Inicia sesión/i })).toBeDefined();
+            expect(screen.getByRole("link", { name: /Inicia sesión/i })).toBeDefined();
         });
     });
 
     describe("Form Interactions", () => {
         it("updates firstName value when typing", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const input = screen.getByLabelText("Nombre", { exact: true }) as HTMLInputElement;
 
             await fireEvent.update(input, "John");
@@ -67,7 +64,7 @@ describe("RegisterPage", () => {
         });
 
         it("updates lastName value when typing", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const input = screen.getByLabelText(/Apellido/i) as HTMLInputElement;
 
             await fireEvent.update(input, "Doe");
@@ -75,7 +72,7 @@ describe("RegisterPage", () => {
         });
 
         it("updates email value when typing", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const input = screen.getByLabelText(/Correo electrónico/i) as HTMLInputElement;
 
             await fireEvent.update(input, "john@example.com");
@@ -83,7 +80,7 @@ describe("RegisterPage", () => {
         });
 
         it("updates ispName value when typing", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const input = screen.getByLabelText(/Nombre de tu ISP/i) as HTMLInputElement;
 
             await fireEvent.update(input, "My ISP Company");
@@ -91,7 +88,7 @@ describe("RegisterPage", () => {
         });
 
         it("updates password value when typing", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const input = screen.getByLabelText(/Contraseña/i) as HTMLInputElement;
 
             await fireEvent.update(input, "password123");
@@ -99,7 +96,7 @@ describe("RegisterPage", () => {
         });
 
         it("calls console.log with form data on submit", async () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
 
             const firstNameInput = screen.getByLabelText("Nombre", {
                 exact: true,
@@ -126,20 +123,18 @@ describe("RegisterPage", () => {
             });
         });
 
-        it("navigates to login page when clicking login link", async () => {
-            render(RegisterPage);
+        it("renders login link with correct href", () => {
+            render(RegisterPage, { global: { plugins: [router] } });
 
-            const loginLink = screen.getByRole("button", { name: /Inicia sesión/i });
-            await fireEvent.click(loginLink);
-
-            expect(console.log).toHaveBeenCalledWith("Navigating to login");
-            expect(mockRouterPush).toHaveBeenCalledWith("/login");
+            const loginLink = screen.getByRole("link", { name: /Inicia sesión/i });
+            expect(loginLink).toBeDefined();
+            expect(loginLink.getAttribute("href")).toBe("/login");
         });
     });
 
     describe("Form Validation", () => {
         it("all form inputs have required attribute", () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
 
             const firstNameInput = screen.getByLabelText("Nombre", {
                 exact: true,
@@ -157,7 +152,7 @@ describe("RegisterPage", () => {
         });
 
         it('email input has type="email"', () => {
-            render(RegisterPage);
+            render(RegisterPage, { global: { plugins: [router] } });
             const emailInput = screen.getByLabelText(/Correo electrónico/i) as HTMLInputElement;
             expect(emailInput.type).toBe("email");
         });

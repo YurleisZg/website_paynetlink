@@ -5,16 +5,14 @@ import {
     BaseInput,
     Button,
     Divider,
+    Logo,
     PasswordInput,
     SocialLoginButton,
 } from "@/shared/ui";
 import { Globe, LayoutGrid } from "lucide-vue-next";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
 
 defineOptions({ name: "LoginPage" });
-
-const router = useRouter();
 
 // Form state
 const email = ref("");
@@ -31,10 +29,6 @@ const handleSubmit = () => {
     // TODO: Implement actual login logic
 };
 
-const handleForgotPassword = () => {
-    router.push("/forgot-password");
-};
-
 const handleGoogleLogin = () => {
     console.log("Google login clicked");
     // TODO: Implement Google OAuth
@@ -43,10 +37,6 @@ const handleGoogleLogin = () => {
 const handleMicrosoftLogin = () => {
     console.log("Microsoft login clicked");
     // TODO: Implement Microsoft OAuth
-};
-
-const goTo = (href: string) => {
-    router.push(href);
 };
 </script>
 
@@ -65,9 +55,17 @@ Automatiza, cobra y crece."
         >
             <!-- Form Container -->
             <div class="flex w-full max-w-[400px] flex-col gap-8">
+                <!-- Logo (visible only on mobile/tablet) -->
+                <router-link
+                    to="/"
+                    class="flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
+                    aria-label="Volver al inicio"
+                >
+                    <Logo size="md" variant="light" />
+                </router-link>
                 <!-- Header -->
                 <div class="flex flex-col gap-2 text-center">
-                    <h1 class="font-heading text-2xl font-bold text-foreground md:text-[32px]">
+                    <h1 class="font-heading text-[28px] font-bold text-foreground md:text-[36px]">
                         Iniciar sesión
                     </h1>
                     <p class="font-body text-sm text-muted md:text-[15px]">
@@ -99,13 +97,12 @@ Automatiza, cobra y crece."
                     <!-- Remember Me & Forgot Password -->
                     <div class="flex items-center justify-between">
                         <BaseCheckbox id="remember" v-model="rememberMe" label="Recordarme" />
-                        <button
-                            type="button"
+                        <router-link
+                            to="/forgot-password"
                             class="font-body text-xs text-primary font-medium transition-colors hover:underline md:text-[13px]"
-                            @click="handleForgotPassword"
                         >
                             ¿Olvidaste tu contraseña?
-                        </button>
+                        </router-link>
                     </div>
 
                     <!-- Submit Button -->
@@ -128,13 +125,12 @@ Automatiza, cobra y crece."
                 <!-- Sign Up Link -->
                 <div class="flex items-center justify-center gap-1">
                     <span class="font-body text-sm text-muted"> ¿No tienes cuenta? </span>
-                    <button
-                        type="button"
+                    <router-link
+                        to="/register"
                         class="font-body text-sm font-semibold text-primary transition-colors hover:underline"
-                        @click="goTo('/register')"
                     >
                         Regístrate gratis
-                    </button>
+                    </router-link>
                 </div>
             </div>
         </div>

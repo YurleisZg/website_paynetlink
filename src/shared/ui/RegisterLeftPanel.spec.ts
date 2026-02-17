@@ -1,23 +1,30 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/vue";
+import { createRouter, createMemoryHistory } from "vue-router";
 import RegisterLeftPanel from "./RegisterLeftPanel.vue";
+
+// Create mock router for testing
+const router = createRouter({
+    history: createMemoryHistory(),
+    routes: [{ path: "/", name: "home", component: { template: "<div>Home</div>" } }],
+});
 
 describe("RegisterLeftPanel", () => {
     describe("Rendering", () => {
         it("renders the logo with PayNetLink text", () => {
-            render(RegisterLeftPanel);
+            render(RegisterLeftPanel, { global: { plugins: [router] } });
             expect(screen.getByText("PayNetLink")).toBeDefined();
         });
 
         it("renders the main title", () => {
-            render(RegisterLeftPanel);
+            render(RegisterLeftPanel, { global: { plugins: [router] } });
             expect(screen.getByRole("heading", { level: 1 })).toBeDefined();
             expect(screen.getByText(/Comienza tu prueba/i)).toBeDefined();
             expect(screen.getByText(/gratuita de 14 días/i)).toBeDefined();
         });
 
         it("renders all 4 benefits", () => {
-            render(RegisterLeftPanel);
+            render(RegisterLeftPanel, { global: { plugins: [router] } });
 
             expect(screen.getByText("Sin tarjeta de crédito requerida")).toBeDefined();
             expect(screen.getByText("Configuración en 10 minutos")).toBeDefined();
@@ -26,7 +33,7 @@ describe("RegisterLeftPanel", () => {
         });
 
         it("renders as a list with 4 items", () => {
-            const { container } = render(RegisterLeftPanel);
+            const { container } = render(RegisterLeftPanel, { global: { plugins: [router] } });
             const listItems = container.querySelectorAll("ul li");
             expect(listItems.length).toBe(4);
         });
@@ -34,13 +41,13 @@ describe("RegisterLeftPanel", () => {
 
     describe("Styling", () => {
         it("has primary background color", () => {
-            const { container } = render(RegisterLeftPanel);
+            const { container } = render(RegisterLeftPanel, { global: { plugins: [router] } });
             const panel = container.querySelector(".bg-primary");
             expect(panel).toBeDefined();
         });
 
         it("is hidden on mobile and visible on medium+ screens", () => {
-            const { container } = render(RegisterLeftPanel);
+            const { container } = render(RegisterLeftPanel, { global: { plugins: [router] } });
             const panel = container.firstChild as HTMLElement;
             expect(panel.classList.contains("hidden")).toBe(true);
             expect(panel.classList.contains("md:flex")).toBe(true);

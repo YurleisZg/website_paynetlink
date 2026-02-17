@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { router } from "@/app/router";
 import { Button } from "@/shared/ui";
 
 defineOptions({ name: "CTASection" });
-
-const goTo = (href: string) => {
-    router.push(href);
-};
 </script>
 
 <template>
@@ -21,10 +16,8 @@ const goTo = (href: string) => {
             Únete a cientos de proveedores que ya optimizan su operación con PayNetLink.
         </p>
         <div class="flex flex-col gap-4 md:flex-row">
-            <Button variant="white" role="button" @click="goTo('/register')"
-                >Empezar ahora gratis</Button
-            >
-            <Button variant="outline-white" role="button">Hablar con ventas</Button>
+            <Button variant="white" to="/register">Empezar ahora gratis</Button>
+            <Button variant="outline-white" to="/contact-advisor">Hablar con ventas</Button>
         </div>
     </section>
 </template>

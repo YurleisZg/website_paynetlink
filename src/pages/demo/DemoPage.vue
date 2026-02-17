@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { router } from "@/app/router";
 import { Button, Logo } from "@/shared/ui";
 import ActionLink from "@/shared/ui/ActionLink.vue";
 import VideoPlayer from "@/shared/ui/VideoPlayer.vue";
 
 defineOptions({ name: "DemoPage" });
-
-const goTo = (href: string) => {
-    router.push(href);
-};
 </script>
 
 <template>
@@ -17,12 +12,14 @@ const goTo = (href: string) => {
         <header
             class="flex w-full items-center justify-between border-b border-divider bg-white px-6 md:px-12 lg:px-20"
         >
-            <Logo size="sm" class="cursor-pointer" @click="goTo('/')" />
+            <router-link to="/" aria-label="Volver al inicio">
+                <Logo size="sm" />
+            </router-link>
             <div class="flex items-center gap-3">
                 <Button
                     variant="primary"
+                    to="/register"
                     class="rounded px-4 py-2 text-xs md:px-6 md:py-2.5 md:text-sm font-semibold"
-                    @click="goTo('/register')"
                 >
                     Comenzar prueba gratis
                 </Button>

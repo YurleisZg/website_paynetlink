@@ -16,7 +16,11 @@ const benefits = [
 <template>
     <div class="hidden md:flex md:w-1/2 flex-col justify-center gap-8 bg-primary px-[60px] py-20">
         <!-- Logo -->
-        <div class="flex items-center gap-3">
+        <router-link
+            to="/"
+            class="flex items-center gap-3 transition-opacity hover:opacity-80"
+            aria-label="Volver al inicio"
+        >
             <Network :size="32" class="text-white" />
             <span
                 class="text-[28px] font-bold text-white"
@@ -24,7 +28,7 @@ const benefits = [
             >
                 PayNetLink
             </span>
-        </div>
+        </router-link>
 
         <!-- Title -->
         <h1

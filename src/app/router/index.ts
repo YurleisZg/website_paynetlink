@@ -39,6 +39,18 @@ const router = createRouter({
             component: () => import("@/pages/demo/DemoPage.vue"),
             meta: { title: "Demo interactiva" },
         },
+        {
+            path: "/contact-sales",
+            name: "contact-sales",
+            component: () => import("@/pages/contact-sales/ContactSalesPage.vue"),
+            meta: { title: "Contactar ventas" },
+        },
+        {
+            path: "/contact-advisor",
+            name: "contact-advisor",
+            component: () => import("@/pages/contact-advisor/ContactAdvisorPage.vue"),
+            meta: { title: "Contactar asesor" },
+        },
     ],
 });
 

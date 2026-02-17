@@ -11,7 +11,7 @@ describe("Logo", () => {
     it("applies size classes for sm", () => {
         const { container } = render(Logo, { props: { size: "sm" } });
         const text = container.querySelector("span");
-        expect(text?.className).toContain("text-base");
+        expect(text?.className).toContain("text-[15px]");
     });
 
     it("applies size classes for lg", () => {

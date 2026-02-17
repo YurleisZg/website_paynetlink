@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { router } from "@/app/router";
 import { Button, Step } from "@/shared/ui";
 
 defineOptions({ name: "HowItWorks" });
@@ -15,10 +14,6 @@ interface Props {
 }
 
 defineProps<Props>();
-
-const goTo = (href: string) => {
-    router.push(href);
-};
 </script>
 
 <template>
@@ -39,8 +34,6 @@ const goTo = (href: string) => {
             />
             <div v-for="i in 2" :key="i" class="hidden h-px w-20 bg-divider last:hidden md:block" />
         </div>
-        <Button variant="primary" role="button" @click="goTo('/register')"
-            >Comenzar ahora — Es gratis</Button
-        >
+        <Button variant="primary" to="/register">Comenzar ahora — Es gratis</Button>
     </section>
 </template>

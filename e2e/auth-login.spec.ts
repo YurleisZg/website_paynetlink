@@ -9,8 +9,8 @@ test.describe("Login Page", () => {
         test("should display left panel on desktop", async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
 
-            // Check logo and branding
-            await expect(page.getByText("PayNetLink")).toBeVisible();
+            // Check logo and branding (using first() to select the left panel logo)
+            await expect(page.getByText("PayNetLink").first()).toBeVisible();
             await expect(
                 page.getByText("Simplifica tu ISP. Automatiza, cobra y crece.")
             ).toBeVisible();
