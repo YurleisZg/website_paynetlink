@@ -1,4 +1,4 @@
-name: CI
+name: Frontend_CI
 
 on:
     push:
@@ -40,9 +40,17 @@ jobs:
               run: pnpm run test:run
 
     e2e:
-        name: E2E Tests
+        name: E2E Tests (${{ matrix.browser }}, shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
         runs-on: ubuntu-latest
         timeout-minutes: 15
+        strategy:
+            fail-fast: false
+            matrix:
+                # Solo Chromium para velocidad máxima
+                browser: [chromium]
+                # Dividir tests en 4 shards paralelos
+                shardIndex: [1, 2, 3, 4]
+                shardTotal: [4]
 
         steps:
             - name: Checkout code
@@ -63,18 +71,18 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: Install Playwright browsers
-              run: pnpm exec playwright install --with-deps
+              run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
             - name: Build application
               run: pnpm run build
 
-            - name: Run E2E tests
-              run: pnpm run test:e2e
+            - name: Run E2E tests (sharded)
+              run: pnpm exec playwright test --project=${{ matrix.browser }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
             - name: Upload Playwright report
               uses: actions/upload-artifact@v4
               if: failure()
               with:
-                  name: playwright-report
+                  name: playwright-report-${{ matrix.browser }}-${{ matrix.shardIndex }}
                   path: playwright-report/
                   retention-days: 7
