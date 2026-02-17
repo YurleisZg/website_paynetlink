@@ -15,6 +15,12 @@ const router = createRouter({
             component: () => import("@/pages/about/AboutPage.vue"),
             meta: { layout: "default" },
         },
+        {
+            path: "/login",
+            name: "login",
+            component: () => import("@/pages/auth/login/LoginPage.vue"),
+            meta: { layout: "auth", title: "Iniciar sesión", requiresAuth: false },
+        },
     ],
 });
 
