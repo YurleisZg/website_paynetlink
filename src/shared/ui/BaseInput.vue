@@ -9,6 +9,7 @@ withDefaults(
         type?: string;
         id?: string;
         disabled?: boolean;
+        required?: boolean;
     }>(),
     { type: "text", placeholder: "", modelValue: "", label: undefined, id: undefined }
 );
@@ -32,6 +33,7 @@ defineEmits<{
                 :placeholder="placeholder"
                 :value="modelValue"
                 :disabled="disabled"
+                :required="required"
                 class="h-full w-full bg-transparent font-body text-sm text-foreground placeholder:text-placeholder outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-base"
                 @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
             />

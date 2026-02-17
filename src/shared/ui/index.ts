@@ -9,6 +9,7 @@ export { default as FeatureCheckItem } from "./FeatureCheckItem.vue";
 export { default as Logo } from "./Logo.vue";
 export { default as Metric } from "./Metric.vue";
 export { default as NavLink } from "./NavLink.vue";
+export { default as PasswordInput } from "./PasswordInput.vue";
 export { default as SocialIcon } from "./SocialIcon.vue";
 
 // Molecules
