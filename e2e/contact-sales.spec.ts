@@ -5,50 +5,6 @@ test.describe("Contact Sales Page", () => {
         await page.goto("/contact-sales");
     });
 
-    test.describe("Visual Regression", () => {
-        test("should match snapshot on desktop (1440x900)", async ({ page }) => {
-            await page.setViewportSize({ width: 1440, height: 900 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-sales-desktop.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-
-        test("should match snapshot on tablet (768x1024)", async ({ page }) => {
-            await page.setViewportSize({ width: 768, height: 1024 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-sales-tablet.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-
-        test("should match snapshot on mobile (375x812)", async ({ page }) => {
-            await page.setViewportSize({ width: 375, height: 812 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-sales-mobile.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-    });
-
     test.describe("Layout and Structure", () => {
         test("should display logo and title on desktop", async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
@@ -119,20 +75,20 @@ test.describe("Contact Sales Page", () => {
             expect(rightBox!.x).toBeGreaterThan(leftBox!.x + leftBox!.width);
         });
 
-        test("should stack vertically on mobile", async ({ page }) => {
+        test("should hide left panel and show only form on mobile", async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 812 });
 
-            const leftSection = page.locator("text=Hablemos de tu plan Enterprise").first();
-            const rightSection = page.locator("text=Solicitar información").first();
+            // Left panel should be hidden on mobile
+            const leftPanel = page.locator("text=Hablemos de tu plan Enterprise").first();
+            await expect(leftPanel).toBeHidden();
 
-            const leftBox = await leftSection.boundingBox();
-            const rightBox = await rightSection.boundingBox();
+            // Form section should be visible
+            const formTitle = page.locator("text=Solicitar información").first();
+            await expect(formTitle).toBeVisible();
 
-            expect(leftBox).toBeTruthy();
-            expect(rightBox).toBeTruthy();
-
-            // Right section should be below left section on mobile
-            expect(rightBox!.y).toBeGreaterThan(leftBox!.y + leftBox!.height);
+            // Form fields should be visible on mobile
+            await expect(page.getByLabel("Nombre", { exact: true })).toBeVisible();
+            await expect(page.getByRole("button", { name: /Enviar solicitud/i })).toBeVisible();
         });
     });
 

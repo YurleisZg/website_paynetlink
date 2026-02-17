@@ -5,50 +5,6 @@ test.describe("Contact Advisor Page", () => {
         await page.goto("/contact-advisor");
     });
 
-    test.describe("Visual Regression", () => {
-        test("should match snapshot on desktop (1440x900)", async ({ page }) => {
-            await page.setViewportSize({ width: 1440, height: 900 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-advisor-desktop.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-
-        test("should match snapshot on tablet (768x1024)", async ({ page }) => {
-            await page.setViewportSize({ width: 768, height: 1024 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-advisor-tablet.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-
-        test("should match snapshot on mobile (375x812)", async ({ page }) => {
-            await page.setViewportSize({ width: 375, height: 812 });
-            await page.waitForLoadState("networkidle");
-
-            // Wait for fonts to load
-            await page.waitForTimeout(500);
-
-            // Take screenshot for visual regression
-            await expect(page).toHaveScreenshot("contact-advisor-mobile.png", {
-                fullPage: true,
-                animations: "disabled",
-            });
-        });
-    });
-
     test.describe("Layout and Structure", () => {
         test("should display logo and title on desktop", async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });

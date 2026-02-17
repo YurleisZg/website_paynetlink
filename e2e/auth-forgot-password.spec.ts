@@ -27,9 +27,9 @@ test.describe("Forgot Password Page", () => {
         });
 
         test("should display all form elements in initial state", async ({ page }) => {
-            // Back to login button
+            // Back to login link
             await expect(
-                page.getByRole("button", { name: "Volver al inicio de sesión" })
+                page.getByRole("link", { name: "Volver al inicio de sesión" })
             ).toBeVisible();
 
             // Title and subtitle
@@ -175,7 +175,7 @@ test.describe("Forgot Password Page", () => {
         });
 
         test("should handle back to login button click", async ({ page }) => {
-            const backButton = page.getByRole("button", { name: "Volver al inicio de sesión" });
+            const backButton = page.getByRole("link", { name: "Volver al inicio de sesión" });
 
             await backButton.click();
 
@@ -189,8 +189,8 @@ test.describe("Forgot Password Page", () => {
         test("should have working support link", async ({ page }) => {
             const supportLink = page.getByText("Contacta con soporte");
 
-            // Check that the link has proper href
-            await expect(supportLink).toHaveAttribute("href", "mailto:soporte@paynetlink.com");
+            // Check that the link points to contact sales page
+            await expect(supportLink).toHaveAttribute("href", "/contact-sales");
         });
     });
 
@@ -201,9 +201,9 @@ test.describe("Forgot Password Page", () => {
         });
 
         test("should have proper button semantics", async ({ page }) => {
-            // Back button
-            const backButton = page.getByRole("button", { name: "Volver al inicio de sesión" });
-            await expect(backButton).toHaveAttribute("type", "button");
+            // Back link (router-link renders as anchor)
+            const backLink = page.getByRole("link", { name: "Volver al inicio de sesión" });
+            await expect(backLink).toBeVisible();
 
             // Submit button
             const submitButton = page.getByRole("button", {

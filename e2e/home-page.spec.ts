@@ -27,12 +27,12 @@ test.describe("PayNetLink Landing Page", () => {
 
         test("should display login button", async ({ page }) => {
             const nav = page.locator("nav");
-            await expect(nav.getByRole("button", { name: /iniciar sesión/i })).toBeVisible();
+            await expect(nav.getByRole("link", { name: /iniciar sesión/i })).toBeVisible();
         });
 
         test("should display CTA button", async ({ page }) => {
             const nav = page.locator("nav");
-            const ctaButton = nav.getByRole("button", { name: /prueba gratis/i });
+            const ctaButton = nav.getByRole("link", { name: /prueba gratis/i });
             await expect(ctaButton).toBeVisible();
             await expect(ctaButton).toHaveCSS("background-color", "rgb(26, 86, 219)"); // #1A56DB
         });
@@ -60,9 +60,9 @@ test.describe("PayNetLink Landing Page", () => {
         test("should display CTA buttons", async ({ page }) => {
             const hero = page.locator('[data-testid="hero-section"]');
             await expect(
-                hero.getByRole("button", { name: /comenzar prueba gratuita/i })
+                hero.getByRole("link", { name: /comenzar prueba gratuita/i })
             ).toBeVisible();
-            await expect(hero.getByRole("button", { name: /ver demo/i })).toBeVisible();
+            await expect(hero.getByRole("link", { name: /ver demo/i })).toBeVisible();
         });
 
         test("should display small text below buttons", async ({ page }) => {
@@ -233,7 +233,7 @@ test.describe("PayNetLink Landing Page", () => {
         });
 
         test("should display CTA button", async ({ page }) => {
-            const cta = page.getByRole("button", { name: /comenzar ahora.*es gratis/i });
+            const cta = page.getByRole("link", { name: /comenzar ahora.*es gratis/i });
             await expect(cta).toBeVisible();
             await expect(cta).toHaveCSS("background-color", "rgb(26, 86, 219)"); // #1A56DB
         });
@@ -354,8 +354,8 @@ test.describe("PayNetLink Landing Page", () => {
         });
 
         test("should display two CTA buttons", async ({ page }) => {
-            const buttons = page.locator('[data-testid="cta-final"] button');
-            await expect(buttons).toHaveCount(2);
+            const links = page.locator('[data-testid="cta-final"] a[href]');
+            await expect(links).toHaveCount(2);
         });
 
         test("should have blue background", async ({ page }) => {
@@ -447,8 +447,8 @@ test.describe("PayNetLink Landing Page", () => {
     test.describe("Interactions", () => {
         test("CTA buttons should be clickable", async ({ page }) => {
             const hero = page.locator('[data-testid="hero-section"]');
-            const ctaButton = hero.getByRole("button", { name: /comenzar prueba gratuita/i });
-            await expect(ctaButton).toBeEnabled();
+            const ctaButton = hero.getByRole("link", { name: /comenzar prueba gratuita/i });
+            await expect(ctaButton).toBeVisible();
             await ctaButton.click();
 
             // Wait for navigation to register page
@@ -465,7 +465,7 @@ test.describe("PayNetLink Landing Page", () => {
 
         test("buttons should have hover state", async ({ page }) => {
             const nav = page.locator("nav");
-            const button = nav.getByRole("button", { name: /prueba gratis/i });
+            const button = nav.getByRole("link", { name: /prueba gratis/i });
             await button.hover();
             // Should change appearance on hover
             const bgColor = await button.evaluate(

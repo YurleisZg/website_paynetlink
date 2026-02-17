@@ -161,18 +161,14 @@ test.describe("Register Page", () => {
         test("should handle login link click", async ({ page }) => {
             const loginLink = page.getByText("Inicia sesión");
 
-            // Listen for console logs
-            const consoleLogs: string[] = [];
-            page.on("console", (msg) => {
-                if (msg.type() === "log") {
-                    consoleLogs.push(msg.text());
-                }
-            });
-
+            // Click and verify navigation
             await loginLink.click();
-            await page.waitForTimeout(100);
 
-            expect(consoleLogs.some((log) => log.includes("Navigating to login"))).toBeTruthy();
+            // Wait for navigation to login page
+            await page.waitForURL("/login");
+
+            // Verify we're on login page
+            expect(page.url()).toContain("/login");
         });
     });
 
