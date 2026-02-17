@@ -1,11 +1,37 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/vue";
+import { createRouter, createMemoryHistory } from "vue-router";
+import type { Component } from "vue";
 import LoginPage from "./LoginPage.vue";
 
+// Create a mock router for testing
+const mockRouter = createRouter({
+    history: createMemoryHistory(),
+    routes: [
+        { path: "/", component: { template: "<div>Home</div>" } },
+        { path: "/login", component: { template: "<div>Login</div>" } },
+        { path: "/register", component: { template: "<div>Register</div>" } },
+        { path: "/forgot-password", component: { template: "<div>Forgot Password</div>" } },
+    ],
+});
+
 describe("LoginPage", () => {
+    beforeEach(() => {
+        // Clear all mocks before each test
+        vi.clearAllMocks();
+    });
+
+    const renderWithRouter = (component: Component) => {
+        return render(component, {
+            global: {
+                plugins: [mockRouter],
+            },
+        });
+    };
+
     describe("Rendering", () => {
         it("renders the login form", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             // Check title and subtitle
             expect(screen.getByRole("heading", { name: /Iniciar sesión/i })).toBeDefined();
@@ -15,7 +41,7 @@ describe("LoginPage", () => {
         });
 
         it("renders all form inputs", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             // Email input
             expect(screen.getByLabelText(/Correo electrónico/i)).toBeDefined();
@@ -28,7 +54,7 @@ describe("LoginPage", () => {
         });
 
         it("renders action buttons", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             // Main submit button
             expect(screen.getByRole("button", { name: /Iniciar sesión/i })).toBeDefined();
@@ -39,23 +65,23 @@ describe("LoginPage", () => {
         });
 
         it("renders forgot password link", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
             expect(screen.getByText(/¿Olvidaste tu contraseña\?/i)).toBeDefined();
         });
 
         it("renders sign up link", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
             expect(screen.getByText(/¿No tienes cuenta\?/i)).toBeDefined();
             expect(screen.getByText(/Regístrate gratis/i)).toBeDefined();
         });
 
         it("renders divider with text", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
             expect(screen.getByText(/o continúa con/i)).toBeDefined();
         });
 
         it("renders AuthLeftPanel with correct props", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             // Check if panel content is visible (will be hidden on mobile via CSS)
             expect(screen.getByText(/Simplifica tu ISP/i)).toBeDefined();
@@ -69,7 +95,7 @@ describe("LoginPage", () => {
 
     describe("Form Interactions", () => {
         it("updates email input value", async () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const emailInput = screen.getByLabelText(/Correo electrónico/i) as HTMLInputElement;
 
@@ -79,7 +105,7 @@ describe("LoginPage", () => {
         });
 
         it("updates password input value", async () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const passwordInput = screen.getByLabelText(/Contraseña/i) as HTMLInputElement;
 
@@ -89,7 +115,7 @@ describe("LoginPage", () => {
         });
 
         it("toggles remember me checkbox", async () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const checkbox = screen.getByLabelText(/Recordarme/i) as HTMLInputElement;
 
@@ -108,7 +134,7 @@ describe("LoginPage", () => {
         it("calls console.log on form submit", async () => {
             const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-            const { container } = render(LoginPage);
+            const { container } = renderWithRouter(LoginPage);
 
             const emailInput = screen.getByLabelText(/Correo electrónico/i) as HTMLInputElement;
             const passwordInput = screen.getByLabelText(/Contraseña/i) as HTMLInputElement;
@@ -135,23 +161,21 @@ describe("LoginPage", () => {
         });
 
         it("calls handler on forgot password click", async () => {
-            const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+            const pushSpy = vi.spyOn(mockRouter, "push");
 
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const forgotPasswordLink = screen.getByText(/¿Olvidaste tu contraseña\?/i);
 
             await fireEvent.click(forgotPasswordLink);
 
-            expect(consoleSpy).toHaveBeenCalledWith("Forgot password clicked");
-
-            consoleSpy.mockRestore();
+            expect(pushSpy).toHaveBeenCalledWith("/forgot-password");
         });
 
         it("calls handler on Google login click", async () => {
             const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const googleButton = screen.getByRole("button", { name: /Google/i });
 
@@ -165,7 +189,7 @@ describe("LoginPage", () => {
         it("calls handler on Microsoft login click", async () => {
             const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const microsoftButton = screen.getByRole("button", { name: /Microsoft/i });
 
@@ -177,23 +201,21 @@ describe("LoginPage", () => {
         });
 
         it("calls handler on sign up click", async () => {
-            const consoleSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+            const pushSpy = vi.spyOn(mockRouter, "push");
 
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const signUpLink = screen.getByText(/Regístrate gratis/i);
 
             await fireEvent.click(signUpLink);
 
-            expect(consoleSpy).toHaveBeenCalledWith("Sign up clicked");
-
-            consoleSpy.mockRestore();
+            expect(pushSpy).toHaveBeenCalledWith("/register");
         });
     });
 
     describe("Form Validation", () => {
         it("has required attribute on email input", () => {
-            const { container } = render(LoginPage);
+            const { container } = renderWithRouter(LoginPage);
 
             const emailInput = container.querySelector("#email") as HTMLInputElement;
 
@@ -201,7 +223,7 @@ describe("LoginPage", () => {
         });
 
         it("has required attribute on password input", () => {
-            const { container } = render(LoginPage);
+            const { container } = renderWithRouter(LoginPage);
 
             const passwordInput = container.querySelector("#password") as HTMLInputElement;
 
@@ -209,7 +231,7 @@ describe("LoginPage", () => {
         });
 
         it("has email type on email input", () => {
-            render(LoginPage);
+            renderWithRouter(LoginPage);
 
             const emailInput = screen.getByLabelText(/Correo electrónico/i) as HTMLInputElement;
 
@@ -219,14 +241,14 @@ describe("LoginPage", () => {
 
     describe("Component Structure", () => {
         it("has proper form structure", () => {
-            const { container } = render(LoginPage);
+            const { container } = renderWithRouter(LoginPage);
 
             const form = container.querySelector("form");
             expect(form).not.toBeNull();
         });
 
         it("renders in a full-height container", () => {
-            const { container } = render(LoginPage);
+            const { container } = renderWithRouter(LoginPage);
 
             const mainContainer = container.querySelector(".h-screen");
             expect(mainContainer).not.toBeNull();

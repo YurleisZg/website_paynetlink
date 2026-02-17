@@ -80,7 +80,7 @@ defineOptions({ name: "AppFooter" });
         <div data-testid="footer-divider" class="mb-8 h-px w-full bg-[#333333]" />
         <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p class="font-body text-sm text-[#666666]">
-                © 2025 PayNetLink. Todos los derechos reservados.
+                © {{ new Date().getFullYear() }} PayNetLink. Todos los derechos reservados.
             </p>
             <p class="font-body text-sm text-[#666666]">
                 Hecho con amor para ISPs de Latinoamérica

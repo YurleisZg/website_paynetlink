@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { router } from "@/app/router";
 import { Badge, Button } from "@/shared/ui";
 import { Play, TrendingUp } from "lucide-vue-next";
 import { onMounted, ref } from "vue";
@@ -20,6 +21,10 @@ const chartData = ref<ChartDataItem[]>([
     { month: "May", value: 58, height: 0, color: "#5b97dd" },
     { month: "Jun", value: 85, height: 0, color: "#1a56db" },
 ]);
+
+const goTo = (href: string) => {
+    router.push(href);
+};
 
 onMounted(() => {
     // Animate chart bars on mount
@@ -55,8 +60,15 @@ onMounted(() => {
                 de tu proveedor de internet. Menos errores manuales, más control.
             </p>
             <div class="flex flex-col gap-4 md:flex-row">
-                <Button variant="primary" role="button">Comenzar prueba gratuita</Button>
-                <Button variant="outline" role="button">
+                <Button variant="primary" role="button" @click="goTo('/register')"
+                    >Comenzar prueba gratuita</Button
+                >
+                <Button
+                    variant="outline"
+                    role="button"
+                    class="cursor-pointer"
+                    @click="goTo('/demo')"
+                >
                     <Play :size="16" class="mr-2" />
                     Ver demo
                 </Button>

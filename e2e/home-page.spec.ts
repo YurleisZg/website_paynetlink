@@ -21,8 +21,8 @@ test.describe("PayNetLink Landing Page", () => {
         });
 
         test("should display search icon", async ({ page }) => {
-            const searchIcon = page.locator('[data-testid="search-icon"]');
-            await expect(searchIcon).toBeVisible();
+            const searchButton = page.getByRole("button", { name: /open search/i });
+            await expect(searchButton).toBeVisible();
         });
 
         test("should display login button", async ({ page }) => {
@@ -59,7 +59,9 @@ test.describe("PayNetLink Landing Page", () => {
 
         test("should display CTA buttons", async ({ page }) => {
             const hero = page.locator('[data-testid="hero-section"]');
-            await expect(hero.getByRole("button", { name: /comenzar gratis/i })).toBeVisible();
+            await expect(
+                hero.getByRole("button", { name: /comenzar prueba gratuita/i })
+            ).toBeVisible();
             await expect(hero.getByRole("button", { name: /ver demo/i })).toBeVisible();
         });
 
@@ -382,7 +384,7 @@ test.describe("PayNetLink Landing Page", () => {
 
         test("should display copyright text", async ({ page }) => {
             await expect(
-                page.getByText(/© 2025 paynetlink.*todos los derechos reservados/i)
+                page.getByText(/© \d{4} PayNetLink.*Todos los derechos reservados/i)
             ).toBeVisible();
         });
 
@@ -431,7 +433,7 @@ test.describe("PayNetLink Landing Page", () => {
 
         test("navbar should collapse on mobile", async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 667 });
-            const mobileMenu = page.locator('[data-testid="mobile-menu-button"]');
+            const mobileMenu = page.getByRole("button", { name: /toggle menu/i });
             await expect(mobileMenu).toBeVisible();
         });
 
@@ -445,9 +447,13 @@ test.describe("PayNetLink Landing Page", () => {
     test.describe("Interactions", () => {
         test("CTA buttons should be clickable", async ({ page }) => {
             const hero = page.locator('[data-testid="hero-section"]');
-            const ctaButton = hero.getByRole("button", { name: /comenzar gratis/i });
+            const ctaButton = hero.getByRole("button", { name: /comenzar prueba gratuita/i });
             await expect(ctaButton).toBeEnabled();
             await ctaButton.click();
+
+            // Wait for navigation to register page
+            await page.waitForURL("/register");
+            expect(page.url()).toContain("/register");
         });
 
         test("navigation links should be clickable", async ({ page }) => {

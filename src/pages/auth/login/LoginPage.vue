@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { Globe, LayoutGrid } from "lucide-vue-next";
 import {
     AuthLeftPanel,
-    BaseInput,
-    PasswordInput,
     BaseCheckbox,
+    BaseInput,
     Button,
     Divider,
+    PasswordInput,
     SocialLoginButton,
 } from "@/shared/ui";
+import { Globe, LayoutGrid } from "lucide-vue-next";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 defineOptions({ name: "LoginPage" });
+
+const router = useRouter();
 
 // Form state
 const email = ref("");
@@ -29,8 +32,7 @@ const handleSubmit = () => {
 };
 
 const handleForgotPassword = () => {
-    console.log("Forgot password clicked");
-    // TODO: Navigate to forgot password page
+    router.push("/forgot-password");
 };
 
 const handleGoogleLogin = () => {
@@ -43,9 +45,8 @@ const handleMicrosoftLogin = () => {
     // TODO: Implement Microsoft OAuth
 };
 
-const handleSignUp = () => {
-    console.log("Sign up clicked");
-    // TODO: Navigate to sign up page
+const goTo = (href: string) => {
+    router.push(href);
 };
 </script>
 
@@ -130,7 +131,7 @@ Automatiza, cobra y crece."
                     <button
                         type="button"
                         class="font-body text-sm font-semibold text-primary transition-colors hover:underline"
-                        @click="handleSignUp"
+                        @click="goTo('/register')"
                     >
                         Regístrate gratis
                     </button>
