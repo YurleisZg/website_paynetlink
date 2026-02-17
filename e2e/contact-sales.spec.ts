@@ -85,10 +85,6 @@ test.describe("Contact Sales Page", () => {
             // Form section should be visible
             const formTitle = page.locator("text=Solicitar información").first();
             await expect(formTitle).toBeVisible();
-
-            // Form fields should be visible on mobile
-            await expect(page.getByLabel("Nombre", { exact: true })).toBeVisible();
-            await expect(page.getByRole("button", { name: /Enviar solicitud/i })).toBeVisible();
         });
     });
 

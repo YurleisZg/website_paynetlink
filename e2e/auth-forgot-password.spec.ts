@@ -175,9 +175,9 @@ test.describe("Forgot Password Page", () => {
         });
 
         test("should handle back to login button click", async ({ page }) => {
-            const backButton = page.getByRole("link", { name: "Volver al inicio de sesión" });
+            const backLink = page.getByRole("link", { name: "Volver al inicio de sesión" });
 
-            await backButton.click();
+            await backLink.click();
 
             // Wait for navigation
             await page.waitForURL("/login");
@@ -189,7 +189,7 @@ test.describe("Forgot Password Page", () => {
         test("should have working support link", async ({ page }) => {
             const supportLink = page.getByText("Contacta con soporte");
 
-            // Check that the link points to contact sales page
+            // Check that the link navigates to contact sales page
             await expect(supportLink).toHaveAttribute("href", "/contact-sales");
         });
     });
@@ -201,7 +201,7 @@ test.describe("Forgot Password Page", () => {
         });
 
         test("should have proper button semantics", async ({ page }) => {
-            // Back link (router-link renders as anchor)
+            // Back link (renders as RouterLink/anchor)
             const backLink = page.getByRole("link", { name: "Volver al inicio de sesión" });
             await expect(backLink).toBeVisible();
 

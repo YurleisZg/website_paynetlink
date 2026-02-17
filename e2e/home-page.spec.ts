@@ -354,8 +354,8 @@ test.describe("PayNetLink Landing Page", () => {
         });
 
         test("should display two CTA buttons", async ({ page }) => {
-            const links = page.locator('[data-testid="cta-final"] a[href]');
-            await expect(links).toHaveCount(2);
+            const buttons = page.locator('[data-testid="cta-final"] a');
+            await expect(buttons).toHaveCount(2);
         });
 
         test("should have blue background", async ({ page }) => {
@@ -448,7 +448,7 @@ test.describe("PayNetLink Landing Page", () => {
         test("CTA buttons should be clickable", async ({ page }) => {
             const hero = page.locator('[data-testid="hero-section"]');
             const ctaButton = hero.getByRole("link", { name: /comenzar prueba gratuita/i });
-            await expect(ctaButton).toBeVisible();
+            await expect(ctaButton).toBeEnabled();
             await ctaButton.click();
 
             // Wait for navigation to register page

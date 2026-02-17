@@ -16,6 +16,12 @@ const router = createRouter({
             meta: { layout: "default" },
         },
         {
+            path: "/demo",
+            name: "demo",
+            component: () => import("@/pages/demo/DemoPage.vue"),
+            meta: { layout: "default", title: "Demo" },
+        },
+        {
             path: "/login",
             name: "login",
             component: () => import("@/pages/auth/login/LoginPage.vue"),
@@ -32,12 +38,6 @@ const router = createRouter({
             name: "forgot-password",
             component: () => import("@/pages/auth/forgot-password/ForgotPasswordPage.vue"),
             meta: { layout: "auth", title: "Restablecer contraseña", requiresAuth: false },
-        },
-        {
-            path: "/demo",
-            name: "demo",
-            component: () => import("@/pages/demo/DemoPage.vue"),
-            meta: { title: "Demo interactiva" },
         },
         {
             path: "/contact-sales",

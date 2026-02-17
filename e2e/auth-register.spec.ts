@@ -161,10 +161,9 @@ test.describe("Register Page", () => {
         test("should handle login link click", async ({ page }) => {
             const loginLink = page.getByText("Inicia sesión");
 
-            // Click and verify navigation
             await loginLink.click();
 
-            // Wait for navigation to login page
+            // Wait for navigation
             await page.waitForURL("/login");
 
             // Verify we're on login page
