@@ -10,19 +10,13 @@ defineOptions({ name: "DemoPage" });
     <div class="flex h-full w-full flex-col bg-surface">
         <!-- Navbar -->
         <header
-            class="flex w-full items-center justify-between border-b border-divider bg-white px-6 md:px-12 lg:px-20"
+            class="flex w-full items-center justify-between border-b border-divider bg-white px-4 py-3 sm:px-6 lg:px-20"
         >
             <router-link to="/" aria-label="Volver al inicio">
                 <Logo size="sm" />
             </router-link>
             <div class="flex items-center gap-3">
-                <Button
-                    variant="primary"
-                    to="/register"
-                    class="rounded px-4 py-2 text-xs md:px-6 md:py-2.5 md:text-sm font-semibold"
-                >
-                    Comenzar prueba gratis
-                </Button>
+                <Button variant="primary" to="/register"> Comenzar prueba gratis </Button>
             </div>
         </header>
 
