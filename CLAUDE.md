@@ -49,9 +49,9 @@ src/
 - ❌ Features CANNOT import from other features (use entities or shared for cross-feature code)
 - ❌ Shared CANNOT import from any other layer
 - ✅ Use public API via `index.ts` for each slice
-- ✅ Use Context7
+- ✅ Use Context7 (MANDATORY)
 - ✅ Comments in English
-- ❌ Not add in git commits to Claude or Anthropic as coauthor
+- ❌ Not add in git commits to Claude or Anthropic as coauthor (MANDATORY)
 
 ### Feature/Entity Internal Structure
 

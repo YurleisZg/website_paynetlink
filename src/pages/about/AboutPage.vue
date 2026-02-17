@@ -12,12 +12,6 @@ defineOptions({
                 This is the about page. Feature-first architecture with shared, entities, features,
                 and pages layers.
             </p>
-            <router-link
-                to="/"
-                class="inline-block mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-                Back to Home
-            </router-link>
         </div>
     </div>
 </template>

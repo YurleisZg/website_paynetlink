@@ -8,8 +8,9 @@ withDefaults(
     defineProps<{
         label: string;
         icon?: Component;
+        iconColor?: string;
     }>(),
-    { icon: () => Router }
+    { icon: () => Router, iconColor: "text-secondary" }
 );
 </script>
 
@@ -17,7 +18,7 @@ withDefaults(
     <div
         class="flex h-24 w-28 flex-col items-center justify-center gap-2.5 rounded-xl border border-surface-card bg-white md:h-[100px] md:w-[120px]"
     >
-        <component :is="icon" :size="28" class="text-secondary" />
+        <component :is="icon" :size="28" :class="iconColor" />
         <span class="font-body text-xs font-medium text-muted">{{ label }}</span>
     </div>
 </template>
