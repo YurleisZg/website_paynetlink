@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, nextTick } from "vue";
-import { Logo, Button } from "@/shared/ui";
-import { Search, Menu, X } from "lucide-vue-next";
+import { router } from "@/app/router";
+import { Button, Logo } from "@/shared/ui";
+import { Menu, Search, X } from "lucide-vue-next";
+import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 
 defineOptions({ name: "AppNavbar" });
 
@@ -70,6 +71,12 @@ const handleClickOutside = (event: MouseEvent) => {
     }
 };
 
+const goTo = (href: string) => {
+    router.push(href);
+    closeMobileMenu();
+    closeSearch();
+};
+
 // Prevent body scroll when mobile menu or search is open
 watch([mobileMenuOpen, searchOpen], ([menuOpen, searchIsOpen]) => {
     if (menuOpen || searchIsOpen) {
@@ -128,8 +135,8 @@ onUnmounted(() => {
                 >
                     <Search :size="20" />
                 </button>
-                <Button variant="ghost">Iniciar sesión</Button>
-                <Button variant="primary">Prueba gratis</Button>
+                <Button variant="ghost" @click="goTo('/login')">Iniciar sesión</Button>
+                <Button variant="primary" @click="goTo('/register')">Prueba gratis</Button>
             </div>
 
             <!-- Mobile Actions -->
@@ -198,8 +205,12 @@ onUnmounted(() => {
 
                 <!-- Mobile Action Buttons -->
                 <div class="flex flex-col gap-3 p-6">
-                    <Button variant="ghost" full-width>Iniciar sesión</Button>
-                    <Button variant="primary" full-width>Prueba gratis</Button>
+                    <Button variant="ghost" full-width @click="goTo('/login')"
+                        >Iniciar sesión</Button
+                    >
+                    <Button variant="primary" full-width @click="goTo('/register')"
+                        >Prueba gratis</Button
+                    >
                 </div>
             </div>
         </Transition>
