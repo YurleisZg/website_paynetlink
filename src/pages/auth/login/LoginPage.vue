@@ -11,8 +11,11 @@ import {
 } from "@/shared/ui";
 import { Globe, LayoutGrid } from "lucide-vue-next";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "LoginPage" });
+
+const { t } = useI18n();
 
 // Form state
 const email = ref("");
@@ -44,9 +47,8 @@ const handleMicrosoftLogin = () => {
     <div class="flex h-screen w-full">
         <!-- Left Panel - Blue Background with Logo and Info -->
         <AuthLeftPanel
-            title="Simplifica tu ISP.
-Automatiza, cobra y crece."
-            description="Accede a tu panel de control para gestionar clientes, pagos, red y comunicaciones desde un solo lugar."
+            :title="t('auth.login.leftTitle')"
+            :description="t('auth.login.leftDescription')"
         />
 
         <!-- Right Panel - White Background with Login Form -->
@@ -59,17 +61,17 @@ Automatiza, cobra y crece."
                 <router-link
                     to="/"
                     class="flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
-                    aria-label="Volver al inicio"
+                    :aria-label="t('auth.backToHome')"
                 >
                     <Logo size="md" variant="light" />
                 </router-link>
                 <!-- Header -->
                 <div class="flex flex-col gap-2 text-center">
                     <h1 class="font-heading text-[28px] font-bold text-foreground md:text-[36px]">
-                        Iniciar sesión
+                        {{ t("auth.login.title") }}
                     </h1>
                     <p class="font-body text-sm text-muted md:text-[15px]">
-                        Ingresa tus credenciales para acceder a tu cuenta
+                        {{ t("auth.login.subtitle") }}
                     </p>
                 </div>
 
@@ -80,8 +82,8 @@ Automatiza, cobra y crece."
                         id="email"
                         v-model="email"
                         type="email"
-                        label="Correo electrónico"
-                        placeholder="tu@correo.com"
+                        :label="t('auth.login.emailLabel')"
+                        :placeholder="t('auth.login.emailPlaceholder')"
                         required
                     />
 
@@ -89,28 +91,34 @@ Automatiza, cobra y crece."
                     <PasswordInput
                         id="password"
                         v-model="password"
-                        label="Contraseña"
-                        placeholder="••••••••"
+                        :label="t('auth.login.passwordLabel')"
+                        :placeholder="t('auth.login.passwordPlaceholder')"
                         required
                     />
 
                     <!-- Remember Me & Forgot Password -->
                     <div class="flex items-center justify-between">
-                        <BaseCheckbox id="remember" v-model="rememberMe" label="Recordarme" />
+                        <BaseCheckbox
+                            id="remember"
+                            v-model="rememberMe"
+                            :label="t('auth.login.rememberMe')"
+                        />
                         <router-link
                             to="/forgot-password"
                             class="font-body text-xs text-primary font-medium transition-colors hover:underline md:text-[13px]"
                         >
-                            ¿Olvidaste tu contraseña?
+                            {{ t("auth.login.forgotPassword") }}
                         </router-link>
                     </div>
 
                     <!-- Submit Button -->
-                    <Button type="submit" variant="primary" full-width> Iniciar sesión </Button>
+                    <Button type="submit" variant="primary" full-width>
+                        {{ t("auth.login.submit") }}
+                    </Button>
                 </form>
 
                 <!-- Divider -->
-                <Divider label="o continúa con" />
+                <Divider :label="t('auth.login.divider')" />
 
                 <!-- Social Login Buttons -->
                 <div class="flex w-full flex-col gap-3">
@@ -124,12 +132,14 @@ Automatiza, cobra y crece."
 
                 <!-- Sign Up Link -->
                 <div class="flex items-center justify-center gap-1">
-                    <span class="font-body text-sm text-muted"> ¿No tienes cuenta? </span>
+                    <span class="font-body text-sm text-muted">
+                        {{ t("auth.login.noAccount") }}
+                    </span>
                     <router-link
                         to="/register"
                         class="font-body text-sm font-semibold text-primary transition-colors hover:underline"
                     >
-                        Regístrate gratis
+                        {{ t("auth.login.signUpFree") }}
                     </router-link>
                 </div>
             </div>

@@ -1,0 +1,183 @@
+{
+    "home": {
+        "hero": {
+            "badge": "Nuevo: Facturación electrónica integrada",
+            "title": "Gestiona tu ISP desde un solo lugar. Cobra mejor, opera más rápido.",
+            "description": "PayNetLink automatiza la gestión de clientes, pagos, red MikroTik y comunicaciones de tu proveedor de internet. Menos errores manuales, más control.",
+            "ctaPrimary": "Comenzar prueba gratuita",
+            "ctaSecondary": "Ver demo",
+            "ctaNote": "Sin tarjeta de crédito · Configuración en 10 minutos · Soporte incluido",
+            "dashboard": {
+                "activeClients": "Clientes activos",
+                "thisMonth": "este mes",
+                "collected": "Recaudado",
+                "networkUptime": "Uptime red",
+                "lastMonth": "Último mes",
+                "monthlyCollection": "Recaudo mensual"
+            },
+            "months": {
+                "jan": "Ene",
+                "feb": "Feb",
+                "mar": "Mar",
+                "apr": "Abr",
+                "may": "May",
+                "jun": "Jun"
+            }
+        },
+        "features": {
+            "title": "Todo lo que tu ISP necesita en una sola plataforma",
+            "description": "Desde el registro del cliente hasta el cobro automático, PayNetLink cubre cada etapa de tu operación.",
+            "items": {
+                "clients": {
+                    "title": "Gestión de Clientes",
+                    "description": "Registra clientes, contratos y planes en segundos. Consulta historial completo de pagos y servicios en un solo lugar.",
+                    "linkText": "Conocer más →"
+                },
+                "payments": {
+                    "title": "Pagos Recurrentes",
+                    "description": "Automatiza el cobro mensual con tarjetas o cuentas bancarias. Reduce morosidad con recordatorios automáticos.",
+                    "linkText": "Conocer más →"
+                },
+                "network": {
+                    "title": "Automatización de Red",
+                    "description": "Integración directa con MikroTik. Suspende o activa servicios según estado de pago sin intervención manual.",
+                    "linkText": "Conocer más →"
+                },
+                "notifications": {
+                    "title": "Notificaciones Automáticas",
+                    "description": "Envía recordatorios de pago, confirmaciones y alertas por SMS, email o WhatsApp sin esfuerzo adicional.",
+                    "linkText": "Conocer más →"
+                },
+                "invoicing": {
+                    "title": "Facturación Electrónica",
+                    "description": "Genera facturas electrónicas válidas fiscalmente. Cumple con normativas locales sin complicaciones.",
+                    "linkText": "Conocer más →"
+                },
+                "analytics": {
+                    "title": "Reportes y Analítica",
+                    "description": "Visualiza métricas clave de tu negocio. Identifica tendencias y toma decisiones basadas en datos reales.",
+                    "linkText": "Conocer más →"
+                }
+            }
+        },
+        "highlights": {
+            "clientControl": {
+                "title": "Control total de tus clientes",
+                "description": "Visualiza el estado de cada cliente en tiempo real. Filtra por plan, estado de pago, ubicación y más. Exporta listados para análisis o campañas.",
+                "points": ["Búsqueda instantánea", "Filtros avanzados", "Exportación masiva"]
+            },
+            "payments": {
+                "title": "Cobra sin esfuerzo",
+                "description": "Configura cobros recurrentes una vez y olvídate del resto. Acepta múltiples métodos de pago y concilia automáticamente con tu contabilidad.",
+                "points": ["Cobro automático", "Múltiples métodos", "Conciliación automática"]
+            },
+            "network": {
+                "title": "Tu red bajo control",
+                "description": "Monitorea el estado de tu infraestructura MikroTik desde un solo panel. Ejecuta acciones masivas sin entrar a cada router.",
+                "points": ["Monitoreo en tiempo real", "Acciones masivas", "Alertas automáticas"]
+            }
+        },
+        "howItWorks": {
+            "title": "Empieza en 3 pasos",
+            "cta": "Comenzar ahora — Es gratis",
+            "steps": {
+                "step1": {
+                    "title": "Crea tu cuenta",
+                    "description": "Regístrate gratis y configura tu perfil de ISP en minutos."
+                },
+                "step2": {
+                    "title": "Conecta tu red",
+                    "description": "Integra tus routers MikroTik y sistemas de pago existentes."
+                },
+                "step3": {
+                    "title": "Automatiza y crece",
+                    "description": "Deja que PayNetLink maneje lo repetitivo mientras enfocas en expandir."
+                }
+            }
+        },
+        "pricing": {
+            "title": "Planes que crecen contigo",
+            "description": "Sin contratos de permanencia. Cambia o cancela cuando quieras.",
+            "plans": {
+                "free": {
+                    "name": "Gratis",
+                    "price": "$0",
+                    "period": "/mes",
+                    "features": [
+                        "Hasta 50 clientes",
+                        "Gestión básica",
+                        "Soporte por email",
+                        "1 integración"
+                    ],
+                    "buttonLabel": "Comenzar gratis"
+                },
+                "pro": {
+                    "name": "Profesional",
+                    "price": "$49,900",
+                    "period": "/mes",
+                    "features": [
+                        "Hasta 500 clientes",
+                        "Todas las funciones",
+                        "Soporte prioritario",
+                        "Integraciones ilimitadas",
+                        "Facturación electrónica",
+                        "API completa"
+                    ],
+                    "buttonLabel": "Comenzar ahora",
+                    "badgeLabel": "Más popular"
+                },
+                "enterprise": {
+                    "name": "Empresa",
+                    "price": "Personalizado",
+                    "period": "",
+                    "features": [
+                        "Clientes ilimitados",
+                        "Instalación dedicada",
+                        "Soporte 24/7",
+                        "SLA garantizado",
+                        "Capacitación incluida",
+                        "Personalización total"
+                    ],
+                    "buttonLabel": "Contactar ventas"
+                }
+            }
+        },
+        "testimonials": {
+            "title": "ISPs que ya confían en PayNetLink",
+            "items": {
+                "testimonial1": {
+                    "quote": "Desde que implementamos PayNetLink, redujimos la morosidad en 40%. La automatización de pagos y suspensiones es increíble.",
+                    "authorName": "Carlos Méndez",
+                    "authorRole": "CEO, FibraNet"
+                },
+                "testimonial2": {
+                    "quote": "La integración con MikroTik nos ahorró horas de trabajo manual. Ahora gestionamos 300 clientes con la mitad del personal.",
+                    "authorName": "María Rodríguez",
+                    "authorRole": "CTO, NetSpeed Pro"
+                },
+                "testimonial3": {
+                    "quote": "El soporte es excelente y la plataforma muy intuitiva. Migramos desde Excel y fue la mejor decisión para nuestro ISP.",
+                    "authorName": "Jorge López",
+                    "authorRole": "Fundador, ConectaISP"
+                }
+            }
+        },
+        "socialProof": {
+            "trust": "Más de 200 proveedores de internet confían en PayNetLink",
+            "metrics": {
+                "managedPayments": "pagos gestionados",
+                "collected": "recaudado"
+            }
+        },
+        "integrations": {
+            "title": "Se integra con las herramientas que ya usas",
+            "description": "¿No encuentras tu integración? Nuestra API abierta te permite conectar cualquier sistema."
+        },
+        "cta": {
+            "title": "Lleva tu ISP al siguiente nivel",
+            "description": "Únete a cientos de proveedores que ya optimizan su operación con PayNetLink.",
+            "ctaPrimary": "Empezar ahora gratis",
+            "ctaSecondary": "Hablar con ventas"
+        }
+    }
+}

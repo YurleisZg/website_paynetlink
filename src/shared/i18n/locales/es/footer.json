@@ -1,0 +1,25 @@
+{
+    "footer": {
+        "tagline": "Automatiza tu ISP y cobra mejor",
+        "product": {
+            "title": "Producto",
+            "features": "Funciones",
+            "pricing": "Precios",
+            "integrations": "Integraciones"
+        },
+        "resources": {
+            "title": "Recursos",
+            "blog": "Blog",
+            "help": "Ayuda",
+            "apiDocs": "API Docs"
+        },
+        "company": {
+            "title": "Empresa",
+            "about": "Sobre nosotros",
+            "contact": "Contacto",
+            "privacy": "Privacidad"
+        },
+        "copyright": "© {year} PayNetLink. Todos los derechos reservados.",
+        "madeWith": "Hecho con amor para ISPs de Latinoamérica"
+    }
+}

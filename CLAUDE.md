@@ -13,6 +13,39 @@ PayNetLink is an ISP management platform that automates day-to-day operations fo
 
 ---
 
+## CRITICAL RULES (MANDATORY - DO NOT SKIP)
+
+- **NEVER add Co-Authored-By, Claude, or Anthropic references in git commit messages.** This includes any variation like `Co-Authored-By: Claude ...` or `Co-Authored-By: ... <noreply@anthropic.com>`. Commit messages must only contain the conventional commit message itself.
+- **ALWAYS use semantic/conventional commits** (e.g., `feat(auth): add login form`, `fix(user): resolve avatar bug`).
+- **ALWAYS use Context7 for documentation lookups.**
+- **ALWAYS follow Feature-Sliced Design (FSD) architecture and its dependency rules strictly.** Lower layers CANNOT import from upper layers. Features CANNOT import from other features. Shared CANNOT import from any other layer. Violating these rules is never acceptable.
+
+---
+
+## Agent & Skill Orchestration
+
+| Request Type               | Primary Agent                            |
+| -------------------------- | ---------------------------------------- |
+| Vue components/composables | `vue-expert`                             |
+| Complex TypeScript         | `typescript-pro`                         |
+| UI/UX design, styling      | `frontend-design` + `tailwind-patterns`  |
+| New feature                | `vue-expert` + `test-driven-development` |
+| Bug fix                    | `test-driven-development` + `vue-expert` |
+| Code review / PR           | `code-reviewer`                          |
+| Refactoring                | `refactoring-specialist`                 |
+| Testing strategy           | `qa-expert`                              |
+| Scaffolding / bundle       | `senior-frontend`                        |
+| API documentation          | `api-documenter`                         |
+
+**Always apply:**
+
+- `test-driven-development` — MANDATORY for all features and bugfixes
+- `code-reviewer` — after >5 files changed or before creating a PR
+- `tailwind-patterns` — any component that involves styling
+- `typescript-pro` — when `any` appears or complex generics needed
+
+---
+
 ## Architecture: Feature-First + Layers
 
 This project uses **Feature-Sliced Design (FSD)**, a methodology that organizes code by features and layers to improve maintainability, scalability, and team collaboration.
@@ -102,99 +135,23 @@ feature-name/
 
 ### TypeScript
 
-```typescript
-// ✅ DO: Use strict TypeScript settings (already configured)
-// - noUncheckedIndexedAccess: true
-// - strict: true
-// - noUnusedLocals: true
-// - noUnusedParameters: true
-
-// ✅ DO: Use type imports
-import type { User } from "@/entities/user";
-
-// ✅ DO: Define explicit return types for functions
-export function fetchUser(id: string): Promise<User> {
-    // ...
-}
-
-// ✅ DO: Use interfaces for objects, type for unions/primitives
-export interface User {
-    id: string;
-    email: string;
-    name: string;
-}
-
-export type UserRole = "admin" | "operator" | "customer";
-
-// ❌ DON"T: Use "any" - use "unknown" if type is truly unknown
-```
+- Use `import type` for type-only imports
+- Use `interface` for objects, `type` for unions/primitives
+- Define explicit return types for exported functions
+- Never use `any` — use `unknown` if type is truly unknown
+- Strict mode is enabled (`strict`, `noUncheckedIndexedAccess`, `noUnusedLocals`, `noUnusedParameters`)
 
 ### Vue Components
 
-```vue
-<!-- ✅ DO: Use <script setup> with TypeScript -->
-<script setup lang="ts">
-import { ref } from "vue";
-
-// ✅ DO: Always define component name with defineOptions
-defineOptions({
-    name: "UserProfile",
-});
-
-// ✅ DO: Type props explicitly
-defineProps<{
-    userId: string;
-    isActive?: boolean;
-}>();
-
-// ✅ DO: Type emits explicitly
-const emit = defineEmits<{
-    submit: [data: FormData];
-    cancel: [];
-}>();
-
-// ✅ DO: Use descriptive variable names
-const isLoading = ref(false);
-const userProfile = ref<User | null>(null);
-</script>
-
-<template>
-    <!-- ✅ DO: Use Tailwind utility classes -->
-    <div class="flex flex-col gap-4 p-6">
-        <!-- ✅ DO: Use semantic HTML -->
-        <h1 class="text-2xl font-bold">User Profile</h1>
-    </div>
-</template>
-
-<!-- ❌ DON"T: Use scoped styles with Tailwind unless absolutely necessary -->
-<!-- Prefer Tailwind utilities for styling -->
-```
+- Always use `<script setup lang="ts">`
+- Always define component name with `defineOptions({ name: "ComponentName" })`
+- Type props and emits explicitly with generics (`defineProps<{...}>()`, `defineEmits<{...}>()`)
+- Use Tailwind utilities instead of scoped styles
+- Use semantic HTML
 
 ### Formatting (Prettier)
 
-**IMPORTANT: These settings are enforced by pre-commit hooks:**
-
-- **No semicolons** (`semi: false`)
-- **Single quotes** (`singleQuote: true`)
-- **4 spaces** for indentation (`tabWidth: 4`)
-- **Trailing commas** in ES5 contexts (`trailingComma: "es5"`)
-- **100 character** line width (`printWidth: 100`)
-
-```typescript
-// ✅ Correct formatting
-const user = {
-    id: "123",
-    name: "John Doe",
-    email: "john@example.com",
-};
-
-// ❌ Wrong formatting (will be auto-fixed)
-const user = {
-    id: "123",
-    name: "John Doe",
-    email: "john@example.com",
-};
-```
+**Enforced by pre-commit hooks:** No semicolons, single quotes, 4-space indent, trailing commas (ES5), 100 char line width.
 
 ### Naming Conventions
 
@@ -208,192 +165,77 @@ const user = {
 | **Files**            | Match export name           | `userApi.ts` (exports user API functions) |
 | **Folders**          | kebab-case or camelCase     | `auth/`, `userProfile/`                   |
 
-### Import Aliases
+### Imports
 
-```typescript
-// ✅ DO: Use @ alias for absolute imports
-import { Button } from "@/shared/ui";
-import { fetchUser } from "@/entities/user";
-import { login } from "@/features/auth";
-
-// ❌ DON"T: Use relative imports across layers
-import { Button } from "../../../shared/ui/Button.vue";
-```
-
-### Component Organization
-
-```typescript
-// ✅ DO: Order imports logically
-// 1. Vue core
-import { ref, computed, onMounted } from "vue";
-// 2. Third-party libraries
-import { useQuery } from "@tanstack/vue-query";
-// 3. Internal shared
-import { Button } from "@/shared/ui";
-// 4. Internal entities/features
-import { fetchUser } from "@/entities/user";
-// 5. Local imports
-import type { Props } from "./types";
-```
+- Use `@/` alias for all cross-layer imports — never relative paths across layers
+- Order: Vue core → third-party → `@/shared` → `@/entities`/`@/features` → local
 
 ---
 
 ## State Management Strategy
 
-### Server State (TanStack Query)
-
-**Use for:** API data, caching, background refetching
-
-```typescript
-import { useQuery, useMutation } from "@tanstack/vue-query";
-import { fetchUser } from "@/entities/user";
-
-// ✅ DO: Use TanStack Query for server state
-export function useUserQuery(userId: string) {
-    return useQuery({
-        queryKey: ["user", userId],
-        queryFn: () => fetchUser(userId),
-        staleTime: 5 * 60 * 1000, // 5 minutes
-    });
-}
-
-// ✅ DO: Use mutations for write operations
-export function useUpdateUser() {
-    return useMutation({
-        mutationFn: (data: UpdateUserPayload) => updateUser(data),
-        onSuccess: () => {
-            // Invalidate cache, show toast, etc.
-        },
-    });
-}
-```
-
-### Client State (Composables)
-
-**Use for:** UI state, form state, local preferences
-
-```typescript
-// ✅ DO: Create composables for shared client state
-export function useAuthState() {
-    const user = ref<User | null>(null);
-    const isAuthenticated = computed(() => user.value !== null);
-
-    function logout() {
-        user.value = null;
-        localStorage.removeItem("token");
-    }
-
-    return { user, isAuthenticated, logout };
-}
-```
+- **Server state:** TanStack Query (`useQuery`/`useMutation`) for all API data, caching, and background refetching
+- **Client state:** Vue composables (`ref`, `computed`) for UI state, form state, and local preferences
 
 ---
 
-## HTTP Client Configuration
+## HTTP Client
 
-The project uses a configured Axios instance at `@/shared/lib/http/client.ts`:
+Always use the configured `apiClient` from `@/shared/lib/http/client.ts` — never create new Axios instances. It handles base URL (`VITE_API_URL`), 15s timeout, Bearer token injection, and 401 auto-logout.
 
-- **Base URL:** From `VITE_API_URL` env variable (default: `/api`)
-- **Timeout:** 15 seconds
-- **Auth:** Automatic Bearer token injection from localStorage/sessionStorage
-- **401 Handling:** Auto-clears auth tokens on unauthorized responses
+---
 
-```typescript
-// ✅ DO: Use the configured apiClient for all API calls
-import { apiClient } from "@/shared/lib/http/client";
+## Error Handling
 
-export async function fetchUser(id: string): Promise<User> {
-    const response = await apiClient.get<UserDto>(`/users/${id}`);
-    return mapUserDtoToUser(response.data);
-}
+- Use a global error boundary at `app/` level to catch unexpected errors
+- **Centralize API error handling** in `QueryClient` default `onError` — never repeat error-to-message mapping in each feature
+- Backend errors must include a `code` field. Map codes to i18n keys globally: `toast.error(t(\`errors.\${code}\`))`
+- Distinguish: **expected errors** (4xx with `code`) → show mapped i18n message; **unexpected errors** (5xx, network) → log + show generic message
+- 401/403 are handled centrally by the `apiClient` interceptor
+- Only add `onError` in a feature when you need **additional logic** beyond the toast (redirect, clear form, etc.) — not to map messages
+- Never silently swallow errors — always log or notify
 
-// ❌ DON"T: Create new axios instances
-import axios from "axios";
-const response = await axios.get("/users"); // Wrong!
-```
+---
+
+## Cross-Feature Communication
+
+Features CANNOT import from other features. When features need to communicate:
+
+- **Shared data:** Extract to an entity (e.g., if `auth` and `billing` both need `User`, it lives in `entities/user/`)
+- **Events:** Use a typed event bus in `shared/lib/` or `provide/inject` from a parent widget/page
+- **Coordinated actions:** Pages and widgets orchestrate multiple features — that's their purpose
+
+---
+
+## i18n Strategy
+
+- All user-facing text MUST go through `vue-i18n` — no hardcoded strings in templates or components
+- Translation keys follow namespace pattern: `feature.component.key` (e.g., `auth.loginForm.submitButton`)
+- Keep translation files per locale in `shared/i18n/locales/`
+
+---
+
+## API Types Strategy
+
+- **Persistence types** (API shape) live in the slice's `api/` folder
+- **Domain models** (what the app uses) live in the slice's `model/types.ts`
+- Use a **class-based Mapper pattern** with a base `Mapper<Domain, Persistence>` abstract class in `shared/lib/mapper.ts`
+- Every entity/feature mapper must extend `Mapper` and implement `toDomain(raw)` and `toPersistence(domain)`
+- Components consume Domain models directly — no separate DTO layer needed
+- Mappers can compose other mappers (e.g., `CustomerMapper` calls `PlanMapper.toDomain()` for nested objects)
+- Never use `any` in mapper signatures — always type `Domain` and `Persistence` explicitly
+- Never use API responses directly in components — always go through the mapper
+- If the backend provides an OpenAPI spec, prefer auto-generating Persistence types from it
 
 ---
 
 ## Testing Strategy
 
-### Unit Tests (Vitest + Testing Library)
-
-**Location:** Co-located with components (`ComponentName.spec.ts`)
-
-```typescript
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/vue";
-import HomePage from "./HomePage.vue";
-
-describe("HomePage", () => {
-    it("renders welcome message", () => {
-        render(HomePage);
-        expect(screen.getByText(/Welcome to PayNetLink/i)).toBeDefined();
-    });
-});
-```
-
-**Commands:**
-
-- `pnpm run test` - Watch mode
-- `pnpm run test:run` - Run once (CI)
-- `pnpm run test:ui` - Vitest UI
-
-### E2E Tests (Playwright)
-
-**Location:** `e2e/` directory
-
-```typescript
-import { test, expect } from "@playwright/test";
-
-test.describe("Home", () => {
-    test("should display the home page with the title", async ({ page }) => {
-        await page.goto("/");
-        await expect(page.getByRole("heading", { name: /Welcome to PayNetLink/i })).toBeVisible();
-    });
-});
-```
-
-**Commands:**
-
-- `pnpm run test:e2e` - Run E2E tests
-- `pnpm run test:e2e:ui` - Playwright UI mode
-- `pnpm run test:e2e:headed` - Run with browser visible
-
-**Configuration:**
-
-- Tests run against `http://localhost:5173`
-- Dev server auto-starts if not running
-- Tests across Chromium, Firefox, and WebKit
-- CI mode: 2 retries, sequential execution
-
-### Storybook
-
-**Location:** `*.stories.ts` files co-located with components
-
-```typescript
-import type { Meta, StoryObj } from "@storybook/vue3";
-import Button from "./Button.vue";
-
-const meta: Meta<typeof Button> = {
-    title: "Shared/Button",
-    component: Button,
-};
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
-    args: {
-        variant: "primary",
-    },
-};
-```
-
-**Commands:**
-
-- `pnpm run storybook` - Start at `http://localhost:6006`
-- `pnpm run build-storybook` - Build static site
+- **Unit tests (Vitest + Testing Library):** Co-located with components as `ComponentName.spec.ts`
+- **E2E tests (Playwright):** In `e2e/` directory. Runs against `http://localhost:5173` on Chromium, Firefox, WebKit
+- **Storybook:** Co-located `*.stories.ts` files for component documentation
+- **Test behavior, not implementation.** Never assert CSS classes, DOM structure, or visual appearance. Test what the user can do: clicks, form submissions, visible text, navigation. If a test would break from a refactor that doesn't change behavior, it's a bad test.
+- **Prefer integration tests over unit tests.** Test components with their real children and composables together. Only isolate with unit tests when testing pure logic (utils, helpers). Integration tests give more confidence with fewer tests.
 
 ---
 
@@ -494,286 +336,30 @@ Auto-generates `CHANGELOG.md` from commit messages.
 
 ## Router Configuration
 
-**Location:** `src/app/router/index.ts`
-
-```typescript
-// ✅ DO: Use lazy loading for route components
-{
-    path: "/dashboard",
-    name: "dashboard",
-    component: () => import("@/pages/dashboard/DashboardPage.vue"),
-    meta: { layout: "default", requiresAuth: true }
-}
-
-// ✅ DO: Add route meta for layouts and auth
-meta: {
-    layout: "default",      // Layout to use
-    requiresAuth: true,     // Requires authentication
-    title: "Dashboard"      // Page title
-}
-```
+**Location:** `src/app/router/index.ts`. Use lazy loading (`() => import(...)`) for all route components. Route meta supports `layout`, `requiresAuth`, and `title`.
 
 ---
 
 ## Environment Variables
 
-**File:** `.env` or `.env.local` (not committed)
-
-```env
-VITE_API_URL=https://api.paynetlink.com
-```
-
-**Access in code:**
-
-```typescript
-// ✅ DO: Use shared config
-import { config } from "@/shared/config";
-console.log(config.apiUrl); // From VITE_API_URL
-console.log(config.isDev); // From import.meta.env.DEV
-```
+Use `@/shared/config` to access env vars (`config.apiUrl`, `config.isDev`). Never read `import.meta.env` directly outside shared config.
 
 ---
 
 ## Common Patterns
 
-### Creating a New Feature
+When creating new slices (features, entities, pages, etc.), follow the internal structure defined in **Feature/Entity Internal Structure** above. Key reminders:
 
-1. **Create feature directory:**
-
-    ```
-    src/features/payment/
-    ├── index.ts
-    ├── model/
-    │   ├── types.ts
-    │   └── paymentState.ts
-    ├── api/
-    │   └── paymentApi.ts
-    └── ui/
-        └── PaymentForm.vue
-    ```
-
-2. **Define types** (`model/types.ts`):
-
-    ```typescript
-    export interface Payment {
-        id: string;
-        amount: number;
-        status: "pending" | "completed" | "failed";
-    }
-    ```
-
-3. **Create API functions** (`api/paymentApi.ts`):
-
-    ```typescript
-    import { apiClient } from "@/shared/lib/http/client";
-
-    export async function createPayment(data: CreatePaymentPayload): Promise<Payment> {
-        const response = await apiClient.post("/payments", data);
-        return response.data;
-    }
-    ```
-
-4. **Build UI component** (`ui/PaymentForm.vue`):
-
-    ```vue
-    <script setup lang="ts">
-    import { useMutation } from "@tanstack/vue-query";
-    import { createPayment } from "../api/paymentApi";
-
-    defineOptions({ name: "PaymentForm" });
-
-    const { mutate, isPending } = useMutation({
-        mutationFn: createPayment,
-    });
-    </script>
-    ```
-
-5. **Export public API** (`index.ts`):
-    ```typescript
-    export type { Payment } from "./model/types";
-    export { createPayment } from "./api/paymentApi";
-    export { default as PaymentForm } from "./ui/PaymentForm.vue";
-    ```
-
-### Creating a New Page
-
-```typescript
-// src/pages/payment/PaymentPage.vue
-<script setup lang="ts">
-import { PaymentForm } from "@/features/payment"
-
-defineOptions({ name: "PaymentPage" })
-</script>
-
-<template>
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Payment</h1>
-        <PaymentForm />
-    </div>
-</template>
-```
-
-```typescript
-// Add route to src/app/router/index.ts
-{
-    path: "/payment",
-    name: "payment",
-    component: () => import("@/pages/payment/PaymentPage.vue"),
-    meta: { layout: "default", requiresAuth: true }
-}
-```
-
-### Creating a Shared Component
-
-```vue
-<!-- src/shared/ui/Card.vue -->
-<script setup lang="ts">
-defineOptions({ name: "Card" })
-
-defineProps<{
-    title?: string
-    variant?: "default" | "elevated"
-}>()
-</script>
-
-<template>
-    <div
-        class="rounded-lg border p-4"
-        :class="variant === "elevated" ? "shadow-lg" : "shadow""
-    >
-        <h3 v-if="title" class="text-lg font-semibold mb-2">{{ title }}</h3>
-        <slot />
-    </div>
-</template>
-```
-
-```typescript
-// src/shared/ui/index.ts
-export { default as Button } from "./Button.vue";
-export { default as Card } from "./Card.vue";
-export { default as HelloWorld } from "./HelloWorld.vue";
-```
-
-### Creating a Composable
-
-```typescript
-// src/shared/composables/useDebounce.ts
-import { ref, watch } from "vue";
-
-export function useDebounce<T>(value: Ref<T>, delay: number = 300): Ref<T> {
-    const debouncedValue = ref<T>(value.value) as Ref<T>;
-    let timeout: NodeJS.Timeout;
-
-    watch(value, (newValue) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            debouncedValue.value = newValue;
-        }, delay);
-    });
-
-    return debouncedValue;
-}
-```
+- **New feature/entity:** Create `index.ts` (public API), `model/` (types, state), `api/` (API calls), `ui/` (components). Export only what's needed via `index.ts`.
+- **New page:** Compose features/widgets, add lazy-loaded route in `src/app/router/index.ts`.
+- **New shared component:** Add to `src/shared/ui/`, export from `src/shared/ui/index.ts`.
+- **New composable:** Add to `src/shared/composables/` with `use` prefix.
 
 ---
 
-## Do"s and Don"ts
+## Additional Rules
 
-### ✅ DO
-
-- **Follow layer rules strictly** - Never import upward in the dependency chain
-- **Use TypeScript strictly** - Leverage type safety, avoid `any`
-- **Use TanStack Query** for server state - Built-in caching and loading states
-- **Co-locate tests** with components - Keep tests close to implementation
-- **Use Tailwind utilities** - Avoid custom CSS unless necessary
-- **Write semantic HTML** - Accessibility matters
-- **Use `<script setup>`** - Modern Vue 3 syntax
-- **Define component names** with `defineOptions({ name: "ComponentName" })`
-- **Export through index.ts** - Public API pattern
-- **Use conventional commits** - Enables automated versioning
-- **Run tests before committing** - Pre-commit hooks enforce this
-- **Use path alias `@/`** - For absolute imports
-- **Type props and emits** - Explicit TypeScript types
-
-### ❌ DON"T
-
-- **Don"t violate layer dependencies** - Features can"t import from pages
-- **Don"t use `any` type** - Use `unknown` if type is truly unknown
-- **Don"t create new axios instances** - Use the configured `apiClient`
-- **Don"t commit without linting** - Pre-commit hooks will catch this
-- **Don"t use relative imports across layers** - Use `@/` alias
-- **Don"t put business logic in pages** - Pages compose, features implement
-- **Don"t share state between features** - Use entities for shared domain logic
-- **Don"t skip tests** - Maintain coverage
-- **Don"t use component names without defineOptions** - Helps debugging
-- **Don"t use inline styles** - Prefer Tailwind utilities
-- **Don"t ignore TypeScript errors** - Fix them, don"t suppress
-- **Don"t push directly to main** - Use feature branches
-
----
-
-## Current Project Status
-
-**Branch:** `chore/config-project`
-
-**Status:** Major architectural restructuring in progress
-
-**Completed:**
-
-- ✅ Feature-Sliced Design structure implemented
-- ✅ Tailwind CSS v4 configured
-- ✅ TypeScript strict mode enabled
-- ✅ TanStack Query integrated
-- ✅ Testing infrastructure (Vitest + Playwright + Storybook)
-- ✅ Pre-commit hooks configured
-- ✅ ESLint + Prettier setup
-- ✅ Basic components created (Button, AppNav, LoginForm, UserAvatar)
-- ✅ Basic pages created (Home, About)
-- ✅ HTTP client with interceptors
-
-**In Progress:**
-
-- 🔄 Many staged/untracked files not yet committed
-- 🔄 Old Vue structure files deleted (App.vue, router/index.js, etc.)
-
-**Next Steps:**
-
-- Add more business features (payments, plans, customers)
-- Implement authentication flow
-- Add API integration
-- Create more reusable components
-- Expand test coverage
-
----
-
-## Additional Resources
-
-- **Vue 3 Docs:** https://vuejs.org/
-- **TypeScript:** https://www.typescriptlang.org/
-- **Tailwind CSS v4:** https://tailwindcss.com/
-- **TanStack Query:** https://tanstack.com/query/latest/docs/vue/overview
-- **Vitest:** https://vitest.dev/
-- **Playwright:** https://playwright.dev/
-- **Feature-Sliced Design:** https://feature-sliced.design/
-- **Conventional Commits:** https://www.conventionalcommits.org/
-
----
-
-## Questions or Issues?
-
-When working on this project, always:
-
-1. Check layer dependencies before importing
-2. Run linters and tests before committing
-3. Follow naming conventions
-4. Use TypeScript strictly
-5. Write tests for new features
-6. Use conventional commits
-
-If you encounter issues:
-
-- Run `pnpm run typecheck` to check types
-- Run `pnpm run lint:fix` to fix linting
-- Run `pnpm run format` to fix formatting
-- Check `.env` file for environment variables
-- Verify you"re using Node.js version specified in `.nvmrc`
+- Pages only compose features/widgets — never put business logic in pages
+- Features CANNOT share state with other features — use entities or shared for cross-feature data
+- Never push directly to `main` — use feature branches
+- Every new UI component MUST include its corresponding `*.stories.ts` file

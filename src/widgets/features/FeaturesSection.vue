@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { FeatureCard } from "@/shared/ui";
 import type { Component } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "FeaturesSection" });
+
+const { t } = useI18n();
 
 interface Feature {
     icon: Component;
@@ -24,11 +27,10 @@ defineProps<Props>();
     >
         <div class="flex max-w-2xl flex-col gap-3 text-center">
             <h2 class="font-heading text-3xl font-bold text-foreground md:text-4xl" role="heading">
-                Todo lo que tu ISP necesita en una sola plataforma
+                {{ t("home.features.title") }}
             </h2>
             <p class="font-body text-base leading-relaxed text-muted md:text-lg md:leading-[1.5]">
-                Desde el registro del cliente hasta el cobro automático, PayNetLink cubre cada etapa
-                de tu operación.
+                {{ t("home.features.description") }}
             </p>
         </div>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3">

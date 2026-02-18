@@ -2,8 +2,11 @@
 import { AuthLeftPanel, BaseInput, Button, Logo } from "@/shared/ui";
 import { ArrowLeft } from "lucide-vue-next";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "ForgotPasswordPage" });
+
+const { t } = useI18n();
 
 // Form state
 const email = ref("");
@@ -33,8 +36,8 @@ const handleResend = () => {
     <div class="flex h-screen w-full">
         <!-- Left Panel - Blue Background with Logo and Info -->
         <AuthLeftPanel
-            title="¿Olvidaste tu contraseña?"
-            description="No te preocupes, es normal. Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña."
+            :title="t('auth.forgotPassword.leftTitle')"
+            :description="t('auth.forgotPassword.leftDescription')"
         />
 
         <!-- Right Panel - White Background with Forgot Password Form -->
@@ -47,7 +50,7 @@ const handleResend = () => {
                 <router-link
                     to="/"
                     class="flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
-                    aria-label="Volver al inicio"
+                    :aria-label="t('auth.backToHome')"
                 >
                     <Logo size="md" variant="light" />
                 </router-link>
@@ -58,7 +61,7 @@ const handleResend = () => {
                     class="flex items-center gap-2 self-start font-body text-sm text-muted transition-colors hover:text-foreground"
                 >
                     <ArrowLeft :size="16" />
-                    <span>Volver al inicio de sesión</span>
+                    <span>{{ t("auth.forgotPassword.backToLogin") }}</span>
                 </router-link>
 
                 <!-- Success State -->
@@ -85,10 +88,10 @@ const handleResend = () => {
                         <h1
                             class="font-heading text-[28px] font-bold text-foreground md:text-[36px]"
                         >
-                            Revisa tu correo
+                            {{ t("auth.forgotPassword.successTitle") }}
                         </h1>
                         <p class="font-body text-sm text-muted md:text-[15px]">
-                            Te hemos enviado un enlace de recuperación a
+                            {{ t("auth.forgotPassword.successMessage") }}
                             <span class="font-semibold text-foreground">{{ email }}</span>
                         </p>
                     </div>
@@ -96,14 +99,13 @@ const handleResend = () => {
                     <!-- Instructions -->
                     <div class="rounded-lg bg-muted/20 px-4 py-3">
                         <p class="font-body text-xs text-muted leading-relaxed md:text-sm">
-                            Si no recibes el correo en los próximos minutos, revisa tu carpeta de
-                            spam o solicita un nuevo enlace.
+                            {{ t("auth.forgotPassword.spamNote") }}
                         </p>
                     </div>
 
                     <!-- Resend Button -->
                     <Button type="button" variant="outline" full-width @click="handleResend">
-                        Enviar de nuevo
+                        {{ t("auth.forgotPassword.resend") }}
                     </Button>
                 </div>
 
@@ -114,11 +116,10 @@ const handleResend = () => {
                         <h1
                             class="font-heading text-[28px] font-bold text-foreground md:text-[36px]"
                         >
-                            Restablecer contraseña
+                            {{ t("auth.forgotPassword.title") }}
                         </h1>
                         <p class="font-body text-sm text-muted md:text-[15px]">
-                            Ingresa tu correo electrónico y te enviaremos un enlace para restablecer
-                            tu contraseña
+                            {{ t("auth.forgotPassword.subtitle") }}
                         </p>
                     </div>
 
@@ -129,27 +130,31 @@ const handleResend = () => {
                             id="email"
                             v-model="email"
                             type="email"
-                            label="Correo electrónico"
-                            placeholder="tu@correo.com"
+                            :label="t('auth.forgotPassword.emailLabel')"
+                            :placeholder="t('auth.forgotPassword.emailPlaceholder')"
                             required
                             :disabled="isLoading"
                         />
 
                         <!-- Submit Button -->
                         <Button type="submit" variant="primary" full-width :disabled="isLoading">
-                            {{ isLoading ? "Enviando..." : "Enviar enlace de recuperación" }}
+                            {{
+                                isLoading
+                                    ? t("auth.forgotPassword.sending")
+                                    : t("auth.forgotPassword.submit")
+                            }}
                         </Button>
                     </form>
 
                     <!-- Additional Help -->
                     <div class="rounded-lg border border-muted/30 px-4 py-3">
                         <p class="font-body text-xs text-muted leading-relaxed md:text-sm">
-                            ¿Sigues teniendo problemas?
+                            {{ t("auth.forgotPassword.helpText") }}
                             <router-link
                                 to="/contact-sales"
                                 class="font-semibold text-primary hover:underline"
                             >
-                                Contacta con soporte
+                                {{ t("auth.forgotPassword.contactSupport") }}
                             </router-link>
                         </p>
                     </div>

@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { Network, CircleCheck } from "lucide-vue-next";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({
     name: "RegisterLeftPanel",
 });
 
-const benefits = [
-    "Sin tarjeta de crédito requerida",
-    "Configuración en 10 minutos",
-    "Soporte incluido desde el día 1",
-    "Cancela cuando quieras",
-];
+const { t, tm } = useI18n();
+
+const benefits = computed(() => (tm("auth.registerPanel.benefits") as string[]).map(String));
 </script>
 
 <template>
@@ -19,7 +18,7 @@ const benefits = [
         <router-link
             to="/"
             class="flex items-center gap-3 transition-opacity hover:opacity-80"
-            aria-label="Volver al inicio"
+            :aria-label="t('auth.backToHome')"
         >
             <Network :size="32" class="text-white" />
             <span
@@ -32,10 +31,10 @@ const benefits = [
 
         <!-- Title -->
         <h1
-            class="text-[36px] font-bold leading-[1.2] text-white"
+            class="text-[36px] font-bold leading-[1.2] text-white whitespace-pre-line"
             style="font-family: &quot;Red Hat Display&quot;, sans-serif"
         >
-            Comienza tu prueba<br />gratuita de 14 días
+            {{ t("auth.registerPanel.title") }}
         </h1>
 
         <!-- Benefits List -->

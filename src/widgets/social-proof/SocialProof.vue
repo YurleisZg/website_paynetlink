@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Metric } from "@/shared/ui";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "SocialProof" });
+
+const { t } = useI18n();
 
 interface MetricData {
     value: string;
@@ -13,7 +17,7 @@ interface Props {
     metrics?: MetricData[];
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     companyLogos: () => [
         "FibraNet",
         "NetSpeed",
@@ -23,13 +27,18 @@ withDefaults(defineProps<Props>(), {
         "TelcoFibra",
         "NetPro",
     ],
-    metrics: () => [
-        { value: "200+", label: "ISPs" },
-        { value: "$10,000+", label: "pagos gestionados" },
-        { value: "99.9%", label: "uptime" },
-        { value: "$20+", label: "recaudado" },
-    ],
+    metrics: undefined,
 });
+
+const displayMetrics = computed(
+    () =>
+        props.metrics ?? [
+            { value: "200+", label: "ISPs" },
+            { value: "$10,000+", label: t("home.socialProof.metrics.managedPayments") },
+            { value: "99.9%", label: "uptime" },
+            { value: "$20+", label: t("home.socialProof.metrics.collected") },
+        ]
+);
 </script>
 
 <template>
@@ -38,7 +47,7 @@ withDefaults(defineProps<Props>(), {
         class="scroll-reveal flex flex-col items-center gap-8 bg-surface px-6 py-12 md:px-20 md:py-12"
     >
         <p class="font-body text-sm font-medium text-subtle">
-            Más de 200 proveedores de internet confían en PayNetLink
+            {{ t("home.socialProof.trust") }}
         </p>
         <div class="flex flex-wrap items-center justify-center gap-12">
             <span
@@ -51,7 +60,7 @@ withDefaults(defineProps<Props>(), {
         </div>
         <div class="flex flex-wrap items-center justify-center gap-16">
             <Metric
-                v-for="metric in metrics"
+                v-for="metric in displayMetrics"
                 :key="metric.label"
                 :value="metric.value"
                 :label="metric.label"

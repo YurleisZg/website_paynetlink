@@ -1,0 +1,18 @@
+{
+    "nav": {
+        "links": {
+            "products": "Productos",
+            "solutions": "Soluciones",
+            "pricing": "Precios",
+            "resources": "Recursos",
+            "company": "Empresa"
+        },
+        "login": "Iniciar sesión",
+        "freeTrial": "Prueba gratis",
+        "search": {
+            "placeholder": "Buscar...",
+            "startTyping": "Empieza a escribir para buscar...",
+            "searchingFor": "Buscando:"
+        }
+    }
+}

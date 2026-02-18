@@ -21,12 +21,14 @@ PayNetLink aims to simplify and automate the day-to-day operation of an ISP, red
 - **Vite** – Build tool and dev server
 - **Vue Router** – Official router for Vue
 - **Tailwind CSS** – Utility-first CSS
+- **vue-i18n** – Internationalization (i18n)
 - **TanStack Query (Vue Query)** – Server state and caching
 - **Axios** – HTTP client (with interceptors)
 - **Vitest** – Unit tests
 - **Playwright** – E2E tests
 - **Storybook** – Component development and documentation
 - **ESLint + Prettier** – Linting and formatting
+- **eslint-plugin-boundaries** – Enforces FSD layer dependency rules
 - **Husky + lint-staged** – Pre-commit hooks (lint, format, tests)
 - **standard-version** – Changelog and release versioning
 
@@ -81,14 +83,17 @@ The codebase is organized by **features** and **layers** so that:
 | **entities** | Core business objects (e.g. User, Plan). Reusable across features. model + api + ui. | shared                                     |
 | **shared**   | Domain-agnostic code: UI primitives, HTTP client, composables, config, types.        | —                                          |
 
-### Rules
+### Dependency rules
+
+These rules are **enforced at lint time** by [`eslint-plugin-boundaries`](https://github.com/javierbrea/eslint-plugin-boundaries). Any import that violates them will produce an ESLint error.
 
 - **Shared** does not import from entities, features, pages, or widgets.
 - **Entities** do not import from features or pages.
-- **Features** do not import from pages or other features (cross-feature via entities or shared).
+- **Features** do not import from pages or other features (cross-feature code goes in entities or shared).
+- **Widgets** do not import from pages.
 - **Pages** only compose features and widgets; complex logic lives in features or entities.
 
-This keeps the codebase easy to navigate, test, and change: you can work on a feature or entity in one place without pulling in the rest of the app.
+Run `pnpm run lint` to verify all imports respect the layer boundaries.
 
 ## Project structure
 
@@ -104,6 +109,7 @@ src/
 │   ├── ui/                 # Atomic UI (Button, HelloWorld)
 │   ├── lib/                # HTTP client, pure helpers
 │   ├── composables/        # Generic hooks (useDebounce)
+│   ├── i18n/               # Internationalization setup and locales
 │   ├── types/              # Global types
 │   └── config/             # Env and constants
 ├── entities/               # Business entities
@@ -122,6 +128,109 @@ src/
 ## Routes
 
 - `/` – Home
+
+## Internationalization (i18n)
+
+The project uses **vue-i18n** with per-feature locale files, fallback support, and development warnings.
+
+### How it works
+
+- Default locale: `es` (Spanish)
+- Fallback locale: `es` — if a key is missing in another language, Spanish is shown
+- `missingWarn` and `fallbackWarn` are enabled only in development
+
+### Locale file structure
+
+Translations are organized by feature inside each locale folder:
+
+```
+src/shared/i18n/locales/
+├── es/
+│   ├── common.json       # Shared keys (buttons, errors, etc.)
+│   ├── auth.json          # Auth feature translations
+│   └── billing.json       # Billing feature translations
+└── en/
+    ├── common.json
+    ├── auth.json
+    └── billing.json
+```
+
+Files are loaded automatically via `import.meta.glob` — no manual registration needed.
+
+### Adding translations for a new feature
+
+1. Create a JSON file in the locale folder:
+
+```json
+// src/shared/i18n/locales/es/customers.json
+{
+    "customers": {
+        "title": "Clientes",
+        "addButton": "Agregar cliente",
+        "deleteConfirm": "¿Estás seguro de eliminar este cliente?"
+    }
+}
+```
+
+2. Optionally add the English version:
+
+```json
+// src/shared/i18n/locales/en/customers.json
+{
+    "customers": {
+        "title": "Customers",
+        "addButton": "Add customer",
+        "deleteConfirm": "Are you sure you want to delete this customer?"
+    }
+}
+```
+
+That's it. The new file is detected automatically on the next build/reload.
+
+### Using translations in components
+
+With Composition API:
+
+```vue
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+</script>
+
+<template>
+    <h1>{{ t("customers.title") }}</h1>
+    <button>{{ t("customers.addButton") }}</button>
+</template>
+```
+
+Or with the global `$t` injection (no import needed):
+
+```vue
+<template>
+    <h1>{{ $t("customers.title") }}</h1>
+    <button>{{ $t("common.save") }}</button>
+</template>
+```
+
+### Switching locale at runtime
+
+```ts
+import { loadAndSetLocale } from "@/shared/i18n";
+
+await loadAndSetLocale("en");
+```
+
+### Key naming convention
+
+Keys follow the pattern `feature.component.key`:
+
+```
+auth.loginForm.submitButton
+billing.invoiceTable.totalLabel
+common.save
+errors.NETWORK_ERROR
+```
 
 ## Environment
 

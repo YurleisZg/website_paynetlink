@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { BaseInput, BaseSelect, BaseTextarea, Button, ContactInfoItem, Logo } from "@/shared/ui";
 import { Clock, Mail, Phone } from "lucide-vue-next";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "ContactAdvisorPage" });
+
+const { t } = useI18n();
 
 // Form state
 const formData = ref({
@@ -16,13 +19,13 @@ const formData = ref({
     message: "",
 });
 
-const clientRangeOptions = [
-    { value: "1-50", label: "1-50 clientes" },
-    { value: "51-200", label: "51-200 clientes" },
-    { value: "201-500", label: "201-500 clientes" },
-    { value: "501-1000", label: "501-1000 clientes" },
-    { value: "1000+", label: "Más de 1000 clientes" },
-];
+const clientRangeOptions = computed(() => [
+    { value: "1-50", label: t("contact.form.clientRangeOptions.1-50") },
+    { value: "51-200", label: t("contact.form.clientRangeOptions.51-200") },
+    { value: "201-500", label: t("contact.form.clientRangeOptions.201-500") },
+    { value: "501-1000", label: t("contact.form.clientRangeOptions.501-1000") },
+    { value: "1000+", label: t("contact.form.clientRangeOptions.1000+") },
+]);
 
 const handleSubmit = () => {
     console.log("Form submitted:", formData.value);
@@ -40,7 +43,7 @@ const handleSubmit = () => {
             <router-link
                 to="/"
                 class="flex items-center gap-2 transition-opacity hover:opacity-80"
-                aria-label="Volver al inicio"
+                :aria-label="t('contact.backToHome')"
             >
                 <Logo size="md" variant="dark" />
             </router-link>
@@ -49,13 +52,12 @@ const handleSubmit = () => {
             <h1
                 class="font-heading text-[28px] font-bold leading-tight text-white md:text-4xl md:leading-[1.2]"
             >
-                Habla con un asesor de PayNetLink
+                {{ t("contact.advisor.title") }}
             </h1>
 
             <!-- Description -->
             <p class="font-body text-base leading-relaxed text-white/80 md:leading-[1.6]">
-                Agenda una llamada o videollamada con un experto que te guiará por la plataforma y
-                resolverá todas tus dudas.
+                {{ t("contact.advisor.description") }}
             </p>
 
             <!-- Contact Info -->
@@ -64,7 +66,7 @@ const handleSubmit = () => {
                 <ContactInfoItem :icon="Phone" text="+57 (1) 234 5678" variant="dark" />
                 <ContactInfoItem
                     :icon="Clock"
-                    text="Lun-Vie, 8:00 AM - 6:00 PM COT"
+                    :text="t('contact.advisor.schedule')"
                     variant="dark"
                 />
             </div>
@@ -78,14 +80,14 @@ const handleSubmit = () => {
             <router-link
                 to="/"
                 class="flex justify-center transition-all duration-200 hover:opacity-70 lg:hidden"
-                aria-label="Volver al inicio"
+                :aria-label="t('contact.backToHome')"
             >
                 <Logo size="md" variant="light" />
             </router-link>
 
             <!-- Form Title -->
             <h2 class="font-heading text-[28px] font-bold text-foreground md:text-[32px]">
-                Agendar asesoría
+                {{ t("contact.advisor.formTitle") }}
             </h2>
 
             <!-- Form -->
@@ -95,14 +97,14 @@ const handleSubmit = () => {
                     <BaseInput
                         id="firstName"
                         v-model="formData.firstName"
-                        label="Nombre"
+                        :label="t('contact.form.firstNameLabel')"
                         placeholder=""
                         required
                     />
                     <BaseInput
                         id="lastName"
                         v-model="formData.lastName"
-                        label="Apellido"
+                        :label="t('contact.form.lastNameLabel')"
                         placeholder=""
                         required
                     />
@@ -113,8 +115,8 @@ const handleSubmit = () => {
                     id="email"
                     v-model="formData.email"
                     type="email"
-                    label="Correo electrónico"
-                    placeholder="tu@empresa.com"
+                    :label="t('contact.form.emailLabel')"
+                    :placeholder="t('contact.form.emailPlaceholder')"
                     required
                 />
 
@@ -123,8 +125,8 @@ const handleSubmit = () => {
                     id="phone"
                     v-model="formData.phone"
                     type="tel"
-                    label="Teléfono"
-                    placeholder="+57"
+                    :label="t('contact.form.phoneLabel')"
+                    :placeholder="t('contact.form.phonePlaceholder')"
                     required
                 />
 
@@ -132,8 +134,8 @@ const handleSubmit = () => {
                 <BaseInput
                     id="ispName"
                     v-model="formData.ispName"
-                    label="Nombre de tu ISP"
-                    placeholder="Ej: FibraNet Colombia"
+                    :label="t('contact.form.ispNameLabel')"
+                    :placeholder="t('contact.form.ispNamePlaceholder')"
                     required
                 />
 
@@ -141,8 +143,8 @@ const handleSubmit = () => {
                 <BaseSelect
                     id="clientRange"
                     v-model="formData.clientRange"
-                    label="¿Cuántos clientes gestionas?"
-                    placeholder="Seleccionar rango"
+                    :label="t('contact.form.clientRangeLabel')"
+                    :placeholder="t('contact.form.clientRangePlaceholder')"
                     :options="clientRangeOptions"
                     required
                 />
@@ -151,14 +153,14 @@ const handleSubmit = () => {
                 <BaseTextarea
                     id="message"
                     v-model="formData.message"
-                    label="Mensaje (opcional)"
-                    placeholder="Cuéntanos sobre tu ISP..."
+                    :label="t('contact.form.messageLabel')"
+                    :placeholder="t('contact.form.messagePlaceholder')"
                     :rows="3"
                 />
 
                 <!-- Submit Button -->
                 <Button type="submit" variant="primary" class="h-12 w-full">
-                    Enviar solicitud
+                    {{ t("contact.form.submit") }}
                 </Button>
             </form>
         </div>

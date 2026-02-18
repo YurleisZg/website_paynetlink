@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { PricingCard } from "@/shared/ui";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "PricingSection" });
+
+const { t } = useI18n();
 
 interface PricingPlan {
     name: string;
@@ -27,10 +30,10 @@ defineProps<Props>();
     >
         <div class="flex max-w-xl flex-col gap-3 text-center">
             <h2 class="font-heading text-3xl font-bold text-foreground md:text-4xl" role="heading">
-                Planes que crecen contigo
+                {{ t("home.pricing.title") }}
             </h2>
             <p class="font-body text-base text-muted">
-                Sin contratos de permanencia. Cambia o cancela cuando quieras.
+                {{ t("home.pricing.description") }}
             </p>
         </div>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3">

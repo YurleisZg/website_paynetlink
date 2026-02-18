@@ -24,7 +24,8 @@ import {
     Users,
     Zap,
 } from "lucide-vue-next";
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
 
 import customerControl from "@/assets/images/customer-control.png";
 import mikrotikDashboard from "@/assets/images/mikrotik-dashboard.png";
@@ -32,160 +33,139 @@ import paymentAutomation from "@/assets/images/payment-automation.png";
 
 defineOptions({ name: "HomePage" });
 
-const navLinks = [
-    { label: "Productos", href: "#productos" },
-    { label: "Soluciones", href: "#soluciones" },
-    { label: "Precios", href: "#pricing" },
-    { label: "Recursos", href: "#recursos" },
-    { label: "Empresa", href: "#empresa" },
-];
+const { t, tm } = useI18n();
 
-const features = [
+const navLinks = computed(() => [
+    { label: t("nav.links.products"), href: "#productos" },
+    { label: t("nav.links.solutions"), href: "#soluciones" },
+    { label: t("nav.links.pricing"), href: "#pricing" },
+    { label: t("nav.links.resources"), href: "#recursos" },
+    { label: t("nav.links.company"), href: "#empresa" },
+]);
+
+const features = computed(() => [
     {
         icon: Users,
-        title: "Gestión de Clientes",
-        description:
-            "Registra clientes, contratos y planes en segundos. Consulta historial completo de pagos y servicios en un solo lugar.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.clients.title"),
+        description: t("home.features.items.clients.description"),
+        linkText: t("home.features.items.clients.linkText"),
     },
     {
         icon: CreditCard,
-        title: "Pagos Recurrentes",
-        description:
-            "Automatiza el cobro mensual con tarjetas o cuentas bancarias. Reduce morosidad con recordatorios automáticos.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.payments.title"),
+        description: t("home.features.items.payments.description"),
+        linkText: t("home.features.items.payments.linkText"),
     },
     {
         icon: Router,
-        title: "Automatización de Red",
-        description:
-            "Integración directa con MikroTik. Suspende o activa servicios según estado de pago sin intervención manual.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.network.title"),
+        description: t("home.features.items.network.description"),
+        linkText: t("home.features.items.network.linkText"),
     },
     {
         icon: Bell,
-        title: "Notificaciones Automáticas",
-        description:
-            "Envía recordatorios de pago, confirmaciones y alertas por SMS, email o WhatsApp sin esfuerzo adicional.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.notifications.title"),
+        description: t("home.features.items.notifications.description"),
+        linkText: t("home.features.items.notifications.linkText"),
     },
     {
         icon: FileText,
-        title: "Facturación Electrónica",
-        description:
-            "Genera facturas electrónicas válidas fiscalmente. Cumple con normativas locales sin complicaciones.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.invoicing.title"),
+        description: t("home.features.items.invoicing.description"),
+        linkText: t("home.features.items.invoicing.linkText"),
     },
     {
         icon: BarChart3,
-        title: "Reportes y Analítica",
-        description:
-            "Visualiza métricas clave de tu negocio. Identifica tendencias y toma decisiones basadas en datos reales.",
-        linkText: "Conocer más →",
+        title: t("home.features.items.analytics.title"),
+        description: t("home.features.items.analytics.description"),
+        linkText: t("home.features.items.analytics.linkText"),
     },
-];
+]);
 
-const highlights = [
+const highlights = computed(() => [
     {
-        title: "Control total de tus clientes",
-        description:
-            "Visualiza el estado de cada cliente en tiempo real. Filtra por plan, estado de pago, ubicación y más. Exporta listados para análisis o campañas.",
-        points: ["Búsqueda instantánea", "Filtros avanzados", "Exportación masiva"],
+        title: t("home.highlights.clientControl.title"),
+        description: t("home.highlights.clientControl.description"),
+        points: (tm("home.highlights.clientControl.points") as string[]).map(String),
         image: customerControl,
     },
     {
-        title: "Cobra sin esfuerzo",
-        description:
-            "Configura cobros recurrentes una vez y olvídate del resto. Acepta múltiples métodos de pago y concilia automáticamente con tu contabilidad.",
-        points: ["Cobro automático", "Múltiples métodos", "Conciliación automática"],
+        title: t("home.highlights.payments.title"),
+        description: t("home.highlights.payments.description"),
+        points: (tm("home.highlights.payments.points") as string[]).map(String),
         image: paymentAutomation,
     },
     {
-        title: "Tu red bajo control",
-        description:
-            "Monitorea el estado de tu infraestructura MikroTik desde un solo panel. Ejecuta acciones masivas sin entrar a cada router.",
-        points: ["Monitoreo en tiempo real", "Acciones masivas", "Alertas automáticas"],
+        title: t("home.highlights.network.title"),
+        description: t("home.highlights.network.description"),
+        points: (tm("home.highlights.network.points") as string[]).map(String),
         image: mikrotikDashboard,
     },
-];
+]);
 
-const steps = [
+const steps = computed(() => [
     {
         number: 1,
-        title: "Crea tu cuenta",
-        description: "Regístrate gratis y configura tu perfil de ISP en minutos.",
+        title: t("home.howItWorks.steps.step1.title"),
+        description: t("home.howItWorks.steps.step1.description"),
     },
     {
         number: 2,
-        title: "Conecta tu red",
-        description: "Integra tus routers MikroTik y sistemas de pago existentes.",
+        title: t("home.howItWorks.steps.step2.title"),
+        description: t("home.howItWorks.steps.step2.description"),
     },
     {
         number: 3,
-        title: "Automatiza y crece",
-        description: "Deja que PayNetLink maneje lo repetitivo mientras enfocas en expandir.",
+        title: t("home.howItWorks.steps.step3.title"),
+        description: t("home.howItWorks.steps.step3.description"),
     },
-];
+]);
 
-const pricingPlans = [
+const pricingPlans = computed(() => [
     {
-        name: "Gratis",
-        price: "$0",
-        period: "/mes",
-        features: ["Hasta 50 clientes", "Gestión básica", "Soporte por email", "1 integración"],
-        buttonLabel: "Comenzar gratis",
+        name: t("home.pricing.plans.free.name"),
+        price: t("home.pricing.plans.free.price"),
+        period: t("home.pricing.plans.free.period"),
+        features: (tm("home.pricing.plans.free.features") as string[]).map(String),
+        buttonLabel: t("home.pricing.plans.free.buttonLabel"),
         featured: false,
     },
     {
-        name: "Profesional",
-        price: "$49,900",
-        period: "/mes",
-        features: [
-            "Hasta 500 clientes",
-            "Todas las funciones",
-            "Soporte prioritario",
-            "Integraciones ilimitadas",
-            "Facturación electrónica",
-            "API completa",
-        ],
-        buttonLabel: "Comenzar ahora",
+        name: t("home.pricing.plans.pro.name"),
+        price: t("home.pricing.plans.pro.price"),
+        period: t("home.pricing.plans.pro.period"),
+        features: (tm("home.pricing.plans.pro.features") as string[]).map(String),
+        buttonLabel: t("home.pricing.plans.pro.buttonLabel"),
         featured: true,
-        badgeLabel: "Más popular",
+        badgeLabel: t("home.pricing.plans.pro.badgeLabel"),
     },
     {
-        name: "Empresa",
-        price: "Personalizado",
-        period: "",
-        features: [
-            "Clientes ilimitados",
-            "Instalación dedicada",
-            "Soporte 24/7",
-            "SLA garantizado",
-            "Capacitación incluida",
-            "Personalización total",
-        ],
-        buttonLabel: "Contactar ventas",
+        name: t("home.pricing.plans.enterprise.name"),
+        price: t("home.pricing.plans.enterprise.price"),
+        period: t("home.pricing.plans.enterprise.period"),
+        features: (tm("home.pricing.plans.enterprise.features") as string[]).map(String),
+        buttonLabel: t("home.pricing.plans.enterprise.buttonLabel"),
         featured: false,
     },
-];
+]);
 
-const testimonials = [
+const testimonials = computed(() => [
     {
-        quote: "Desde que implementamos PayNetLink, redujimos la morosidad en 40%. La automatización de pagos y suspensiones es increíble.",
-        authorName: "Carlos Méndez",
-        authorRole: "CEO, FibraNet",
+        quote: t("home.testimonials.items.testimonial1.quote"),
+        authorName: t("home.testimonials.items.testimonial1.authorName"),
+        authorRole: t("home.testimonials.items.testimonial1.authorRole"),
     },
     {
-        quote: "La integración con MikroTik nos ahorró horas de trabajo manual. Ahora gestionamos 300 clientes con la mitad del personal.",
-        authorName: "María Rodríguez",
-        authorRole: "CTO, NetSpeed Pro",
+        quote: t("home.testimonials.items.testimonial2.quote"),
+        authorName: t("home.testimonials.items.testimonial2.authorName"),
+        authorRole: t("home.testimonials.items.testimonial2.authorRole"),
     },
     {
-        quote: "El soporte es excelente y la plataforma muy intuitiva. Migramos desde Excel y fue la mejor decisión para nuestro ISP.",
-        authorName: "Jorge López",
-        authorRole: "Fundador, ConectaISP",
+        quote: t("home.testimonials.items.testimonial3.quote"),
+        authorName: t("home.testimonials.items.testimonial3.authorName"),
+        authorRole: t("home.testimonials.items.testimonial3.authorRole"),
     },
-];
+]);
 
 const integrations = [
     { label: "MikroTik", icon: Router, iconColor: "text-[#293239]" },
