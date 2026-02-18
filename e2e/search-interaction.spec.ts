@@ -107,7 +107,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
             const searchButton = page.getByRole("button", { name: /open search/i }).first();
             await searchButton.click();
 
-            const placeholderText = page.getByText("Start typing to search...");
+            const placeholderText = page.getByText("Empieza a escribir para buscar...");
             await expect(placeholderText).toBeVisible();
         });
 
@@ -118,7 +118,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
             const searchInput = page.getByLabel("Search input");
             await searchInput.fill("test query");
 
-            const feedbackText = page.getByText('Searching for: "test query"');
+            const feedbackText = page.getByText('Buscando: "test query"');
             await expect(feedbackText).toBeVisible();
         });
 
@@ -531,7 +531,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
             await expect(searchInput).toHaveValue(specialQuery);
 
             // Should display safely without XSS
-            const feedbackText = page.getByText(`Searching for: "${specialQuery}"`);
+            const feedbackText = page.getByText(`Buscando: "${specialQuery}"`);
             await expect(feedbackText).toBeVisible();
         });
 
