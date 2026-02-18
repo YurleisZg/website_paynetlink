@@ -23,6 +23,7 @@ defineProps<Props>();
 
 <template>
     <section
+        id="productos"
         class="scroll-reveal flex flex-col items-center gap-12 bg-white px-6 py-20 md:px-20 md:py-20"
     >
         <div class="flex max-w-2xl flex-col gap-3 text-center">

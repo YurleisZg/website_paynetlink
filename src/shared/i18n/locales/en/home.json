@@ -45,12 +45,12 @@
                 },
                 "notifications": {
                     "title": "Automatic Notifications",
-                    "description": "Send payment reminders, confirmations, and alerts via SMS, email, or WhatsApp with no extra effort.",
+                    "description": "Send payment reminders, confirmations, and alerts via email, or WhatsApp with no extra effort.",
                     "linkText": "Learn more →"
                 },
                 "invoicing": {
                     "title": "Electronic Invoicing",
-                    "description": "Generate fiscally valid electronic invoices. Comply with local regulations without complications.",
+                    "description": "Generate valid electronic invoices. Comply with local regulations without complications.",
                     "linkText": "Learn more →"
                 },
                 "analytics": {
@@ -113,15 +113,15 @@
                 },
                 "pro": {
                     "name": "Professional",
-                    "price": "$49,900",
+                    "price": "$35 USD",
                     "period": "/month",
                     "features": [
-                        "Up to 500 clients",
+                        "Up to 1000 clients",
                         "All features",
                         "Priority support",
                         "Unlimited integrations",
                         "Electronic invoicing",
-                        "Full API"
+                        "WhatsApp notifications"
                     ],
                     "buttonLabel": "Get started",
                     "badgeLabel": "Most popular"
@@ -134,9 +134,12 @@
                         "Unlimited clients",
                         "Dedicated installation",
                         "24/7 support",
-                        "Guaranteed SLA",
+                        "WhatsApp notifications",
+                        "Electronic invoicing",
                         "Training included",
-                        "Full customization"
+                        "Full customization",
+                        "Network management",
+                        "Technical and installation order management"
                     ],
                     "buttonLabel": "Contact sales"
                 }
@@ -147,18 +150,18 @@
             "items": {
                 "testimonial1": {
                     "quote": "Since implementing PayNetLink, we reduced delinquency by 40%. The payment and suspension automation is incredible.",
-                    "authorName": "Carlos Méndez",
-                    "authorRole": "CEO, FibraNet"
+                    "authorName": "Carlos Zuluaga",
+                    "authorRole": "CEO, Conexion.Net"
                 },
                 "testimonial2": {
                     "quote": "The MikroTik integration saved us hours of manual work. We now manage 300 clients with half the staff.",
-                    "authorName": "María Rodríguez",
-                    "authorRole": "CTO, NetSpeed Pro"
+                    "authorName": "Melkis Sandoval",
+                    "authorRole": "Manager, MelNet Internet"
                 },
                 "testimonial3": {
                     "quote": "The support is excellent and the platform very intuitive. We migrated from Excel and it was the best decision for our ISP.",
                     "authorName": "Jorge López",
-                    "authorRole": "Founder, ConectaISP"
+                    "authorRole": "Founder, Internet Tiquisio"
                 }
             }
         },
@@ -167,7 +170,9 @@
             "metrics": {
                 "managedPayments": "managed payments",
                 "collected": "collected"
-            }
+            },
+            "support": "support",
+            "manualWorkSaved": "manual work saved"
         },
         "integrations": {
             "title": "Integrates with the tools you already use",

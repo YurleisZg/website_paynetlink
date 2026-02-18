@@ -22,7 +22,6 @@ import {
     Router,
     Smartphone,
     Users,
-    Zap,
 } from "lucide-vue-next";
 import { computed, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
@@ -38,7 +37,7 @@ const { t, tm } = useI18n();
 const navLinks = computed(() => [
     { label: t("nav.links.products"), href: "#productos" },
     { label: t("nav.links.solutions"), href: "#soluciones" },
-    { label: t("nav.links.pricing"), href: "#pricing" },
+    { label: t("nav.links.pricing"), href: "#precios" },
     { label: t("nav.links.resources"), href: "#recursos" },
     { label: t("nav.links.company"), href: "#empresa" },
 ]);
@@ -169,14 +168,13 @@ const testimonials = computed(() => [
 
 const integrations = [
     { label: "MikroTik", icon: Router, iconColor: "text-[#293239]" },
-    { label: "Stripe", icon: CreditCard, iconColor: "text-[#635BFF]" },
+    { label: "Wompi", icon: CreditCard, iconColor: "text-[#635BFF]" },
     { label: "Mercado Pago", icon: Database, iconColor: "text-[#00B1EA]" },
     { label: "WhatsApp", icon: Smartphone, iconColor: "text-[#25D366]" },
     { label: "Gmail", icon: Mail, iconColor: "text-[#EA4335]" },
-    { label: "Twilio", icon: Cloud, iconColor: "text-[#F22F46]" },
-    { label: "Zapier", icon: Zap, iconColor: "text-[#FF4A00]" },
-    { label: "API Rest", icon: Globe, iconColor: "text-[#0066cc]" },
-    { label: "Webhooks", icon: Package, iconColor: "text-[#333333]" },
+    { label: "AWS", icon: Cloud, iconColor: "text-[#F22F46]" },
+    { label: "DIAN", icon: Globe, iconColor: "text-[#0066cc]" },
+    { label: "API Rest", icon: Package, iconColor: "text-[#333333]" },
 ];
 
 onMounted(() => {

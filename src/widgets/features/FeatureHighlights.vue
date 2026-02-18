@@ -16,7 +16,7 @@ defineProps<Props>();
 </script>
 
 <template>
-    <section class="flex flex-col gap-20 bg-surface px-6 py-20 md:px-20 md:py-20">
+    <section id="soluciones" class="flex flex-col gap-20 bg-surface px-6 py-20 md:px-20 md:py-20">
         <div
             v-for="(highlight, index) in highlights"
             :key="highlight.title"
