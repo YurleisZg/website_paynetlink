@@ -19,13 +19,11 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     companyLogos: () => [
-        "FibraNet",
-        "NetSpeed",
-        "ConectaISP",
-        "WiFiMax",
-        "RedCo",
-        "TelcoFibra",
-        "NetPro",
+        "Conexion.Net",
+        "Conexsures.net",
+        "MelNet Internet",
+        "Cibernet Telecomunicaciones",
+        "Internet Tiquisio",
     ],
     metrics: undefined,
 });
@@ -35,8 +33,8 @@ const displayMetrics = computed(
         props.metrics ?? [
             { value: "200+", label: "ISPs" },
             { value: "$10,000+", label: t("home.socialProof.metrics.managedPayments") },
-            { value: "99.9%", label: "uptime" },
-            { value: "$20+", label: t("home.socialProof.metrics.collected") },
+            { value: "24/7", label: t("home.socialProof.support") },
+            { value: "500+", label: t("home.socialProof.manualWorkSaved") },
         ]
 );
 </script>

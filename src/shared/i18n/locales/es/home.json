@@ -45,12 +45,12 @@
                 },
                 "notifications": {
                     "title": "Notificaciones Automáticas",
-                    "description": "Envía recordatorios de pago, confirmaciones y alertas por SMS, email o WhatsApp sin esfuerzo adicional.",
+                    "description": "Envía recordatorios de pago, confirmaciones y alertas por email o WhatsApp sin esfuerzo adicional.",
                     "linkText": "Conocer más →"
                 },
                 "invoicing": {
                     "title": "Facturación Electrónica",
-                    "description": "Genera facturas electrónicas válidas fiscalmente. Cumple con normativas locales sin complicaciones.",
+                    "description": "Genera facturas electrónicas válidas. Cumple con normativas locales sin complicaciones.",
                     "linkText": "Conocer más →"
                 },
                 "analytics": {
@@ -103,25 +103,20 @@
                     "name": "Gratis",
                     "price": "$0",
                     "period": "/mes",
-                    "features": [
-                        "Hasta 50 clientes",
-                        "Gestión básica",
-                        "Soporte por email",
-                        "1 integración"
-                    ],
+                    "features": ["Hasta 50 clientes", "Gestión básica", "Soporte por email"],
                     "buttonLabel": "Comenzar gratis"
                 },
                 "pro": {
                     "name": "Profesional",
-                    "price": "$49,900",
+                    "price": "$120,000",
                     "period": "/mes",
                     "features": [
-                        "Hasta 500 clientes",
+                        "Hasta 1000 clientes",
                         "Todas las funciones",
                         "Soporte prioritario",
-                        "Integraciones ilimitadas",
+                        "Integraciones limitadas",
                         "Facturación electrónica",
-                        "API completa"
+                        "Notificaciones por WhatsApp"
                     ],
                     "buttonLabel": "Comenzar ahora",
                     "badgeLabel": "Más popular"
@@ -134,9 +129,12 @@
                         "Clientes ilimitados",
                         "Instalación dedicada",
                         "Soporte 24/7",
-                        "SLA garantizado",
+                        "Notificaciones por WhatsApp",
+                        "Facturación electrónica",
                         "Capacitación incluida",
-                        "Personalización total"
+                        "Personalización total",
+                        "Gestión de red",
+                        "Gestión de técnicos y órdenes de instalación"
                     ],
                     "buttonLabel": "Contactar ventas"
                 }
@@ -147,18 +145,18 @@
             "items": {
                 "testimonial1": {
                     "quote": "Desde que implementamos PayNetLink, redujimos la morosidad en 40%. La automatización de pagos y suspensiones es increíble.",
-                    "authorName": "Carlos Méndez",
-                    "authorRole": "CEO, FibraNet"
+                    "authorName": "Carlos Zuluaga",
+                    "authorRole": "CEO, Conexion.Net"
                 },
                 "testimonial2": {
                     "quote": "La integración con MikroTik nos ahorró horas de trabajo manual. Ahora gestionamos 300 clientes con la mitad del personal.",
-                    "authorName": "María Rodríguez",
-                    "authorRole": "CTO, NetSpeed Pro"
+                    "authorName": "Melkis Sandoval",
+                    "authorRole": "Gerente, MelNet Internet"
                 },
                 "testimonial3": {
                     "quote": "El soporte es excelente y la plataforma muy intuitiva. Migramos desde Excel y fue la mejor decisión para nuestro ISP.",
-                    "authorName": "Jorge López",
-                    "authorRole": "Fundador, ConectaISP"
+                    "authorName": "Jorge Lopez",
+                    "authorRole": "Fundador, Internet Tiquisio"
                 }
             }
         },
@@ -167,7 +165,9 @@
             "metrics": {
                 "managedPayments": "pagos gestionados",
                 "collected": "recaudado"
-            }
+            },
+            "support": "soporte",
+            "manualWorkSaved": "horas ahorradas de trabajo manual"
         },
         "integrations": {
             "title": "Se integra con las herramientas que ya usas",

@@ -25,6 +25,7 @@ defineProps<Props>();
 
 <template>
     <section
+        id="precios"
         data-testid="pricing-section"
         class="scroll-reveal flex flex-col items-center gap-12 bg-surface px-6 py-20 md:px-20 md:py-20"
     >
