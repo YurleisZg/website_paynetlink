@@ -1,0 +1,18 @@
+{
+    "nav": {
+        "links": {
+            "products": "Products",
+            "solutions": "Solutions",
+            "pricing": "Pricing",
+            "resources": "Resources",
+            "company": "Company"
+        },
+        "login": "Log in",
+        "freeTrial": "Free trial",
+        "search": {
+            "placeholder": "Search...",
+            "startTyping": "Start typing to search...",
+            "searchingFor": "Searching for:"
+        }
+    }
+}

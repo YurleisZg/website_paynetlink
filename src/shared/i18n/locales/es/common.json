@@ -1,0 +1,26 @@
+{
+    "common": {
+        "loading": "Cargando...",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "edit": "Editar",
+        "create": "Crear",
+        "search": "Buscar",
+        "back": "Volver",
+        "next": "Siguiente",
+        "previous": "Anterior",
+        "confirm": "Confirmar",
+        "close": "Cerrar",
+        "yes": "Sí",
+        "no": "No"
+    },
+    "errors": {
+        "NETWORK_ERROR": "Error de conexión. Intenta de nuevo.",
+        "UNEXPECTED_ERROR": "Ocurrió un error inesperado.",
+        "UNAUTHORIZED": "No autorizado. Inicia sesión de nuevo.",
+        "FORBIDDEN": "No tienes permisos para esta acción.",
+        "NOT_FOUND": "Recurso no encontrado.",
+        "VALIDATION_ERROR": "Error de validación. Revisa los campos."
+    }
+}

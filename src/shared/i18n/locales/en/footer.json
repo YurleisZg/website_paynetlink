@@ -1,0 +1,25 @@
+{
+    "footer": {
+        "tagline": "Automate your ISP and bill better",
+        "product": {
+            "title": "Product",
+            "features": "Features",
+            "pricing": "Pricing",
+            "integrations": "Integrations"
+        },
+        "resources": {
+            "title": "Resources",
+            "blog": "Blog",
+            "help": "Help",
+            "apiDocs": "API Docs"
+        },
+        "company": {
+            "title": "Company",
+            "about": "About us",
+            "contact": "Contact",
+            "privacy": "Privacy"
+        },
+        "copyright": "© {year} PayNetLink. All rights reserved.",
+        "madeWith": "Made with love for ISPs in Latin America"
+    }
+}

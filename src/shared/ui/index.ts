@@ -10,6 +10,7 @@ export { default as Chip } from "./Chip.vue";
 export { default as ContactInfoItem } from "./ContactInfoItem.vue";
 export { default as Divider } from "./Divider.vue";
 export { default as FeatureCheckItem } from "./FeatureCheckItem.vue";
+export { default as LocaleSwitcher } from "./LocaleSwitcher.vue";
 export { default as Logo } from "./Logo.vue";
 export { default as Metric } from "./Metric.vue";
 export { default as NavLink } from "./NavLink.vue";

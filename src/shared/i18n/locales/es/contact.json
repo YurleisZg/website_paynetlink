@@ -1,0 +1,39 @@
+{
+    "contact": {
+        "backToHome": "Volver al inicio",
+        "form": {
+            "firstNameLabel": "Nombre",
+            "lastNameLabel": "Apellido",
+            "emailLabel": "Correo electrónico",
+            "emailPlaceholder": "tu{'@'}empresa.com",
+            "phoneLabel": "Teléfono",
+            "phonePlaceholder": "+57",
+            "ispNameLabel": "Nombre de tu ISP",
+            "ispNamePlaceholder": "Ej: FibraNet Colombia",
+            "clientRangeLabel": "¿Cuántos clientes gestionas?",
+            "clientRangePlaceholder": "Seleccionar rango",
+            "clientRangeOptions": {
+                "1-50": "1-50 clientes",
+                "51-200": "51-200 clientes",
+                "201-500": "201-500 clientes",
+                "501-1000": "501-1000 clientes",
+                "1000+": "Más de 1000 clientes"
+            },
+            "messageLabel": "Mensaje (opcional)",
+            "messagePlaceholder": "Cuéntanos sobre tu ISP...",
+            "submit": "Enviar solicitud"
+        },
+        "advisor": {
+            "title": "Habla con un asesor de PayNetLink",
+            "description": "Agenda una llamada o videollamada con un experto que te guiará por la plataforma y resolverá todas tus dudas.",
+            "formTitle": "Agendar asesoría",
+            "schedule": "Lun-Vie, 8:00 AM - 6:00 PM COT"
+        },
+        "sales": {
+            "title": "Hablemos de tu plan Enterprise",
+            "description": "Nuestro equipo de ventas te ayudará a encontrar la solución perfecta para tu ISP. Planes personalizados, integraciones a medida y soporte dedicado.",
+            "formTitle": "Solicitar información",
+            "schedule": "Lun-Vie, 8:00 AM - 6:00 PM COT"
+        }
+    }
+}

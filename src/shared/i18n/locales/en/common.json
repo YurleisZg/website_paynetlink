@@ -1,0 +1,26 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "create": "Create",
+        "search": "Search",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "confirm": "Confirm",
+        "close": "Close",
+        "yes": "Yes",
+        "no": "No"
+    },
+    "errors": {
+        "NETWORK_ERROR": "Connection error. Please try again.",
+        "UNEXPECTED_ERROR": "An unexpected error occurred.",
+        "UNAUTHORIZED": "Unauthorized. Please log in again.",
+        "FORBIDDEN": "You don't have permission for this action.",
+        "NOT_FOUND": "Resource not found.",
+        "VALIDATION_ERROR": "Validation error. Please check the fields."
+    }
+}
