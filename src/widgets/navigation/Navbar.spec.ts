@@ -377,7 +377,7 @@ describe("Navbar", () => {
             await fireEvent.click(searchButton);
 
             await waitFor(() => {
-                expect(screen.getByText("Start typing to search...")).toBeDefined();
+                expect(screen.getByText("Empieza a escribir para buscar...")).toBeDefined();
             });
         });
 
@@ -393,7 +393,7 @@ describe("Navbar", () => {
                 const searchInput = screen.getByLabelText("Search input") as HTMLInputElement;
                 await fireEvent.update(searchInput, "test query");
 
-                expect(screen.getByText('Searching for: "test query"')).toBeDefined();
+                expect(screen.getByText('Buscando: "test query"')).toBeDefined();
             });
         });
 
