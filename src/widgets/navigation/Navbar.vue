@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { Button, Logo } from "@/shared/ui";
+import { Button, LocaleSwitcher, Logo } from "@/shared/ui";
 import { Menu, Search, X } from "lucide-vue-next";
 import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "AppNavbar" });
+
+const { t } = useI18n();
 
 export interface NavLink {
     label: string;
@@ -126,6 +129,8 @@ onUnmounted(() => {
 
             <!-- Desktop Actions -->
             <div class="hidden items-center gap-3 md:flex">
+                <LocaleSwitcher />
+                <div class="mx-0.5 h-5 w-px bg-divider" aria-hidden="true" />
                 <button
                     aria-label="Open search"
                     :aria-expanded="searchOpen"
@@ -134,12 +139,12 @@ onUnmounted(() => {
                 >
                     <Search :size="20" />
                 </button>
-                <Button variant="ghost" to="/login" @click="handleNavigation"
-                    >Iniciar sesión</Button
-                >
-                <Button variant="primary" to="/register" @click="handleNavigation"
-                    >Prueba gratis</Button
-                >
+                <Button variant="ghost" to="/login" @click="handleNavigation">{{
+                    t("nav.login")
+                }}</Button>
+                <Button variant="primary" to="/register" @click="handleNavigation">{{
+                    t("nav.freeTrial")
+                }}</Button>
             </div>
 
             <!-- Mobile Actions -->
@@ -208,12 +213,19 @@ onUnmounted(() => {
 
                 <!-- Mobile Action Buttons -->
                 <div class="flex flex-col gap-3 p-6">
-                    <Button variant="ghost" full-width to="/login" @click="handleNavigation"
-                        >Iniciar sesión</Button
-                    >
-                    <Button variant="primary" full-width to="/register" @click="handleNavigation"
-                        >Prueba gratis</Button
-                    >
+                    <Button variant="ghost" full-width to="/login" @click="handleNavigation">{{
+                        t("nav.login")
+                    }}</Button>
+                    <Button variant="primary" full-width to="/register" @click="handleNavigation">{{
+                        t("nav.freeTrial")
+                    }}</Button>
+                </div>
+
+                <!-- Mobile Locale Switcher -->
+                <div
+                    class="mt-auto flex items-center justify-center gap-2 border-t border-divider px-6 py-4"
+                >
+                    <LocaleSwitcher />
                 </div>
             </div>
         </Transition>
@@ -256,7 +268,7 @@ onUnmounted(() => {
                                         ref="searchInput"
                                         v-model="searchQuery"
                                         type="search"
-                                        placeholder="Search..."
+                                        :placeholder="t('nav.search.placeholder')"
                                         aria-label="Search input"
                                         class="flex-1 bg-transparent font-body text-base text-foreground placeholder-secondary focus:outline-none"
                                     />
@@ -275,11 +287,11 @@ onUnmounted(() => {
                                         v-if="!searchQuery"
                                         class="text-center text-sm text-secondary"
                                     >
-                                        Start typing to search...
+                                        {{ t("nav.search.startTyping") }}
                                     </p>
                                     <div v-else class="space-y-2">
                                         <p class="text-sm text-secondary">
-                                            Searching for: "{{ searchQuery }}"
+                                            {{ t("nav.search.searchingFor") }} "{{ searchQuery }}"
                                         </p>
                                         <!-- TODO: Add search results here -->
                                     </div>
