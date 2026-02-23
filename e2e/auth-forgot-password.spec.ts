@@ -212,19 +212,21 @@ test.describe("Forgot Password Page", () => {
             await expect(submitButton).toHaveAttribute("type", "submit");
         });
 
-        test("should support keyboard navigation", async ({ page }) => {
+        test("should support keyboard navigation", async ({ page, browserName }) => {
             const emailInput = page.getByLabel("Correo electrónico");
-            const submitButton = page.getByRole("button", {
-                name: "Enviar enlace de recuperación",
-            });
 
             // Click on email input to start navigation
             await emailInput.click();
             await expect(emailInput).toBeFocused();
 
-            // Tab to submit button
-            await page.keyboard.press("Tab");
-            await expect(submitButton).toBeFocused();
+            // Tab to submit button (WebKit/Safari does not Tab-focus buttons by default)
+            if (browserName !== "webkit") {
+                const submitButton = page.getByRole("button", {
+                    name: "Enviar enlace de recuperación",
+                });
+                await page.keyboard.press("Tab");
+                await expect(submitButton).toBeFocused();
+            }
         });
 
         test("should allow form submission via Enter key", async ({ page }) => {

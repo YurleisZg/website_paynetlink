@@ -12,7 +12,7 @@ dist
 dist-ssr
 storybook-static
 *.local
-
+.mcp.json
 # Playwright
 test-results/
 playwright-report/
