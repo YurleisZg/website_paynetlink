@@ -32,12 +32,14 @@ function handleRegister() {
         <RegisterLeftPanel />
 
         <!-- Right Panel -->
-        <div class="flex w-full items-center overflow-y-auto px-6 py-12 md:w-1/2 md:px-20 md:py-16">
-            <div class="mx-auto flex max-w-[400px] flex-col">
+        <div
+            class="flex w-full flex-col items-center justify-center overflow-y-auto bg-white px-6 py-12 md:w-1/2 md:px-12 lg:px-16 xl:px-24 2xl:px-32"
+        >
+            <div class="flex w-full max-w-[520px] flex-col gap-8">
                 <!-- Logo (visible only on mobile/tablet) -->
                 <router-link
                     to="/"
-                    class="mb-8 flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
+                    class="flex justify-center transition-all duration-200 hover:opacity-70 md:hidden"
                     :aria-label="t('auth.backToHome')"
                 >
                     <Logo size="md" variant="light" />
@@ -45,7 +47,7 @@ function handleRegister() {
 
                 <!-- Title -->
                 <h1
-                    class="mb-8 font-heading text-[28px] font-bold leading-tight text-primary-900 md:text-[36px]"
+                    class="font-heading text-[28px] font-bold leading-tight text-primary-900 md:text-[36px]"
                 >
                     {{ t("auth.register.title") }}
                 </h1>
