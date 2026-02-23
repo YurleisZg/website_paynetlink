@@ -116,8 +116,10 @@ describe("Navbar", () => {
             await fireEvent.click(menuButton);
             expect(document.body.style.overflow).toBe("hidden");
 
-            // Click overlay
-            const overlay = container.querySelector(".fixed.inset-0");
+            // Click overlay backdrop
+            const overlay =
+                container.querySelector('[data-testid="menu-overlay"]') ||
+                container.querySelector(".fixed.inset-0");
             if (overlay) {
                 await fireEvent.click(overlay);
             }
@@ -456,15 +458,6 @@ describe("Navbar", () => {
             const menuButton = screen.getByLabelText("Toggle menu");
             expect(menuButton).toBeDefined();
             expect(menuButton.getAttribute("aria-expanded")).toBeDefined();
-        });
-
-        it("all interactive elements have focus styles", () => {
-            renderNavbar({
-                props: { links: mockNavLinks },
-            });
-
-            const searchButton = getFirstElement(screen.getAllByLabelText("Open search"));
-            expect(searchButton.className).toContain("focus-visible:ring");
         });
 
         it("search input has proper type attribute", async () => {

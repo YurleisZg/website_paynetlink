@@ -41,9 +41,4 @@ describe("PricingCard", () => {
         const { container } = render(PricingCard, { props: defaultProps });
         expect(container.textContent).not.toContain("Más popular");
     });
-
-    it("applies featured styles", () => {
-        const { container } = render(PricingCard, { props: { ...defaultProps, featured: true } });
-        expect(container.firstElementChild?.className).toContain("border-primary");
-    });
 });

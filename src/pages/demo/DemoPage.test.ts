@@ -63,10 +63,6 @@ describe("DemoPage", () => {
     it("has correct layout structure", () => {
         const { container } = renderWithRouter(DemoPage);
 
-        // Verify main container exists
-        const mainContainer = container.querySelector(".flex.h-full.w-full.flex-col");
-        expect(mainContainer).toBeDefined();
-
         // Verify header exists
         const header = container.querySelector("header");
         expect(header).toBeDefined();

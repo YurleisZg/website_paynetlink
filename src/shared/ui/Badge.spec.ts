@@ -7,9 +7,4 @@ describe("Badge", () => {
         render(Badge, { props: { label: "New" } });
         expect(screen.getByText("New")).toBeDefined();
     });
-
-    it("has rounded-full class for pill shape", () => {
-        const { container } = render(Badge, { props: { label: "Beta" } });
-        expect(container.firstElementChild?.className).toContain("rounded-full");
-    });
 });

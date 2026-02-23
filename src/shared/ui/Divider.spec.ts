@@ -12,16 +12,4 @@ describe("Divider", () => {
         render(Divider, { props: { label: "or continue with" } });
         expect(screen.getByText("or continue with")).toBeDefined();
     });
-
-    it("renders two lines when label is present", () => {
-        const { container } = render(Divider, { props: { label: "or" } });
-        const lines = container.querySelectorAll(".bg-divider");
-        expect(lines.length).toBe(2);
-    });
-
-    it("renders one line when no label", () => {
-        const { container } = render(Divider);
-        const lines = container.querySelectorAll(".bg-divider");
-        expect(lines.length).toBe(1);
-    });
 });

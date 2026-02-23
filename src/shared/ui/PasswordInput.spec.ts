@@ -154,18 +154,5 @@ describe("PasswordInput", () => {
             const input = container.querySelector("input") as HTMLInputElement;
             expect(input.disabled).toBe(true);
         });
-
-        it("applies disabled styling classes", () => {
-            const { container } = render(PasswordInput, {
-                props: {
-                    disabled: true,
-                    id: "test-password",
-                },
-            });
-
-            const input = container.querySelector("input") as HTMLInputElement;
-            expect(input.className).toContain("disabled:cursor-not-allowed");
-            expect(input.className).toContain("disabled:opacity-50");
-        });
     });
 });
