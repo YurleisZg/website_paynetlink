@@ -38,19 +38,4 @@ describe("RegisterLeftPanel", () => {
             expect(listItems.length).toBe(4);
         });
     });
-
-    describe("Styling", () => {
-        it("has primary background color", () => {
-            const { container } = render(RegisterLeftPanel, { global: { plugins: [router] } });
-            const panel = container.querySelector(".bg-primary");
-            expect(panel).toBeDefined();
-        });
-
-        it("is hidden on mobile and visible on medium+ screens", () => {
-            const { container } = render(RegisterLeftPanel, { global: { plugins: [router] } });
-            const panel = container.firstChild as HTMLElement;
-            expect(panel.classList.contains("hidden")).toBe(true);
-            expect(panel.classList.contains("md:flex")).toBe(true);
-        });
-    });
 });

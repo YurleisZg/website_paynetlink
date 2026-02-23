@@ -8,6 +8,7 @@ export { default as BaseTextarea } from "./BaseTextarea.vue";
 export { default as Button } from "./Button.vue";
 export { default as Chip } from "./Chip.vue";
 export { default as ContactInfoItem } from "./ContactInfoItem.vue";
+export { default as Container } from "./Container.vue";
 export { default as Divider } from "./Divider.vue";
 export { default as FeatureCheckItem } from "./FeatureCheckItem.vue";
 export { default as LocaleSwitcher } from "./LocaleSwitcher.vue";

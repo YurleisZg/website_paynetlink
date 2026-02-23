@@ -10,7 +10,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
         test.beforeEach(async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
             await page.goto("/");
-            await page.waitForLoadState("networkidle");
+            await page.waitForLoadState("domcontentloaded");
         });
 
         test("should display search button on desktop", async ({ page }) => {
@@ -229,11 +229,11 @@ test.describe("Navbar Search - Interactive Functionality", () => {
         test.beforeEach(async ({ page }) => {
             await page.setViewportSize({ width: 768, height: 1024 });
             await page.goto("/");
-            await page.waitForLoadState("networkidle");
+            await page.waitForLoadState("domcontentloaded");
         });
 
         test("should display search button on tablet", async ({ page }) => {
-            const searchButton = page.getByRole("button", { name: /open search/i });
+            const searchButton = page.getByRole("button", { name: /open search/i }).first();
             await expect(searchButton).toBeVisible();
         });
 
@@ -280,7 +280,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
         test.beforeEach(async ({ page }) => {
             await page.setViewportSize({ width: 375, height: 667 });
             await page.goto("/");
-            await page.waitForLoadState("networkidle");
+            await page.waitForLoadState("domcontentloaded");
         });
 
         test("should display search button on mobile", async ({ page }) => {
@@ -361,7 +361,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
         test.beforeEach(async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
             await page.goto("/");
-            await page.waitForLoadState("networkidle");
+            await page.waitForLoadState("domcontentloaded");
         });
 
         test("search button should have proper aria-label", async ({ page }) => {
@@ -462,7 +462,7 @@ test.describe("Navbar Search - Interactive Functionality", () => {
         test.beforeEach(async ({ page }) => {
             await page.setViewportSize({ width: 1440, height: 900 });
             await page.goto("/");
-            await page.waitForLoadState("networkidle");
+            await page.waitForLoadState("domcontentloaded");
         });
 
         test("should handle multiple rapid clicks gracefully", async ({ page }) => {
@@ -535,7 +535,10 @@ test.describe("Navbar Search - Interactive Functionality", () => {
             await expect(feedbackText).toBeVisible();
         });
 
-        test("should maintain focus trap when search is open", async ({ page }) => {
+        test("should maintain focus trap when search is open", async ({ page, browserName }) => {
+            // WebKit/Safari does not Tab-focus buttons by default
+            test.skip(browserName === "webkit", "WebKit does not Tab-focus buttons by default");
+
             const searchButton = page.getByRole("button", { name: /open search/i }).first();
             await searchButton.click();
 

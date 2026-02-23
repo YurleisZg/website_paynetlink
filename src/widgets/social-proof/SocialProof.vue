@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Metric } from "@/shared/ui";
+import { Container, Metric } from "@/shared/ui";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
@@ -42,28 +42,34 @@ const displayMetrics = computed(
 <template>
     <section
         data-testid="social-proof"
-        class="scroll-reveal flex flex-col items-center gap-8 bg-surface px-6 py-12 md:px-20 md:py-12"
+        class="scroll-reveal bg-surface px-6 py-12 md:px-20 md:py-12"
     >
-        <p class="font-body text-sm font-medium text-subtle">
-            {{ t("home.socialProof.trust") }}
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-12">
-            <span
-                v-for="logo in companyLogos"
-                :key="logo"
-                class="font-heading text-lg font-bold text-placeholder transition-colors hover:text-secondary"
-            >
-                {{ logo }}
-            </span>
-        </div>
-        <div class="flex flex-wrap items-center justify-center gap-16">
-            <Metric
-                v-for="metric in displayMetrics"
-                :key="metric.label"
-                :value="metric.value"
-                :label="metric.label"
-            />
-            <div v-for="i in 3" :key="i" class="hidden h-6 w-px bg-divider last:hidden md:block" />
-        </div>
+        <Container class="flex flex-col items-center gap-8">
+            <p class="font-body text-sm font-medium text-subtle">
+                {{ t("home.socialProof.trust") }}
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-12">
+                <span
+                    v-for="logo in companyLogos"
+                    :key="logo"
+                    class="font-heading text-lg font-bold text-placeholder transition-colors hover:text-secondary"
+                >
+                    {{ logo }}
+                </span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-16">
+                <Metric
+                    v-for="metric in displayMetrics"
+                    :key="metric.label"
+                    :value="metric.value"
+                    :label="metric.label"
+                />
+                <div
+                    v-for="i in 3"
+                    :key="i"
+                    class="hidden h-6 w-px bg-divider last:hidden md:block"
+                />
+            </div>
+        </Container>
     </section>
 </template>

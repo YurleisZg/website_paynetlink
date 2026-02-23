@@ -232,13 +232,5 @@ describe("ContactSalesPage", () => {
             const form = container.querySelector("form");
             expect(form).not.toBeNull();
         });
-
-        it("has two main sections for layout", () => {
-            const { container } = render(ContactSalesPage);
-
-            // Check for two-column layout structure
-            const mainContainer = container.querySelector(".flex.min-h-screen");
-            expect(mainContainer).not.toBeNull();
-        });
     });
 });

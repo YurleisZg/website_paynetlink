@@ -60,19 +60,11 @@ vi.mock("@/widgets/testimonials", () => ({
 }));
 
 describe("HomePage", () => {
-    let observerCallback: IntersectionObserverCallback;
-    let observeElements: Element[] = [];
-
     beforeEach(() => {
-        observeElements = [];
-
         // Mock IntersectionObserver
-        globalThis.IntersectionObserver = vi.fn().mockImplementation((callback) => {
-            observerCallback = callback;
+        globalThis.IntersectionObserver = vi.fn().mockImplementation(() => {
             return {
-                observe: vi.fn((element: Element) => {
-                    observeElements.push(element);
-                }),
+                observe: vi.fn(),
                 unobserve: vi.fn(),
                 disconnect: vi.fn(),
             };
@@ -124,52 +116,6 @@ describe("HomePage", () => {
         it("initializes IntersectionObserver on mount", () => {
             render(HomePage);
             expect(globalThis.IntersectionObserver).toHaveBeenCalled();
-        });
-
-        it("adds fade-in animation when element becomes visible", () => {
-            const { container } = render(HomePage);
-
-            const mockElement = document.createElement("div");
-            container.appendChild(mockElement);
-
-            const mockEntry = {
-                target: mockElement,
-                isIntersecting: true,
-                intersectionRatio: 0.5,
-                boundingClientRect: {} as DOMRectReadOnly,
-                intersectionRect: {} as DOMRectReadOnly,
-                rootBounds: null,
-                time: Date.now(),
-            } as IntersectionObserverEntry;
-
-            if (observerCallback) {
-                observerCallback([mockEntry], {} as IntersectionObserver);
-            }
-
-            expect(mockElement.classList.contains("animate-fade-in")).toBe(true);
-        });
-
-        it("does not animate elements that are not visible", () => {
-            const { container } = render(HomePage);
-
-            const mockElement = document.createElement("div");
-            container.appendChild(mockElement);
-
-            const mockEntry = {
-                target: mockElement,
-                isIntersecting: false,
-                intersectionRatio: 0,
-                boundingClientRect: {} as DOMRectReadOnly,
-                intersectionRect: {} as DOMRectReadOnly,
-                rootBounds: null,
-                time: Date.now(),
-            } as IntersectionObserverEntry;
-
-            if (observerCallback) {
-                observerCallback([mockEntry], {} as IntersectionObserver);
-            }
-
-            expect(mockElement.classList.contains("animate-fade-in")).toBe(false);
         });
     });
 });

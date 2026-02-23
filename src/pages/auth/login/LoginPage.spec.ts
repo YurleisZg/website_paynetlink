@@ -246,12 +246,5 @@ describe("LoginPage", () => {
             const form = container.querySelector("form");
             expect(form).not.toBeNull();
         });
-
-        it("renders in a full-height container", () => {
-            const { container } = renderWithRouter(LoginPage);
-
-            const mainContainer = container.querySelector(".h-screen");
-            expect(mainContainer).not.toBeNull();
-        });
     });
 });

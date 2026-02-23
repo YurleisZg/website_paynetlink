@@ -53,10 +53,10 @@ const handleMicrosoftLogin = () => {
 
         <!-- Right Panel - White Background with Login Form -->
         <div
-            class="flex h-full w-full flex-col items-center justify-center gap-8 overflow-y-auto bg-white px-6 py-12 md:w-1/2 md:px-20"
+            class="flex h-full w-full flex-col items-center justify-center gap-8 overflow-y-auto bg-white px-6 py-12 md:w-1/2 md:px-12 lg:px-16 xl:px-24 2xl:px-32"
         >
             <!-- Form Container -->
-            <div class="flex w-full max-w-[400px] flex-col gap-8">
+            <div class="flex w-full max-w-[520px] flex-col gap-8">
                 <!-- Logo (visible only on mobile/tablet) -->
                 <router-link
                     to="/"
@@ -66,17 +66,19 @@ const handleMicrosoftLogin = () => {
                     <Logo size="md" variant="light" />
                 </router-link>
                 <!-- Header -->
-                <div class="flex flex-col gap-2 text-center">
-                    <h1 class="font-heading text-[28px] font-bold text-foreground md:text-[36px]">
+                <div class="flex flex-col gap-3 text-center">
+                    <h1
+                        class="font-heading text-[28px] font-bold text-foreground md:text-[36px] lg:text-[40px]"
+                    >
                         {{ t("auth.login.title") }}
                     </h1>
-                    <p class="font-body text-sm text-muted md:text-[15px]">
+                    <p class="font-body text-sm text-muted md:text-[15px] lg:text-base">
                         {{ t("auth.login.subtitle") }}
                     </p>
                 </div>
 
                 <!-- Form -->
-                <form class="flex flex-col gap-5" @submit.prevent="handleSubmit">
+                <form class="flex flex-col gap-5 lg:gap-6" @submit.prevent="handleSubmit">
                     <!-- Email Input -->
                     <BaseInput
                         id="email"
@@ -121,7 +123,7 @@ const handleMicrosoftLogin = () => {
                 <Divider :label="t('auth.login.divider')" />
 
                 <!-- Social Login Buttons -->
-                <div class="flex w-full flex-col gap-3">
+                <div class="flex w-full flex-col gap-3 lg:gap-4">
                     <SocialLoginButton label="Google" :icon="Globe" @click="handleGoogleLogin" />
                     <SocialLoginButton
                         label="Microsoft"
@@ -132,12 +134,12 @@ const handleMicrosoftLogin = () => {
 
                 <!-- Sign Up Link -->
                 <div class="flex items-center justify-center gap-1">
-                    <span class="font-body text-sm text-muted">
+                    <span class="font-body text-sm text-muted lg:text-[15px]">
                         {{ t("auth.login.noAccount") }}
                     </span>
                     <router-link
                         to="/register"
-                        class="font-body text-sm font-semibold text-primary transition-colors hover:underline"
+                        class="font-body text-sm font-semibold text-primary transition-colors hover:underline lg:text-[15px]"
                     >
                         {{ t("auth.login.signUpFree") }}
                     </router-link>
