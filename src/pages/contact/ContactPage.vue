@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Navbar } from "@/widgets/navigation";
+import { Footer } from "@/widgets/footer";
 import { BaseInput, BaseTextarea, Button } from "@/shared/ui";
 import { useNavLinks } from "@/shared/composables";
 import { Mail, MapPin, Phone } from "lucide-vue-next";
@@ -142,5 +143,7 @@ const handleSubmit = () => {
                 </div>
             </div>
         </section>
+
+        <Footer />
     </div>
 </template>
