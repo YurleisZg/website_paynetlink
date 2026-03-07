@@ -1,0 +1,29 @@
+{
+    "customerManagement": {
+        "page": {
+            "badge": "Customer Management",
+            "title": "Total control of your clients and plans",
+            "subtitle": "Register, query, and manage every client in your ISP from a single panel. Complete history, service statuses, and advanced filters.",
+            "cta": "Try client management",
+            "screenshotAlt": "Customer management panel screenshot",
+            "features": {
+                "quickRegistration": {
+                    "title": "Quick registration",
+                    "description": "Register new clients with all their information in seconds. Assign plans, zones, and routers from the same form."
+                },
+                "advancedFilters": {
+                    "title": "Advanced filters",
+                    "description": "Filter clients by plan, status, zone, router, or due date. Find any client in one click."
+                },
+                "completeHistory": {
+                    "title": "Complete history",
+                    "description": "Access the full history of payments, plan changes, suspensions, and reconnections for each client."
+                },
+                "serviceStatus": {
+                    "title": "Service statuses",
+                    "description": "Manage statuses: active, suspended, cut, or retired. Changes sync automatically with MikroTik."
+                }
+            }
+        }
+    }
+}

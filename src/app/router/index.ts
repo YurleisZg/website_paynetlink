@@ -69,6 +69,12 @@ const router = createRouter({
             component: () => import("@/pages/success-stories/SuccessStoriesPage.vue"),
             meta: { layout: "default", title: "Success Stories" },
         },
+        {
+            path: "/customer-management",
+            name: "customer-management",
+            component: () => import("@/pages/customer-management/CustomerManagementPage.vue"),
+            meta: { layout: "default", title: "Customer Management" },
+        },
     ],
 });
 

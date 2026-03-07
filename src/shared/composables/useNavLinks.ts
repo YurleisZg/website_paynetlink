@@ -31,7 +31,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.products.clients.label"),
                     description: t("nav.dropdown.products.clients.description"),
-                    href: "/#clientes",
+                    href: "/customer-management",
                     icon: Users,
                 },
                 {
