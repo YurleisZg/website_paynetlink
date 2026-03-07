@@ -160,7 +160,9 @@ onUnmounted(() => {
         >
             <!-- Logo and Desktop Navigation -->
             <div class="flex items-center gap-8 lg:gap-10">
-                <Logo size="sm" role="img" aria-label="PayNetLink" />
+                <RouterLink to="/" aria-label="PayNetLink — go to home" @click="handleNavigation">
+                    <Logo size="sm" />
+                </RouterLink>
 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden items-center gap-1 lg:flex">
