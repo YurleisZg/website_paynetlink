@@ -111,6 +111,12 @@ const router = createRouter({
             component: () => import("@/pages/plans/PlansPage.vue"),
             meta: { layout: "default", title: "Plans and Prices" },
         },
+        {
+            path: "/customer-support",
+            name: "customer-support",
+            component: () => import("@/pages/customer-support/CustomerSupportPage.vue"),
+            meta: { layout: "default", title: "Customer Support" },
+        },
     ],
 });
 
