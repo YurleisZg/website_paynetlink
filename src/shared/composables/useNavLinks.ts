@@ -43,7 +43,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.products.network.label"),
                     description: t("nav.dropdown.products.network.description"),
-                    href: "/#red",
+                    href: "/network-automation",
                     icon: Router,
                 },
                 {

@@ -81,6 +81,12 @@ const router = createRouter({
             component: () => import("@/pages/payment-module/PaymentModulePage.vue"),
             meta: { layout: "default", title: "Payment Module" },
         },
+        {
+            path: "/network-automation",
+            name: "network-automation",
+            component: () => import("@/pages/network-automation/NetworkAutomationPage.vue"),
+            meta: { layout: "default", title: "Network Automation" },
+        },
     ],
 });
 

@@ -1,0 +1,29 @@
+{
+    "networkAutomation": {
+        "page": {
+            "badge": "Automatización MikroTik",
+            "title": "Tu red bajo control automático",
+            "subtitle": "Conecta tus routers MikroTik para activar, suspender o reconectar servicios automáticamente según el estado de pago del cliente.",
+            "cta": "Probar automatización de red",
+            "screenshotAlt": "Captura del panel de automatización de red",
+            "features": {
+                "directApi": {
+                    "title": "Conexión API directa",
+                    "description": "Vincula tus MikroTik vía API. PayNetLink se comunica directamente con tus routers sin intermediarios."
+                },
+                "autoActivation": {
+                    "title": "Activación automática",
+                    "description": "Cuando un cliente paga, su servicio se activa automáticamente. Sin intervención manual."
+                },
+                "suspensionOnDefault": {
+                    "title": "Suspensión por mora",
+                    "description": "Al vencer el plazo de pago, el servicio se suspende automáticamente. Reconexión inmediata al pagar."
+                },
+                "realTimeMonitoring": {
+                    "title": "Monitoreo en tiempo real",
+                    "description": "Visualiza el estado de cada router, clientes conectados y consumo de ancho de banda en tiempo real."
+                }
+            }
+        }
+    }
+}
