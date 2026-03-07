@@ -49,7 +49,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.products.notifications.label"),
                     description: t("nav.dropdown.products.notifications.description"),
-                    href: "/#notificaciones",
+                    href: "/notifications",
                     icon: Bell,
                 },
                 {

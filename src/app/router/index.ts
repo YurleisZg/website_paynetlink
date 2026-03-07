@@ -93,6 +93,12 @@ const router = createRouter({
             component: () => import("@/pages/electronic-invoices/ElectronicInvoicesPage.vue"),
             meta: { layout: "default", title: "Electronic Invoicing" },
         },
+        {
+            path: "/notifications",
+            name: "notifications",
+            component: () => import("@/pages/notifications/NotificationsPage.vue"),
+            meta: { layout: "default", title: "Notifications" },
+        },
     ],
 });
 

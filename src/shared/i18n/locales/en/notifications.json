@@ -1,0 +1,55 @@
+{
+    "notifications": {
+        "page": {
+            "badge": "Notifications",
+            "title": "Keep your clients informed",
+            "subtitle": "Send automatic notifications via SMS, email, WhatsApp and push. Payment alerts, service outages, promotions and more — all from one place.",
+            "cta": "Configure notifications",
+            "screenshotAlt": "Notifications dashboard screenshot",
+            "features": {
+                "multichannel": {
+                    "title": "Integrated multichannel",
+                    "description": "Send notifications via SMS, email, WhatsApp and push notifications. Ideal for managing all your client communications from a single panel."
+                },
+                "automaticAlerts": {
+                    "title": "Automatic alerts",
+                    "description": "Configure rules to send alerts for due dates, service outages, reconnection and payments received automatically."
+                },
+                "customTemplates": {
+                    "title": "Customizable templates",
+                    "description": "Create and customize message templates with dynamic variables such as name, amount and due date."
+                },
+                "deliveryReports": {
+                    "title": "Delivery reports",
+                    "description": "Monitor open rates, successful deliveries and failures per channel. Optimize your communication with real data."
+                }
+            },
+            "channels": {
+                "sectionTitle": "Available notification channels",
+                "sectionSubtitle": "Reach your clients through their preferred channel. Configure each one independently.",
+                "sms": {
+                    "title": "SMS",
+                    "description": "Direct text messages to the client's mobile phone. Ideal for payment alerts and service outages."
+                },
+                "email": {
+                    "title": "Email",
+                    "description": "Send invoices, receipts and communications with personalized HTML templates and your brand."
+                },
+                "whatsapp": {
+                    "title": "WhatsApp",
+                    "description": "Direct messages via WhatsApp Business API. The channel with the highest read rate among your clients."
+                },
+                "push": {
+                    "title": "Push notifications",
+                    "description": "Instant notifications in the browser or mobile app. Perfect for real-time alerts."
+                }
+            },
+            "ctaSection": {
+                "title": "Automate communication with your clients",
+                "subtitle": "Configure smart notifications and reduce support calls by up to 60%.",
+                "activateNotifications": "Activate notifications",
+                "talkToSales": "Talk to sales"
+            }
+        }
+    }
+}
