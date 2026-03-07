@@ -1,0 +1,42 @@
+{
+    "privacy": {
+        "page": {
+            "title": "Política de Privacidad",
+            "lastUpdated": "Última actualización: 1 de enero de 2025",
+            "sections": {
+                "informationCollected": {
+                    "title": "1. Información que Recopilamos",
+                    "content": "Recopilamos información que usted nos proporciona directamente, como nombre, dirección de correo electrónico, información de la empresa y datos de facturación. También recopilamos información de uso automáticamente, incluyendo dirección IP, tipo de navegador, páginas visitadas y tiempo de uso."
+                },
+                "useOfInformation": {
+                    "title": "2. Uso de la Información",
+                    "content": "Utilizamos la información recopilada para proporcionar y mejorar nuestros servicios, procesar transacciones, enviar comunicaciones relacionadas con el servicio, responder a consultas de soporte y cumplir con obligaciones legales. No vendemos ni compartimos su información personal con terceros para fines de marketing."
+                },
+                "dataSecurity": {
+                    "title": "3. Seguridad de los Datos",
+                    "content": "Implementamos medidas de seguridad técnicas y organizativas para proteger su información personal contra acceso no autorizado, alteración, divulgación o destrucción. Esto incluye cifrado de datos en tránsito y en reposo, controles de acceso estrictos y auditorías de seguridad regulares."
+                },
+                "userRights": {
+                    "title": "4. Derechos del Usuario",
+                    "content": "Usted tiene derecho a acceder, rectificar, eliminar y portar sus datos personales. También puede oponerse al procesamiento de sus datos y retirar su consentimiento en cualquier momento. Para ejercer estos derechos, contacte a nuestro equipo de privacidad en privacidad{'@'}paynetlink.com."
+                },
+                "cookies": {
+                    "title": "5. Cookies y Tecnologías de Seguimiento",
+                    "content": "Utilizamos cookies y tecnologías de seguimiento similares para mejorar su experiencia en nuestra plataforma. Puede controlar la configuración de cookies a través de las preferencias de su navegador. Deshabilitar las cookies puede afectar ciertas funciones del servicio."
+                },
+                "thirdParties": {
+                    "title": "6. Servicios de Terceros",
+                    "content": "Nuestro servicio puede integrarse con proveedores externos como procesadores de pago y herramientas de análisis. Estos proveedores tienen sus propias políticas de privacidad y recomendamos revisarlas. No somos responsables de las prácticas de privacidad de servicios de terceros."
+                },
+                "policyChanges": {
+                    "title": "7. Cambios en Esta Política",
+                    "content": "Podemos actualizar esta política de privacidad periódicamente. Le notificaremos de cambios significativos publicando un aviso en nuestro sitio web o enviándole un correo electrónico. El uso continuado del servicio después de que los cambios entren en vigor constituye su aceptación de la política actualizada."
+                },
+                "contact": {
+                    "title": "8. Contacto",
+                    "content": "Si tiene preguntas sobre esta política de privacidad o sobre cómo manejamos su información personal, contáctenos en privacidad{'@'}paynetlink.com o por correo postal en nuestra dirección registrada en Bogotá, Colombia."
+                }
+            }
+        }
+    }
+}
