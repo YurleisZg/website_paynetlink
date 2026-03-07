@@ -162,7 +162,7 @@ const handleSubmit = (): void => {
                             {{ t("support.page.hero.popular") }}
                         </span>
                         <a
-                            v-for="tag in t('support.page.hero.tags') as unknown as string[]"
+                            v-for="tag in tm('support.page.hero.tags') as string[]"
                             :key="tag"
                             href="#"
                             class="rounded-full border border-white px-4 py-1.5 font-body text-sm font-semibold text-white transition-colors hover:bg-white/10"
