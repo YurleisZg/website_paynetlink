@@ -1,6 +1,30 @@
 {
     "contact": {
         "backToHome": "Volver al inicio",
+        "page": {
+            "title": "Contacto",
+            "subtitle": "Estamos aquí para ayudarte. Elige el canal que prefieras.",
+            "email": {
+                "label": "Email",
+                "value": "soporte@paynetlink.com"
+            },
+            "phone": {
+                "label": "Teléfono",
+                "value": "+57 (1) 234 5678"
+            },
+            "office": {
+                "label": "Oficina",
+                "value": "Bogotá, Colombia"
+            },
+            "formTitle": "Envianos un mensaje",
+            "fullNameLabel": "Nombre completo",
+            "fullNamePlaceholder": "Tu nombre",
+            "emailLabel": "Email",
+            "emailPlaceholder": "tu@email.com",
+            "messageLabel": "Mensaje",
+            "messagePlaceholder": "¿En qué podemos ayudarte?",
+            "submit": "Enviar mensaje"
+        },
         "form": {
             "firstNameLabel": "Nombre",
             "lastNameLabel": "Apellido",
