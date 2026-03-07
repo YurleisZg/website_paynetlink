@@ -55,7 +55,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.products.invoicing.label"),
                     description: t("nav.dropdown.products.invoicing.description"),
-                    href: "/#facturacion",
+                    href: "/electronic-invoicing",
                     icon: FileText,
                 },
             ],
