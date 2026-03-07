@@ -37,7 +37,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.products.billing.label"),
                     description: t("nav.dropdown.products.billing.description"),
-                    href: "/#pagos",
+                    href: "/payment-module",
                     icon: CreditCard,
                 },
                 {

@@ -1,0 +1,29 @@
+{
+    "paymentModule": {
+        "page": {
+            "badge": "Pagos y Recaudo",
+            "title": "Cobra sin esfuerzo, reduce tu mora",
+            "subtitle": "Automatiza cobros recurrentes, registra pagos desde múltiples canales y ten visibilidad total de tu cartera. Reduce la mora hasta un 40%.",
+            "cta": "Probar módulo de pagos",
+            "screenshotAlt": "Captura del panel del módulo de pagos",
+            "features": {
+                "recurringCollections": {
+                    "title": "Cobros recurrentes",
+                    "description": "Configura cobros automáticos mensuales. Los clientes reciben notificación y su pago se registra sin intervención."
+                },
+                "multipleChannels": {
+                    "title": "Múltiples canales",
+                    "description": "Recibe pagos por transferencia, Nequi, Mercado Pago, PSE o efectivo. Todo registrado en un solo lugar."
+                },
+                "delinquencyControl": {
+                    "title": "Control de mora",
+                    "description": "Identifica clientes morosos, programa recordatorios automáticos y genera reportes de cartera vencida."
+                },
+                "reconciliation": {
+                    "title": "Reconciliación",
+                    "description": "Concilia pagos automáticamente con las facturas generadas. Sin doble registro ni errores manuales."
+                }
+            }
+        }
+    }
+}

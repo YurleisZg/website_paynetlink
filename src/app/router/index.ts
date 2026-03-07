@@ -75,6 +75,12 @@ const router = createRouter({
             component: () => import("@/pages/customer-management/CustomerManagementPage.vue"),
             meta: { layout: "default", title: "Customer Management" },
         },
+        {
+            path: "/payment-module",
+            name: "payment-module",
+            component: () => import("@/pages/payment-module/PaymentModulePage.vue"),
+            meta: { layout: "default", title: "Payment Module" },
+        },
     ],
 });
 
