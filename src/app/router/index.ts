@@ -87,6 +87,12 @@ const router = createRouter({
             component: () => import("@/pages/network-automation/NetworkAutomationPage.vue"),
             meta: { layout: "default", title: "Network Automation" },
         },
+        {
+            path: "/electronic-invoices",
+            name: "electronic-invoices",
+            component: () => import("@/pages/electronic-invoices/ElectronicInvoicesPage.vue"),
+            meta: { layout: "default", title: "Electronic Invoices" },
+        },
     ],
 });
 

@@ -1,0 +1,35 @@
+{
+    "electronicInvoices": {
+        "page": {
+            "badge": "Facturación Electrónica",
+            "title": "Factura al instante, cumple con la DIAN",
+            "subtitle": "Emite facturas electrónicas, notas crédito y débito validadas por la DIAN directamente desde PayNetLink. Sin complicaciones, 100% integrado con tu operación ISP.",
+            "cta": "Activar facturación electrónica",
+            "screenshotAlt": "Captura del panel de facturación electrónica",
+            "features": {
+                "automaticIssuance": {
+                    "title": "Emisión automática",
+                    "description": "Genera facturas electrónicas automáticamente al cierre de cada período de facturación de tus clientes."
+                },
+                "dianValidation": {
+                    "title": "Validación DIAN",
+                    "description": "Todas las facturas se validan en tiempo real con la DIAN. Cumple con la normativa colombiana sin esfuerzo."
+                },
+                "creditDebitNotes": {
+                    "title": "Notas crédito y débito",
+                    "description": "Emite notas crédito y débito asociadas a facturas existentes. Ajustes y correcciones en segundos."
+                },
+                "downloadAndEmail": {
+                    "title": "Descarga y envío por correo",
+                    "description": "Descarga facturas en PDF y XML, o envíalas automáticamente por correo a tus clientes al momento de emitirlas."
+                }
+            },
+            "ctaSection": {
+                "title": "Empieza a facturar electrónicamente hoy",
+                "subtitle": "Cumple con la DIAN y automatiza tu facturación desde PayNetLink.",
+                "activateBilling": "Activar facturación",
+                "talkToSales": "Hablar con ventas"
+            }
+        }
+    }
+}
