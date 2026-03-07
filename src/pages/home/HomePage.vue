@@ -143,7 +143,7 @@ const navLinks = computed<NavLink[]>(() => [
             {
                 label: t("nav.dropdown.company.contact.label"),
                 description: t("nav.dropdown.company.contact.description"),
-                href: "#contacto",
+                href: "/contact",
                 icon: Mail,
             },
             {
