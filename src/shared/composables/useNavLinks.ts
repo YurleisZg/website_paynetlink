@@ -108,7 +108,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.resources.caseStudies.label"),
                     description: t("nav.dropdown.resources.caseStudies.description"),
-                    href: "/#casos",
+                    href: "/success-stories",
                     icon: Trophy,
                 },
             ],
