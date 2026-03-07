@@ -1,0 +1,29 @@
+{
+    "paymentModule": {
+        "page": {
+            "badge": "Payments and Collections",
+            "title": "Collect effortlessly, reduce your delinquency",
+            "subtitle": "Automate recurring collections, register payments from multiple channels, and have full visibility of your portfolio. Reduce delinquency by up to 40%.",
+            "cta": "Try payment module",
+            "screenshotAlt": "Payment module panel screenshot",
+            "features": {
+                "recurringCollections": {
+                    "title": "Recurring collections",
+                    "description": "Configure automatic monthly billing. Clients receive notifications and their payment is registered without manual intervention."
+                },
+                "multipleChannels": {
+                    "title": "Multiple channels",
+                    "description": "Accept payments via bank transfer, Nequi, Mercado Pago, PSE, or cash. Everything recorded in one place."
+                },
+                "delinquencyControl": {
+                    "title": "Delinquency control",
+                    "description": "Identify overdue clients, schedule automatic reminders, and generate past-due portfolio reports."
+                },
+                "reconciliation": {
+                    "title": "Reconciliation",
+                    "description": "Automatically reconcile payments with generated invoices. No duplicate records or manual errors."
+                }
+            }
+        }
+    }
+}
