@@ -105,6 +105,12 @@ const router = createRouter({
             component: () => import("@/pages/terms/TermsPage.vue"),
             meta: { layout: "default", title: "Terms and Conditions" },
         },
+        {
+            path: "/plans-and-prices",
+            name: "plans-and-prices",
+            component: () => import("@/pages/plans/PlansPage.vue"),
+            meta: { layout: "default", title: "Plans and Prices" },
+        },
     ],
 });
 

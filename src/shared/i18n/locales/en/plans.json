@@ -1,0 +1,92 @@
+{
+    "plans": {
+        "page": {
+            "badge": "Plans and Prices",
+            "title": "Choose the perfect plan for your ISP",
+            "subtitle": "Plans designed for internet providers of all sizes. No long-term contracts, cancel anytime.",
+            "billing": {
+                "monthly": "Monthly",
+                "annual": "Annual (-20%)"
+            },
+            "popular": "Most popular",
+            "plans": {
+                "starter": {
+                    "name": "Starter",
+                    "monthlyPrice": "$89,900",
+                    "annualPrice": "$71,920",
+                    "period": "/mo",
+                    "features": [
+                        "Up to 100 clients",
+                        "Client management",
+                        "Electronic invoicing",
+                        "Basic payments",
+                        "Email support"
+                    ],
+                    "buttonLabel": "Get started"
+                },
+                "professional": {
+                    "name": "Professional",
+                    "monthlyPrice": "$189,900",
+                    "annualPrice": "$151,920",
+                    "period": "/mo",
+                    "features": [
+                        "Up to 500 clients",
+                        "Everything in Starter",
+                        "MikroTik automation",
+                        "Multichannel notifications",
+                        "Advanced reports",
+                        "Priority support"
+                    ],
+                    "buttonLabel": "Get started"
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "monthlyPrice": "$349,900",
+                    "annualPrice": "$279,920",
+                    "period": "/mo",
+                    "features": [
+                        "Unlimited clients",
+                        "Everything in Professional",
+                        "Multi-branch",
+                        "Full API",
+                        "Dedicated onboarding",
+                        "99.9% SLA guaranteed",
+                        "24/7 Support"
+                    ],
+                    "buttonLabel": "Contact sales"
+                }
+            },
+            "faq": {
+                "title": "Frequently asked questions",
+                "items": {
+                    "changePlan": {
+                        "question": "Can I change my plan at any time?",
+                        "answer": "Yes, you can upgrade or downgrade your plan whenever you need. Changes take effect in your next billing cycle and billing is adjusted proportionally."
+                    },
+                    "freeTrial": {
+                        "question": "Is there a free trial period?",
+                        "answer": "All plans include a 14-day free trial with full access to all features. No credit card required."
+                    },
+                    "paymentMethods": {
+                        "question": "What payment methods do you accept?",
+                        "answer": "We accept credit and debit cards, PSE, bank transfers, and cash payments through authorized points."
+                    },
+                    "modules": {
+                        "question": "Do I need to hire all modules?",
+                        "answer": "No, each plan includes specific features. You can start with the basics and activate additional modules as you grow."
+                    },
+                    "annualDiscount": {
+                        "question": "Do you offer a discount for annual payment?",
+                        "answer": "Yes, by choosing annual billing you save 20% compared to the monthly price. The discount is applied automatically when you select the annual option."
+                    }
+                }
+            },
+            "ctaSection": {
+                "title": "Ready to take your ISP to the next level?",
+                "subtitle": "Start your 14-day free trial. No credit card required.",
+                "startTrial": "Start free trial",
+                "contactSales": "Contact sales"
+            }
+        }
+    }
+}
