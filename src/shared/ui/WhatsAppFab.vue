@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineOptions({ name: "WhatsAppFab" });
 
-const WHATSAPP_URL = "https://wa.me/573043408837";
+const WHATSAPP_URL = "https://wa.me/573016399323";
 </script>
 
 <template>

@@ -81,7 +81,7 @@ const { t } = useI18n();
                         {{ t("footer.links.title") }}
                     </h4>
                     <a
-                        href="https://wa.me/573043408837"
+                        href="https://wa.me/573016399323"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
