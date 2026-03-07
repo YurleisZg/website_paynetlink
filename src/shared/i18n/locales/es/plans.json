@@ -1,0 +1,92 @@
+{
+    "plans": {
+        "page": {
+            "badge": "Planes y Precios",
+            "title": "Elige el plan perfecto para tu ISP",
+            "subtitle": "Planes diseñados para proveedores de internet de todos los tamaños. Sin contratos a largo plazo, cancela cuando quieras.",
+            "billing": {
+                "monthly": "Mensual",
+                "annual": "Anual (-20%)"
+            },
+            "popular": "Más popular",
+            "plans": {
+                "starter": {
+                    "name": "Starter",
+                    "monthlyPrice": "$89.900",
+                    "annualPrice": "$71.920",
+                    "period": "/mes",
+                    "features": [
+                        "Hasta 100 clientes",
+                        "Gestión de clientes",
+                        "Facturación electrónica",
+                        "Pagos básicos",
+                        "Soporte por correo"
+                    ],
+                    "buttonLabel": "Empezar ahora"
+                },
+                "professional": {
+                    "name": "Profesional",
+                    "monthlyPrice": "$189.900",
+                    "annualPrice": "$151.920",
+                    "period": "/mes",
+                    "features": [
+                        "Hasta 500 clientes",
+                        "Todo del plan Starter",
+                        "Automatización MikroTik",
+                        "Notificaciones multicanal",
+                        "Reportes avanzados",
+                        "Soporte prioritario"
+                    ],
+                    "buttonLabel": "Empezar ahora"
+                },
+                "enterprise": {
+                    "name": "Enterprise",
+                    "monthlyPrice": "$349.900",
+                    "annualPrice": "$279.920",
+                    "period": "/mes",
+                    "features": [
+                        "Clientes ilimitados",
+                        "Todo del plan Profesional",
+                        "Multi-sucursal",
+                        "API completa",
+                        "Onboarding dedicado",
+                        "SLA garantizado 99.9%",
+                        "Soporte 24/7"
+                    ],
+                    "buttonLabel": "Contactar ventas"
+                }
+            },
+            "faq": {
+                "title": "Preguntas frecuentes",
+                "items": {
+                    "changePlan": {
+                        "question": "¿Puedo cambiar de plan en cualquier momento?",
+                        "answer": "Sí, puedes subir o bajar de plan cuando lo necesites. Los cambios se aplican en tu próximo ciclo de facturación y se ajusta el cobro proporcionalmente."
+                    },
+                    "freeTrial": {
+                        "question": "¿Hay periodo de prueba gratis?",
+                        "answer": "Todos los planes incluyen 14 días de prueba gratis con acceso completo a las funcionalidades. No se requiere tarjeta de crédito."
+                    },
+                    "paymentMethods": {
+                        "question": "¿Qué métodos de pago aceptan?",
+                        "answer": "Aceptamos tarjetas de crédito y débito, PSE, transferencias bancarias y pagos en efectivo a través de puntos autorizados."
+                    },
+                    "modules": {
+                        "question": "¿Necesito contratar todos los módulos?",
+                        "answer": "No, cada plan incluye funcionalidades específicas. Puedes empezar con lo básico y activar módulos adicionales a medida que creces."
+                    },
+                    "annualDiscount": {
+                        "question": "¿Ofrecen descuento por pago anual?",
+                        "answer": "Sí, al elegir la facturación anual ahorras un 20% respecto al precio mensual. El descuento se aplica automáticamente al seleccionar la opción anual."
+                    }
+                }
+            },
+            "ctaSection": {
+                "title": "¿Listo para llevar tu ISP al siguiente nivel?",
+                "subtitle": "Empieza tu prueba gratis de 14 días. Sin tarjeta de crédito.",
+                "startTrial": "Empezar prueba gratis",
+                "contactSales": "Contactar ventas"
+            }
+        }
+    }
+}

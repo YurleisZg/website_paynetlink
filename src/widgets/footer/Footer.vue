@@ -34,7 +34,7 @@ const { t } = useI18n();
                         {{ t("footer.site.title") }}
                     </h4>
                     <a
-                        href="/#precios"
+                        href="/plans-and-prices"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.site.plans") }}

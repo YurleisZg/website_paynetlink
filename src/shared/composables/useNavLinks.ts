@@ -83,7 +83,7 @@ export function useNavLinks() {
                 },
             ],
         },
-        { label: t("nav.links.pricing"), href: "/#precios" },
+        { label: t("nav.links.pricing"), href: "/plans-and-prices" },
         {
             label: t("nav.links.resources"),
             dropdown: [
