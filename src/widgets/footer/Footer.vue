@@ -116,7 +116,7 @@ const { t } = useI18n();
                         {{ t("footer.legal.title") }}
                     </h4>
                     <a
-                        href="/terms"
+                        href="/terms-and-conditions"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.legal.terms") }}
