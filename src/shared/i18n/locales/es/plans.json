@@ -12,8 +12,8 @@
             "plans": {
                 "starter": {
                     "name": "Starter",
-                    "monthlyPrice": "$89.900",
-                    "annualPrice": "$71.920",
+                    "monthlyPrice": "$60.900",
+                    "annualPrice": "$51.920",
                     "period": "/mes",
                     "features": [
                         "Hasta 100 clientes",
@@ -26,11 +26,11 @@
                 },
                 "professional": {
                     "name": "Profesional",
-                    "monthlyPrice": "$189.900",
-                    "annualPrice": "$151.920",
+                    "monthlyPrice": "$120.000",
+                    "annualPrice": "$100.920",
                     "period": "/mes",
                     "features": [
-                        "Hasta 500 clientes",
+                        "Hasta 1000 clientes",
                         "Todo del plan Starter",
                         "Automatización MikroTik",
                         "Notificaciones multicanal",
@@ -41,8 +41,8 @@
                 },
                 "enterprise": {
                     "name": "Enterprise",
-                    "monthlyPrice": "$349.900",
-                    "annualPrice": "$279.920",
+                    "monthlyPrice": "$350.900",
+                    "annualPrice": "$300.920",
                     "period": "/mes",
                     "features": [
                         "Clientes ilimitados",

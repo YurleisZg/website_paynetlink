@@ -68,7 +68,7 @@
                 "title": "Need direct help?",
                 "subtitle": "Our support team is ready to assist you. Average response under 2 hours during business hours.",
                 "hours": "Mon to Fri: 8:00 AM - 6:00 PM",
-                "email": "soporte@paynetlink.com",
+                "email": "soporte{'@'}paynetlink.com",
                 "chat": "Live chat available",
                 "whatsapp": "+57 304 3408837"
             },
@@ -79,7 +79,7 @@
                 "lastName": "Last name",
                 "lastNamePlaceholder": "Your last name",
                 "email": "Email",
-                "emailPlaceholder": "tu@correo.com",
+                "emailPlaceholder": "tu{'@'}correo.com",
                 "subject": "Subject",
                 "subjectPlaceholder": "Select a topic",
                 "subjectOptions": [

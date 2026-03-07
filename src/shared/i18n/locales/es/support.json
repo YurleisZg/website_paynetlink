@@ -68,7 +68,7 @@
                 "title": "¿Necesitas ayuda directa?",
                 "subtitle": "Nuestro equipo de soporte está listo para ayudarte. Respuesta promedio menor a 2 horas en horario laboral.",
                 "hours": "Lun a Vie: 8:00 AM - 6:00 PM",
-                "email": "soporte@paynetlink.com",
+                "email": "soporte{'@'}paynetlink.com",
                 "chat": "Chat en vivo disponible",
                 "whatsapp": "+57 304 3408837"
             },
@@ -79,7 +79,7 @@
                 "lastName": "Apellido",
                 "lastNamePlaceholder": "Tu apellido",
                 "email": "Correo electrónico",
-                "emailPlaceholder": "tu@correo.com",
+                "emailPlaceholder": "tu{'@'}correo.com",
                 "subject": "Asunto",
                 "subjectPlaceholder": "Selecciona un tema",
                 "subjectOptions": [
