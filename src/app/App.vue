@@ -1,6 +1,7 @@
 <script setup>
 import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
 import { DefaultLayout } from "./layouts";
+import { WhatsAppFab } from "@/shared/ui";
 import { config } from "@/shared/config";
 
 const isDev = config.isDev;
@@ -11,6 +12,7 @@ const isDev = config.isDev;
         <DefaultLayout>
             <router-view />
         </DefaultLayout>
+        <WhatsAppFab />
         <VueQueryDevtools v-if="isDev" />
     </div>
 </template>
