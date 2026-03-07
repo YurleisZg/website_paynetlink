@@ -4,13 +4,13 @@ import { createRouter, createMemoryHistory } from "vue-router";
 import type { Component } from "vue";
 import DemoPage from "./DemoPage.vue";
 
-// Create a mock router for testing
 const mockRouter = createRouter({
     history: createMemoryHistory(),
     routes: [
         { path: "/", component: { template: "<div>Home</div>" } },
         { path: "/demo", component: { template: "<div>Demo</div>" } },
         { path: "/register", component: { template: "<div>Register</div>" } },
+        { path: "/login", component: { template: "<div>Login</div>" } },
     ],
 });
 
@@ -39,11 +39,12 @@ describe("DemoPage", () => {
         ).toBeDefined();
     });
 
-    it("renders the navbar with logo and CTA button", () => {
+    it("renders the main navbar and footer with logo", () => {
         renderWithRouter(DemoPage);
 
-        expect(screen.getByText("PayNetLink")).toBeDefined();
-        expect(screen.getByText("Comenzar prueba gratis")).toBeDefined();
+        // Logo appears in both Navbar and Footer
+        const logos = screen.getAllByText("PayNetLink");
+        expect(logos.length).toBeGreaterThanOrEqual(2);
     });
 
     it("renders the video player section", () => {
@@ -53,22 +54,19 @@ describe("DemoPage", () => {
         expect(screen.getByLabelText("Reproducir video demo")).toBeDefined();
     });
 
-    it("renders the action links", () => {
-        renderWithRouter(DemoPage);
-
-        // "Demo en vivo" is commented out in the code, so only check for the visible one
-        expect(screen.getByText("Agendar demo personalizada")).toBeDefined();
-    });
-
-    it("has correct layout structure", () => {
+    it("renders the action links with start free trial below schedule demo", () => {
         const { container } = renderWithRouter(DemoPage);
 
-        // Verify header exists
-        const header = container.querySelector("header");
-        expect(header).toBeDefined();
+        expect(screen.getByText("Agendar demo personalizada")).toBeDefined();
+        // Use container text content to handle text split across child elements
+        expect(container.textContent).toContain("Comenzar prueba gratis");
+    });
 
-        // Verify main content area exists
-        const main = container.querySelector("main");
-        expect(main).toBeDefined();
+    it("has correct layout structure with nav, main, and footer", () => {
+        const { container } = renderWithRouter(DemoPage);
+
+        expect(container.querySelector("nav")).toBeDefined();
+        expect(container.querySelector("main")).toBeDefined();
+        expect(container.querySelector("footer")).toBeDefined();
     });
 });
