@@ -46,7 +46,7 @@ const { t } = useI18n();
                         {{ t("footer.site.coverage") }}
                     </a>
                     <a
-                        href="/#ayuda"
+                        href="/customer-support"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.site.support") }}

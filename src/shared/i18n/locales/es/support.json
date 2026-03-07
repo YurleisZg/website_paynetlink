@@ -1,0 +1,104 @@
+{
+    "support": {
+        "page": {
+            "hero": {
+                "title": "¿Cómo podemos ayudarte?",
+                "subtitle": "Busca en nuestra base de conocimiento o contacta a nuestro equipo de soporte.",
+                "searchPlaceholder": "Buscar artículos, guías, preguntas frecuentes...",
+                "popular": "Popular:",
+                "tags": ["Configurar MikroTik", "Facturación", "Pagos"]
+            },
+            "resources": {
+                "title": "Explora nuestros recursos de ayuda",
+                "subtitle": "Encuentra guías, tutoriales y respuestas organizados por categoría.",
+                "categories": {
+                    "gettingStarted": {
+                        "title": "Guías de inicio",
+                        "description": "Tutoriales paso a paso para configurar tu cuenta, conectar routers y empezar a operar.",
+                        "link": "Ver guías"
+                    },
+                    "billingPayments": {
+                        "title": "Facturación y pagos",
+                        "description": "Resuelve dudas sobre facturas, métodos de pago, cobros recurrentes y estados de cuenta.",
+                        "link": "Ver artículos"
+                    },
+                    "networkMikrotik": {
+                        "title": "Red y MikroTik",
+                        "description": "Configuración de routers, automatización de servicios, cortes y reconexiones.",
+                        "link": "Ver documentación"
+                    },
+                    "clientManagement": {
+                        "title": "Gestión de clientes",
+                        "description": "Aprende a registrar clientes, gestionar planes, ver historiales y filtrar por estado.",
+                        "link": "Ver artículos"
+                    },
+                    "notifications": {
+                        "title": "Notificaciones",
+                        "description": "Configura alertas automáticas, plantillas de mensajes y canales de comunicación.",
+                        "link": "Ver artículos"
+                    },
+                    "contactSupport": {
+                        "title": "Contactar soporte",
+                        "description": "¿No encuentras lo que buscas? Abre un ticket o habla con un asesor en tiempo real.",
+                        "link": "Abrir ticket"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "¿Cómo funciona nuestro soporte?",
+                "steps": {
+                    "search": {
+                        "number": "1",
+                        "title": "Busca tu duda",
+                        "description": "Usa el buscador para encontrar artículos, guías y respuestas en nuestra base de conocimiento."
+                    },
+                    "explore": {
+                        "number": "2",
+                        "title": "Explora las categorías",
+                        "description": "Navega por las secciones organizadas por tema: pagos, red, clientes, facturación y más."
+                    },
+                    "contact": {
+                        "number": "3",
+                        "title": "Contacta al equipo",
+                        "description": "Si necesitas ayuda personalizada, abre un ticket o chatea en vivo con un asesor."
+                    }
+                }
+            },
+            "directHelp": {
+                "title": "¿Necesitas ayuda directa?",
+                "subtitle": "Nuestro equipo de soporte está listo para ayudarte. Respuesta promedio menor a 2 horas en horario laboral.",
+                "hours": "Lun a Vie: 8:00 AM - 6:00 PM",
+                "email": "soporte@paynetlink.com",
+                "chat": "Chat en vivo disponible",
+                "whatsapp": "+57 304 3408837"
+            },
+            "contactForm": {
+                "title": "Envíanos un mensaje",
+                "firstName": "Nombre",
+                "firstNamePlaceholder": "Tu nombre",
+                "lastName": "Apellido",
+                "lastNamePlaceholder": "Tu apellido",
+                "email": "Correo electrónico",
+                "emailPlaceholder": "tu@correo.com",
+                "subject": "Asunto",
+                "subjectPlaceholder": "Selecciona un tema",
+                "subjectOptions": [
+                    { "value": "billing", "label": "Facturación y pagos" },
+                    { "value": "technical", "label": "Soporte técnico" },
+                    { "value": "account", "label": "Gestión de cuenta" },
+                    { "value": "network", "label": "Red y MikroTik" },
+                    { "value": "other", "label": "Otro" }
+                ],
+                "message": "Mensaje",
+                "messagePlaceholder": "Describe tu consulta o problema...",
+                "submit": "Enviar mensaje"
+            },
+            "ctaSection": {
+                "title": "¿Aún tienes dudas?",
+                "subtitle": "Nuestro equipo está disponible para resolver cualquier consulta sobre tu operación ISP.",
+                "openTicket": "Abrir ticket de soporte",
+                "liveChat": "Chat en vivo"
+            }
+        }
+    }
+}

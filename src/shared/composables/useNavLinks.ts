@@ -96,7 +96,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.resources.helpCenter.label"),
                     description: t("nav.dropdown.resources.helpCenter.description"),
-                    href: "/#ayuda",
+                    href: "/customer-support",
                     icon: HelpCircle,
                 },
                 {
