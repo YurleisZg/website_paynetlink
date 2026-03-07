@@ -1,0 +1,35 @@
+{
+    "electronicInvoices": {
+        "page": {
+            "badge": "Electronic Invoicing",
+            "title": "Invoice instantly, comply with the DIAN",
+            "subtitle": "Issue electronic invoices, credit and debit notes validated by the DIAN directly from PayNetLink. No complications, 100% integrated with your ISP operation.",
+            "cta": "Activate electronic invoicing",
+            "screenshotAlt": "Electronic invoicing panel screenshot",
+            "features": {
+                "automaticIssuance": {
+                    "title": "Automatic issuance",
+                    "description": "Automatically generate electronic invoices at the end of each billing period for your clients."
+                },
+                "dianValidation": {
+                    "title": "DIAN validation",
+                    "description": "All invoices are validated in real time with the DIAN. Comply with Colombian regulations effortlessly."
+                },
+                "creditDebitNotes": {
+                    "title": "Credit and debit notes",
+                    "description": "Issue credit and debit notes associated with existing invoices. Adjustments and corrections in seconds."
+                },
+                "downloadAndEmail": {
+                    "title": "Download and email delivery",
+                    "description": "Download invoices in PDF and XML, or send them automatically by email to your clients when issued."
+                }
+            },
+            "ctaSection": {
+                "title": "Start invoicing electronically today",
+                "subtitle": "Comply with the DIAN and automate your invoicing from PayNetLink.",
+                "activateBilling": "Activate billing",
+                "talkToSales": "Talk to sales"
+            }
+        }
+    }
+}
