@@ -18,6 +18,7 @@ export { default as NavLink } from "./NavLink.vue";
 export { default as PasswordInput } from "./PasswordInput.vue";
 export { default as SocialIcon } from "./SocialIcon.vue";
 export { default as VideoPlayer } from "./VideoPlayer.vue";
+export { default as WhatsAppFab } from "./WhatsAppFab.vue";
 
 // Molecules
 export { default as DropdownItem } from "./DropdownItem.vue";
