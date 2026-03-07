@@ -127,12 +127,6 @@ const { t } = useI18n();
                     >
                         {{ t("footer.legal.privacy") }}
                     </a>
-                    <a
-                        href="/user-protection"
-                        class="font-body text-sm text-[#666666] transition-colors hover:text-white"
-                    >
-                        {{ t("footer.legal.userProtection") }}
-                    </a>
                 </div>
             </div>
 

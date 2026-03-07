@@ -18,16 +18,15 @@
         },
         "links": {
             "title": "Useful Links",
-            "whatsapp": "WhatsApp: +57 304 3408837",
+            "whatsapp": "WhatsApp: +57 301 639 9323",
             "instagram": "Instagram",
             "contact": "Contact us",
             "email": "soporte@paynetlink.com"
         },
         "legal": {
             "title": "Legal",
-            "terms": "Terms",
-            "privacy": "Privacy",
-            "userProtection": "User Protection"
+            "terms": "Terms and Conditions",
+            "privacy": "Privacy Policy"
         },
         "copyright": "© {year} PayNetLink. All rights reserved."
     }
