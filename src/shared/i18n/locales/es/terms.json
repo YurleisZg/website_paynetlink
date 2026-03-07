@@ -1,0 +1,50 @@
+{
+    "terms": {
+        "page": {
+            "title": "Términos y Condiciones",
+            "lastUpdated": "Última actualización: 1 de enero de 2025",
+            "sections": {
+                "acceptance": {
+                    "title": "1. Aceptación de los Términos",
+                    "content": "Al acceder y utilizar los servicios de PayNetLink, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios. Estos términos se aplican a todos los usuarios de la plataforma, incluyendo administradores, operadores y usuarios finales."
+                },
+                "serviceDescription": {
+                    "title": "2. Descripción del Servicio",
+                    "content": "PayNetLink proporciona una plataforma de gestión integral para proveedores de servicios de internet (ISP), que incluye gestión de clientes, facturación, cobros, automatización de red y herramientas de monitoreo. Los servicios se proporcionan \"tal cual\" y están sujetos a disponibilidad."
+                },
+                "userAccounts": {
+                    "title": "3. Cuentas de Usuario",
+                    "content": "Usted es responsable de mantener la confidencialidad de su cuenta y contraseña. Debe notificarnos inmediatamente sobre cualquier uso no autorizado de su cuenta. PayNetLink no será responsable por pérdidas derivadas del uso no autorizado de su cuenta."
+                },
+                "paymentsAndBilling": {
+                    "title": "4. Pagos y Facturación",
+                    "content": "Los precios de nuestros planes están sujetos a cambios con previo aviso de 30 días. Las suscripciones se renuevan automáticamente al final de cada período de facturación. Puede cancelar su suscripción en cualquier momento, pero no se realizarán reembolsos por períodos parciales."
+                },
+                "acceptableUse": {
+                    "title": "5. Uso Aceptable",
+                    "content": "Usted acepta no utilizar el servicio para fines ilegales, transmitir contenido dañino o fraudulento, intentar acceder sin autorización a ninguna parte de la plataforma, ni interferir con el funcionamiento del servicio. Las infracciones pueden resultar en la suspensión inmediata de su cuenta."
+                },
+                "intellectualProperty": {
+                    "title": "6. Propiedad Intelectual",
+                    "content": "Todo el contenido, funcionalidades y características de PayNetLink, incluyendo software, diseño, textos y gráficos, son propiedad exclusiva de PayNetLink y están protegidos por las leyes de propiedad intelectual aplicables. No puede reproducir, distribuir ni crear obras derivadas sin autorización previa por escrito."
+                },
+                "limitationOfLiability": {
+                    "title": "7. Limitación de Responsabilidad",
+                    "content": "PayNetLink no será responsable por daños indirectos, incidentales, especiales o consecuentes derivados del uso o imposibilidad de uso del servicio. Nuestra responsabilidad total en relación con cualquier reclamación no superará el monto pagado por usted en los doce meses anteriores al evento que dio lugar a la reclamación."
+                },
+                "termination": {
+                    "title": "8. Terminación",
+                    "content": "Nos reservamos el derecho de suspender o cancelar su cuenta en cualquier momento si usted incumple estos términos, realiza actividades fraudulentas o si así lo exige la ley. Tras la terminación, su derecho a utilizar el servicio cesará de inmediato. Las disposiciones que por su naturaleza deban sobrevivir a la terminación seguirán en vigor."
+                },
+                "governingLaw": {
+                    "title": "9. Ley Aplicable",
+                    "content": "Estos términos y condiciones se rigen por las leyes de la República de Colombia. Cualquier disputa que surja de estos términos se resolverá exclusivamente ante los tribunales ubicados en Bogotá, Colombia, y usted consiente la jurisdicción personal de dichos tribunales."
+                },
+                "contact": {
+                    "title": "10. Contacto",
+                    "content": "Si tiene preguntas sobre estos términos y condiciones, contáctenos en legal{'@'}paynetlink.com o por correo postal en nuestra dirección registrada en Bogotá, Colombia."
+                }
+            }
+        }
+    }
+}

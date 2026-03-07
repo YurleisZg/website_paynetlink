@@ -99,6 +99,12 @@ const router = createRouter({
             component: () => import("@/pages/notifications/NotificationsPage.vue"),
             meta: { layout: "default", title: "Notifications" },
         },
+        {
+            path: "/terms-and-conditions",
+            name: "terms-and-conditions",
+            component: () => import("@/pages/terms/TermsPage.vue"),
+            meta: { layout: "default", title: "Terms and Conditions" },
+        },
     ],
 });
 
