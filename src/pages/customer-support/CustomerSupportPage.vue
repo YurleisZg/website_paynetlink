@@ -165,7 +165,7 @@ const handleSubmit = (): void => {
                             v-for="tag in t('support.page.hero.tags') as unknown as string[]"
                             :key="tag"
                             href="#"
-                            class="rounded-full border border-white/30 bg-white/10 px-3 py-1 font-body text-xs font-medium text-white transition-colors hover:bg-white/20"
+                            class="rounded-full border border-white px-4 py-1.5 font-body text-sm font-semibold text-white transition-colors hover:bg-white/10"
                         >
                             {{ tag }}
                         </a>
