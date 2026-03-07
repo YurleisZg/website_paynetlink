@@ -1,6 +1,30 @@
 {
     "contact": {
         "backToHome": "Back to home",
+        "page": {
+            "title": "Contact",
+            "subtitle": "We are here to help. Choose the channel you prefer.",
+            "email": {
+                "label": "Email",
+                "value": "support{'@'}paynetlink.com"
+            },
+            "phone": {
+                "label": "Phone",
+                "value": "+57 (1) 234 5678"
+            },
+            "office": {
+                "label": "Office",
+                "value": "Bogota, Colombia"
+            },
+            "formTitle": "Send us a message",
+            "fullNameLabel": "Full name",
+            "fullNamePlaceholder": "Your name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "you{'@'}email.com",
+            "messageLabel": "Message",
+            "messagePlaceholder": "How can we help you?",
+            "submit": "Send message"
+        },
         "form": {
             "firstNameLabel": "First name",
             "lastNameLabel": "Last name",

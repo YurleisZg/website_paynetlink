@@ -47,12 +47,14 @@ describe("Navbar", () => {
     });
 
     describe("Basic Rendering", () => {
-        it("renders the logo", () => {
+        it("renders the logo with a home link", () => {
             renderNavbar({
                 props: { links: mockNavLinks },
             });
 
-            expect(screen.getByLabelText("PayNetLink")).toBeDefined();
+            const logoLink = screen.getByLabelText(/PayNetLink/i);
+            expect(logoLink).toBeDefined();
+            expect(logoLink.getAttribute("href")).toBe("/");
         });
 
         it("renders desktop navigation links", () => {

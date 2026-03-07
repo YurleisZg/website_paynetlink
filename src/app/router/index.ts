@@ -51,6 +51,12 @@ const router = createRouter({
             component: () => import("@/pages/contact-advisor/ContactAdvisorPage.vue"),
             meta: { title: "Contactar asesor" },
         },
+        {
+            path: "/contact",
+            name: "contact",
+            component: () => import("@/pages/contact/ContactPage.vue"),
+            meta: { layout: "default", title: "Contact" },
+        },
     ],
 });
 
