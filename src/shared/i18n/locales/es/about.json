@@ -1,0 +1,28 @@
+{
+    "about": {
+        "page": {
+            "title": "Sobre Nosotros",
+            "subtitle": "Transformando la industria ISP en Latinoamérica desde 2020",
+            "mission": {
+                "label": "NUESTRA MISIÓN",
+                "heading": "Democratizar la tecnología para proveedores de internet",
+                "description": "Creemos que cada ISP, sin importar su tamaño, merece acceso a herramientas profesionales de gestión. PayNetLink nació para resolver los desafíos diarios de los proveedores de internet en Latinoamérica."
+            },
+            "values": {
+                "title": "Nuestros Valores",
+                "passion": {
+                    "title": "Pasión",
+                    "description": "Amamos lo que hacemos y nos apasiona ayudar a los ISPs a crecer."
+                },
+                "trust": {
+                    "title": "Confianza",
+                    "description": "Construimos relaciones sólidas basadas en la transparencia y seguridad."
+                },
+                "innovation": {
+                    "title": "Innovación",
+                    "description": "Desarrollamos tecnología de vanguardia adaptada a las necesidades locales."
+                }
+            }
+        }
+    }
+}
