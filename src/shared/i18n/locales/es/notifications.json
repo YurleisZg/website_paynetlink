@@ -1,0 +1,55 @@
+{
+    "notifications": {
+        "page": {
+            "badge": "Notificaciones",
+            "title": "Mantén informados a tus clientes",
+            "subtitle": "Envía notificaciones automáticas por SMS, correo, WhatsApp y push. Alertas de pago, cortes de servicio, promociones y más — todo desde un solo lugar.",
+            "cta": "Configurar notificaciones",
+            "screenshotAlt": "Captura del panel de notificaciones",
+            "features": {
+                "multichannel": {
+                    "title": "Multicanal integrado",
+                    "description": "Envía notificaciones por SMS, correo electrónico, WhatsApp y notificaciones push desde un solo panel."
+                },
+                "automaticAlerts": {
+                    "title": "Alertas automáticas",
+                    "description": "Configura reglas para enviar alertas de vencimiento, corte, reconexión y pagos recibidos automáticamente."
+                },
+                "customTemplates": {
+                    "title": "Plantillas personalizables",
+                    "description": "Crea y personaliza plantillas de mensajes con variables dinámicas como nombre, monto y fecha de vencimiento."
+                },
+                "deliveryReports": {
+                    "title": "Reportes de entrega",
+                    "description": "Monitorea tasas de apertura, entregas exitosas y fallos por canal. Optimiza tu comunicación con datos reales."
+                }
+            },
+            "channels": {
+                "sectionTitle": "Canales de notificación disponibles",
+                "sectionSubtitle": "Llega a tus clientes por el canal que prefieran. Configura cada uno de forma independiente.",
+                "sms": {
+                    "title": "SMS",
+                    "description": "Mensajes de texto directos al celular del cliente. Ideal para alertas de pago y cortes de servicio."
+                },
+                "email": {
+                    "title": "Correo electrónico",
+                    "description": "Envía facturas, recibos y comunicados con plantillas HTML personalizadas y tu marca."
+                },
+                "whatsapp": {
+                    "title": "WhatsApp",
+                    "description": "Mensajes directos por WhatsApp Business API. El canal con mayor tasa de lectura entre tus clientes."
+                },
+                "push": {
+                    "title": "Push notifications",
+                    "description": "Notificaciones instantáneas en el navegador o app móvil. Perfectas para alertas en tiempo real."
+                }
+            },
+            "ctaSection": {
+                "title": "Automatiza la comunicación con tus clientes",
+                "subtitle": "Configura notificaciones inteligentes y reduce llamadas de soporte hasta un 60%.",
+                "activateNotifications": "Activar notificaciones",
+                "talkToSales": "Hablar con ventas"
+            }
+        }
+    }
+}
