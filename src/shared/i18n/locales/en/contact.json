@@ -6,7 +6,7 @@
             "subtitle": "We are here to help. Choose the channel you prefer.",
             "email": {
                 "label": "Email",
-                "value": "support@paynetlink.com"
+                "value": "support{'@'}paynetlink.com"
             },
             "phone": {
                 "label": "Phone",
@@ -20,7 +20,7 @@
             "fullNameLabel": "Full name",
             "fullNamePlaceholder": "Your name",
             "emailLabel": "Email",
-            "emailPlaceholder": "you@email.com",
+            "emailPlaceholder": "you{'@'}email.com",
             "messageLabel": "Message",
             "messagePlaceholder": "How can we help you?",
             "submit": "Send message"
