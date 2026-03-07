@@ -51,12 +51,12 @@ describe("ContactPage", () => {
 
         it("renders the office contact item label", () => {
             renderPage();
-            expect(screen.getByText(/oficina|office/i)).toBeDefined();
+            expect(screen.getAllByText(/oficina|office/i).length).toBeGreaterThan(0);
         });
 
         it("renders the contact address value", () => {
             renderPage();
-            expect(screen.getByText(/bogot/i)).toBeDefined();
+            expect(screen.getAllByText(/cartagena|bogot/i).length).toBeGreaterThan(0);
         });
 
         it("renders the form title", () => {

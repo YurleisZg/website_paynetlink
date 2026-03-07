@@ -1,25 +1,33 @@
 {
     "footer": {
-        "tagline": "Automate your ISP and bill better",
-        "product": {
-            "title": "Product",
-            "features": "Features",
-            "pricing": "Pricing",
-            "integrations": "Integrations"
+        "tagline": "All-in-one platform for internet providers. Manage, bill, and automate your ISP operation.",
+        "learnMore": "Learn more about us.",
+        "site": {
+            "title": "Site",
+            "plans": "Explore our Plans",
+            "coverage": "View Coverage",
+            "support": "Support Section"
         },
-        "resources": {
-            "title": "Resources",
-            "blog": "Blog",
-            "help": "Help",
-            "apiDocs": "API Docs"
+        "attention": {
+            "title": "Support Hours",
+            "weekdays": "Mon – Fri: 8:00 AM – 5:00 PM",
+            "saturdays": "Saturdays: 8:00 AM – 3:00 PM",
+            "holidays": "Sun & Holidays: Closed",
+            "company": "Paynetlink S.A.S",
+            "address": "Calle 30 #49-149, Cartagena, Colombia"
         },
-        "company": {
-            "title": "Company",
-            "about": "About us",
-            "contact": "Contact",
-            "privacy": "Privacy"
+        "links": {
+            "title": "Useful Links",
+            "whatsapp": "WhatsApp: +57 301 639 9323",
+            "instagram": "Instagram",
+            "contact": "Contact us",
+            "email": "soporte@paynetlink.com"
         },
-        "copyright": "© {year} PayNetLink. All rights reserved.",
-        "madeWith": "Made with love for ISPs in Latin America"
+        "legal": {
+            "title": "Legal",
+            "terms": "Terms and Conditions",
+            "privacy": "Privacy Policy"
+        },
+        "copyright": "© {year} PayNetLink. All rights reserved."
     }
 }
