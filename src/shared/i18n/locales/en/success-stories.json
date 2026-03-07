@@ -1,0 +1,42 @@
+{
+    "successStories": {
+        "page": {
+            "title": "Success Stories",
+            "subtitle": "ISPs that transformed their operations with PayNetLink",
+            "stories": {
+                "fibranet": {
+                    "badge": "Residential ISP",
+                    "heading": "FibraNet Colombia reduced delinquency by 45%",
+                    "description": "With more than 5,000 subscribers, FibraNet needed a comprehensive solution to manage collections and automate their MikroTik network. In just 3 months they achieved incredible results.",
+                    "metrics": {
+                        "delinquency": { "value": "45%", "label": "Less delinquency" },
+                        "subscribers": { "value": "5,000+", "label": "Subscribers" },
+                        "implementation": { "value": "3 months", "label": "To implement" }
+                    }
+                },
+                "netpro": {
+                    "badge": "Enterprise ISP",
+                    "heading": "NetPro Peru automated 90% of its processes",
+                    "description": "Enterprise provider with 1,200 corporate clients. Automating service cuts, reconnections, and invoicing allowed them to reduce their technical support team.",
+                    "metrics": {
+                        "automated": { "value": "90%", "label": "Automated processes" },
+                        "clients": { "value": "1,200", "label": "Corporate clients" }
+                    }
+                },
+                "connectmax": {
+                    "badge": "Regional ISP",
+                    "heading": "ConnectMax scaled from 800 to 3,000 subscribers",
+                    "description": "A regional provider that needed tools to grow without proportionally increasing their administrative team. PayNetLink allowed them to scale efficiently.",
+                    "metrics": {
+                        "growth": { "value": "275%", "label": "Subscriber growth" },
+                        "savings": { "value": "60%", "label": "Time saved in billing" }
+                    }
+                }
+            },
+            "cta": {
+                "heading": "Do you want to be the next success story?",
+                "button": "Start free trial"
+            }
+        }
+    }
+}

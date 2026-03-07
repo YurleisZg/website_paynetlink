@@ -1,0 +1,42 @@
+{
+    "successStories": {
+        "page": {
+            "title": "Casos de Éxito",
+            "subtitle": "ISPs que transformaron su operación con PayNetLink",
+            "stories": {
+                "fibranet": {
+                    "badge": "ISP Residencial",
+                    "heading": "FibraNet Colombia redujo su morosidad un 45%",
+                    "description": "Con más de 5,000 suscriptores, FibraNet necesitaba una solución integral para gestionar cobros y automatizar su red MikroTik. En solo 3 meses lograron resultados increíbles.",
+                    "metrics": {
+                        "delinquency": { "value": "45%", "label": "Menos morosidad" },
+                        "subscribers": { "value": "5,000+", "label": "Suscriptores" },
+                        "implementation": { "value": "3 meses", "label": "De implementación" }
+                    }
+                },
+                "netpro": {
+                    "badge": "ISP Empresarial",
+                    "heading": "NetPro Perú automatizó el 90% de sus procesos",
+                    "description": "Proveedor empresarial con 1,200 clientes corporativos. La automatización de cortes, reconexiones y facturación les permitió reducir su equipo de soporte técnico.",
+                    "metrics": {
+                        "automated": { "value": "90%", "label": "Procesos automatizados" },
+                        "clients": { "value": "1,200", "label": "Clientes corporativos" }
+                    }
+                },
+                "connectmax": {
+                    "badge": "ISP Regional",
+                    "heading": "ConnectMax creció de 800 a 3,000 suscriptores",
+                    "description": "Un proveedor regional que necesitaba herramientas para crecer sin aumentar proporcionalmente su equipo administrativo. PayNetLink les permitió escalar de forma eficiente.",
+                    "metrics": {
+                        "growth": { "value": "275%", "label": "Crecimiento en suscriptores" },
+                        "savings": { "value": "60%", "label": "Tiempo ahorrado en facturación" }
+                    }
+                }
+            },
+            "cta": {
+                "heading": "¿Quieres ser el próximo caso de éxito?",
+                "button": "Comenzar prueba gratis"
+            }
+        }
+    }
+}
