@@ -1,0 +1,28 @@
+{
+    "about": {
+        "page": {
+            "title": "About Us",
+            "subtitle": "Transforming the ISP industry in Latin America since 2020",
+            "mission": {
+                "label": "OUR MISSION",
+                "heading": "Democratizing technology for internet service providers",
+                "description": "We believe every ISP, regardless of size, deserves access to professional management tools. PayNetLink was born to solve the daily challenges of internet providers in Latin America."
+            },
+            "values": {
+                "title": "Our Values",
+                "passion": {
+                    "title": "Passion",
+                    "description": "We love what we do and are passionate about helping ISPs grow."
+                },
+                "trust": {
+                    "title": "Trust",
+                    "description": "We build solid relationships based on transparency and security."
+                },
+                "innovation": {
+                    "title": "Innovation",
+                    "description": "We develop cutting-edge technology adapted to local needs."
+                }
+            }
+        }
+    }
+}

@@ -119,7 +119,7 @@ export function useNavLinks() {
                 {
                     label: t("nav.dropdown.company.about.label"),
                     description: t("nav.dropdown.company.about.description"),
-                    href: "/#nosotros",
+                    href: "/about",
                     icon: Info,
                 },
                 {
