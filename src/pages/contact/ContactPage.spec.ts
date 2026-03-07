@@ -56,7 +56,7 @@ describe("ContactPage", () => {
 
         it("renders the contact address value", () => {
             renderPage();
-            expect(screen.getAllByText(/bogot/i).length).toBeGreaterThan(0);
+            expect(screen.getAllByText(/cartagena|bogot/i).length).toBeGreaterThan(0);
         });
 
         it("renders the form title", () => {

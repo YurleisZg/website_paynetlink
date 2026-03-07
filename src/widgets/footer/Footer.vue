@@ -67,6 +67,9 @@ const { t } = useI18n();
                     <p class="font-body text-sm text-secondary">
                         {{ t("footer.attention.holidays") }}
                     </p>
+                    <p class="font-body text-sm font-medium text-foreground">
+                        {{ t("footer.attention.company") }}
+                    </p>
                     <p class="font-body text-sm text-secondary">
                         {{ t("footer.attention.address") }}
                     </p>
