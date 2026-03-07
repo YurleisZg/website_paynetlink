@@ -4,6 +4,7 @@ import { Footer } from "@/widgets/footer";
 import { useNavLinks } from "@/shared/composables";
 import { Heart, Shield, Zap } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
+import aboutImage from "@/assets/images/about.png";
 
 defineOptions({ name: "AboutPage" });
 
@@ -60,7 +61,7 @@ const values = [
                     <!-- Image -->
                     <div class="w-full lg:w-[420px] lg:shrink-0">
                         <img
-                            :src="'/images/about.png'"
+                            :src="aboutImage"
                             :alt="t('about.page.mission.heading')"
                             class="h-auto w-full rounded-xl border border-divider object-cover"
                         />

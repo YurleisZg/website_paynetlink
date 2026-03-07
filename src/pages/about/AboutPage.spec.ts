@@ -37,7 +37,7 @@ describe("AboutPage", () => {
     it("renders the about image with correct src", () => {
         renderPage();
         const img = screen.getByRole("img");
-        expect(img.getAttribute("src")).toBe("/images/about.png");
+        expect(img.getAttribute("src")).toContain("about.png");
     });
 
     it("renders the values section heading", () => {
