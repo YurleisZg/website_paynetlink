@@ -22,19 +22,19 @@ const { t } = useI18n();
                         {{ t("footer.product.title") }}
                     </h4>
                     <a
-                        href="#"
+                        href="/#features"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.product.features") }}
                     </a>
                     <a
-                        href="#"
+                        href="/#precios"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.product.pricing") }}
                     </a>
                     <a
-                        href="#"
+                        href="/#integrations"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.product.integrations") }}
@@ -45,19 +45,19 @@ const { t } = useI18n();
                         {{ t("footer.resources.title") }}
                     </h4>
                     <a
-                        href="#"
+                        href="/#blog"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.resources.blog") }}
                     </a>
                     <a
-                        href="#"
+                        href="/#ayuda"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.resources.help") }}
                     </a>
                     <a
-                        href="#"
+                        href="/#api"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.resources.apiDocs") }}
@@ -68,13 +68,13 @@ const { t } = useI18n();
                         {{ t("footer.company.title") }}
                     </h4>
                     <a
-                        href="#"
+                        href="/about"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.company.about") }}
                     </a>
                     <a
-                        href="#"
+                        href="/contact"
                         class="font-body text-sm text-[#666666] transition-colors hover:text-white"
                     >
                         {{ t("footer.company.contact") }}
