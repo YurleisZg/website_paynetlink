@@ -57,6 +57,12 @@ const router = createRouter({
             component: () => import("@/pages/contact/ContactPage.vue"),
             meta: { layout: "default", title: "Contact" },
         },
+        {
+            path: "/privacy",
+            name: "privacy",
+            component: () => import("@/pages/privacy/PrivacyPage.vue"),
+            meta: { layout: "default", title: "Privacy Policy" },
+        },
     ],
 });
 

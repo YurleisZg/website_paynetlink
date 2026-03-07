@@ -1,0 +1,42 @@
+{
+    "privacy": {
+        "page": {
+            "title": "Privacy Policy",
+            "lastUpdated": "Last updated: January 1, 2025",
+            "sections": {
+                "informationCollected": {
+                    "title": "1. Information We Collect",
+                    "content": "We collect information you provide directly to us, such as your name, email address, company information, and billing data. We also collect usage information automatically, including IP address, browser type, pages visited, and time of use."
+                },
+                "useOfInformation": {
+                    "title": "2. Use of Information",
+                    "content": "We use the information collected to provide and improve our services, process transactions, send service-related communications, respond to support inquiries, and comply with legal obligations. We do not sell or share your personal information with third parties for marketing purposes."
+                },
+                "dataSecurity": {
+                    "title": "3. Data Security",
+                    "content": "We implement technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes data encryption in transit and at rest, strict access controls, and regular security audits."
+                },
+                "userRights": {
+                    "title": "4. User Rights",
+                    "content": "You have the right to access, rectify, delete, and port your personal data. You may also object to the processing of your data and withdraw your consent at any time. To exercise these rights, contact our privacy team at privacy{'@'}paynetlink.com."
+                },
+                "cookies": {
+                    "title": "5. Cookies and Tracking Technologies",
+                    "content": "We use cookies and similar tracking technologies to improve your experience on our platform. You can control cookie settings through your browser preferences. Disabling cookies may affect certain features of the service."
+                },
+                "thirdParties": {
+                    "title": "6. Third-Party Services",
+                    "content": "Our service may integrate with third-party providers such as payment processors and analytics tools. These providers have their own privacy policies and we recommend reviewing them. We are not responsible for the privacy practices of third-party services."
+                },
+                "policyChanges": {
+                    "title": "7. Changes to This Policy",
+                    "content": "We may update this privacy policy from time to time. We will notify you of significant changes by posting a notice on our website or sending you an email. Your continued use of the service after changes become effective constitutes your acceptance of the updated policy."
+                },
+                "contact": {
+                    "title": "8. Contact",
+                    "content": "If you have questions about this privacy policy or how we handle your personal information, please contact us at privacy{'@'}paynetlink.com or by mail at our registered address in Bogota, Colombia."
+                }
+            }
+        }
+    }
+}
