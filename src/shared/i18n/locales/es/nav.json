@@ -7,6 +7,76 @@
             "resources": "Recursos",
             "company": "Empresa"
         },
+        "dropdown": {
+            "products": {
+                "clients": {
+                    "label": "Gestión de Clientes",
+                    "description": "Registra y administra tus clientes"
+                },
+                "billing": {
+                    "label": "Pagos y Recaudo",
+                    "description": "Automatiza cobros y pagos"
+                },
+                "network": {
+                    "label": "Automatización de Red",
+                    "description": "Integración con MikroTik"
+                },
+                "notifications": {
+                    "label": "Notificaciones",
+                    "description": "WhatsApp, SMS y email"
+                },
+                "invoicing": {
+                    "label": "Facturación Electrónica",
+                    "description": "Facturas DIAN integradas"
+                }
+            },
+            "solutions": {
+                "smallIsp": {
+                    "label": "Para ISP pequeños",
+                    "description": "Hasta 100 clientes"
+                },
+                "mediumIsp": {
+                    "label": "Para ISP medianos",
+                    "description": "100 a 1,000 clientes"
+                },
+                "wisps": {
+                    "label": "Para WISPs",
+                    "description": "Redes inalámbricas"
+                }
+            },
+            "resources": {
+                "blog": {
+                    "label": "Blog",
+                    "description": "Artículos y guías para ISPs"
+                },
+                "helpCenter": {
+                    "label": "Centro de ayuda",
+                    "description": "Soporte y preguntas frecuentes"
+                },
+                "apiDocs": {
+                    "label": "Documentación API",
+                    "description": "Referencia técnica completa"
+                },
+                "caseStudies": {
+                    "label": "Casos de éxito",
+                    "description": "Historias de ISPs exitosos"
+                }
+            },
+            "company": {
+                "about": {
+                    "label": "Sobre nosotros",
+                    "description": "Nuestra misión y equipo"
+                },
+                "contact": {
+                    "label": "Contacto",
+                    "description": "Comunícate con nosotros"
+                },
+                "partners": {
+                    "label": "Partners",
+                    "description": "Programa de socios"
+                }
+            }
+        },
         "login": "Iniciar sesión",
         "freeTrial": "Prueba gratis",
         "search": {

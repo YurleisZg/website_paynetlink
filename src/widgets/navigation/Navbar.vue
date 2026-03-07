@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { Component } from "vue";
 import { Button, LocaleSwitcher, Logo } from "@/shared/ui";
-import { Menu, Search, X } from "lucide-vue-next";
+import { ChevronDown, Menu, Search, X } from "lucide-vue-next";
 import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
@@ -8,9 +9,17 @@ defineOptions({ name: "AppNavbar" });
 
 const { t } = useI18n();
 
+export interface NavDropdownItem {
+    label: string;
+    description?: string;
+    href: string;
+    icon?: Component;
+}
+
 export interface NavLink {
     label: string;
-    href: string;
+    href?: string;
+    dropdown?: NavDropdownItem[];
 }
 
 withDefaults(
@@ -22,47 +31,97 @@ withDefaults(
     }
 );
 
+// --- Mobile menu ---
 const mobileMenuOpen = ref(false);
+const mobileActiveAccordion = ref<string | null>(null);
+
+const closeMobileMenu = () => {
+    mobileMenuOpen.value = false;
+    mobileActiveAccordion.value = null;
+};
+
+const toggleMobileAccordion = (label: string) => {
+    mobileActiveAccordion.value = mobileActiveAccordion.value === label ? null : label;
+};
+
+// --- Desktop dropdowns ---
+const activeDropdown = ref<string | null>(null);
+let closeTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+const openDropdown = (label: string) => {
+    if (closeTimeoutId) {
+        clearTimeout(closeTimeoutId);
+        closeTimeoutId = null;
+    }
+    activeDropdown.value = label;
+};
+
+const cancelClose = () => {
+    if (closeTimeoutId) {
+        clearTimeout(closeTimeoutId);
+        closeTimeoutId = null;
+    }
+};
+
+const scheduleClose = () => {
+    closeTimeoutId = setTimeout(() => {
+        activeDropdown.value = null;
+    }, 150);
+};
+
+const closeAllDropdowns = () => {
+    if (closeTimeoutId) clearTimeout(closeTimeoutId);
+    activeDropdown.value = null;
+};
+
+const toggleDropdown = (label: string) => {
+    if (activeDropdown.value === label) {
+        closeAllDropdowns();
+    } else {
+        openDropdown(label);
+    }
+};
+
+// --- Search ---
 const searchOpen = ref(false);
 const searchInput = ref<HTMLInputElement | null>(null);
 const searchQuery = ref("");
 const searchContainerRef = ref<HTMLDivElement | null>(null);
 
-// Close mobile menu when clicking outside or on a link
-const closeMobileMenu = () => {
-    mobileMenuOpen.value = false;
-};
-
-// Open search overlay and focus input
 const openSearch = async () => {
     searchOpen.value = true;
     await nextTick();
     searchInput.value?.focus();
 };
 
-// Close search overlay and clear query
 const closeSearch = () => {
     searchOpen.value = false;
     searchQuery.value = "";
 };
 
-// Handle search submission
 const handleSearch = (event: Event) => {
     event.preventDefault();
     if (searchQuery.value.trim()) {
         console.log("Search query:", searchQuery.value);
-        // TODO: Implement actual search logic
     }
 };
 
-// Handle ESC key to close search
+const handleNavigation = () => {
+    closeMobileMenu();
+    closeSearch();
+    closeAllDropdowns();
+};
+
 const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === "Escape" && searchOpen.value) {
-        closeSearch();
+    if (event.key === "Escape") {
+        if (searchOpen.value) {
+            closeSearch();
+        } else {
+            closeAllDropdowns();
+        }
     }
 };
 
-// Handle click outside search container
 const handleClickOutside = (event: MouseEvent) => {
     if (
         searchOpen.value &&
@@ -73,22 +132,10 @@ const handleClickOutside = (event: MouseEvent) => {
     }
 };
 
-// Close overlays when navigating
-const handleNavigation = () => {
-    closeMobileMenu();
-    closeSearch();
-};
-
-// Prevent body scroll when mobile menu or search is open
 watch([mobileMenuOpen, searchOpen], ([menuOpen, searchIsOpen]) => {
-    if (menuOpen || searchIsOpen) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen || searchIsOpen ? "hidden" : "";
 });
 
-// Add/remove event listeners
 onMounted(() => {
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("mousedown", handleClickOutside);
@@ -97,6 +144,7 @@ onMounted(() => {
 onUnmounted(() => {
     document.removeEventListener("keydown", handleKeydown);
     document.removeEventListener("mousedown", handleClickOutside);
+    if (closeTimeoutId) clearTimeout(closeTimeoutId);
     document.body.style.overflow = "";
 });
 </script>
@@ -115,15 +163,103 @@ onUnmounted(() => {
                 <Logo size="sm" role="img" aria-label="PayNetLink" />
 
                 <!-- Desktop Navigation Links -->
-                <div class="hidden items-center gap-6 lg:flex lg:gap-8">
-                    <a
-                        v-for="link in links"
-                        :key="link.label"
-                        :href="link.href"
-                        class="font-body text-sm font-medium text-secondary transition-colors hover:text-foreground"
-                    >
-                        {{ link.label }}
-                    </a>
+                <div class="hidden items-center gap-1 lg:flex">
+                    <template v-for="link in links" :key="link.label">
+                        <!-- Dropdown trigger -->
+                        <div
+                            v-if="link.dropdown"
+                            class="relative"
+                            @mouseenter="openDropdown(link.label)"
+                            @mouseleave="scheduleClose"
+                        >
+                            <button
+                                :aria-expanded="activeDropdown === link.label"
+                                :aria-haspopup="true"
+                                class="flex items-center gap-1 rounded-md px-3 py-2 font-body text-sm font-medium text-secondary transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                @click="toggleDropdown(link.label)"
+                                @keydown.escape="closeAllDropdowns"
+                            >
+                                {{ link.label }}
+                                <ChevronDown
+                                    :size="14"
+                                    class="mt-px shrink-0 transition-transform duration-200"
+                                    :class="{ 'rotate-180': activeDropdown === link.label }"
+                                />
+                            </button>
+
+                            <!-- Dropdown panel -->
+                            <Transition
+                                enter-active-class="transition-all duration-200 ease-out"
+                                enter-from-class="translate-y-1 opacity-0"
+                                enter-to-class="translate-y-0 opacity-100"
+                                leave-active-class="transition-all duration-150 ease-in"
+                                leave-from-class="translate-y-0 opacity-100"
+                                leave-to-class="translate-y-1 opacity-0"
+                            >
+                                <div
+                                    v-if="activeDropdown === link.label"
+                                    class="absolute left-0 top-full z-50 pt-2"
+                                    role="menu"
+                                    :aria-label="`${link.label} menu`"
+                                    @mouseenter="cancelClose"
+                                    @mouseleave="scheduleClose"
+                                >
+                                    <div
+                                        class="min-w-[260px] overflow-hidden rounded-xl border border-divider bg-white shadow-xl"
+                                    >
+                                        <div class="px-2 py-2">
+                                            <p
+                                                class="px-3 pb-1 pt-1.5 font-body text-[11px] font-semibold uppercase tracking-wider text-subtle"
+                                            >
+                                                {{ link.label }}
+                                            </p>
+                                            <a
+                                                v-for="item in link.dropdown"
+                                                :key="item.href"
+                                                :href="item.href"
+                                                role="menuitem"
+                                                class="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+                                                @click="closeAllDropdowns"
+                                            >
+                                                <div
+                                                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary-light"
+                                                >
+                                                    <component
+                                                        :is="item.icon"
+                                                        v-if="item.icon"
+                                                        :size="18"
+                                                        class="text-primary"
+                                                    />
+                                                </div>
+                                                <div class="flex min-w-0 flex-col gap-0.5">
+                                                    <span
+                                                        class="font-body text-sm font-medium text-foreground"
+                                                    >
+                                                        {{ item.label }}
+                                                    </span>
+                                                    <span
+                                                        v-if="item.description"
+                                                        class="font-body text-xs text-subtle"
+                                                    >
+                                                        {{ item.description }}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Transition>
+                        </div>
+
+                        <!-- Plain link -->
+                        <a
+                            v-else
+                            :href="link.href"
+                            class="rounded-md px-3 py-2 font-body text-sm font-medium text-secondary transition-colors hover:bg-surface hover:text-foreground"
+                        >
+                            {{ link.label }}
+                        </a>
+                    </template>
                 </div>
             </div>
 
@@ -199,16 +335,81 @@ onUnmounted(() => {
                 class="fixed right-0 top-[73px] z-50 h-[calc(100vh-73px)] w-full max-w-sm overflow-y-auto border-l border-divider bg-white shadow-2xl md:hidden"
             >
                 <!-- Mobile Navigation Links -->
-                <div class="flex flex-col gap-1 border-b border-divider p-6">
-                    <a
-                        v-for="link in links"
-                        :key="link.label"
-                        :href="link.href"
-                        class="rounded-md px-4 py-3 font-body text-base font-medium text-secondary transition-colors hover:bg-surface hover:text-foreground"
-                        @click="closeMobileMenu"
-                    >
-                        {{ link.label }}
-                    </a>
+                <div class="flex flex-col gap-0.5 border-b border-divider p-4">
+                    <template v-for="link in links" :key="link.label">
+                        <!-- Accordion item with dropdown -->
+                        <div v-if="link.dropdown">
+                            <button
+                                class="flex w-full items-center justify-between rounded-md px-4 py-3 font-body text-base font-medium text-secondary transition-colors hover:bg-surface hover:text-foreground"
+                                :aria-expanded="mobileActiveAccordion === link.label"
+                                @click="toggleMobileAccordion(link.label)"
+                            >
+                                {{ link.label }}
+                                <ChevronDown
+                                    :size="16"
+                                    class="shrink-0 transition-transform duration-200"
+                                    :class="{ 'rotate-180': mobileActiveAccordion === link.label }"
+                                />
+                            </button>
+
+                            <!-- Accordion content -->
+                            <Transition
+                                enter-active-class="transition-all duration-200 ease-out"
+                                enter-from-class="opacity-0 -translate-y-1"
+                                enter-to-class="opacity-100 translate-y-0"
+                                leave-active-class="transition-all duration-150 ease-in"
+                                leave-from-class="opacity-100 translate-y-0"
+                                leave-to-class="opacity-0 -translate-y-1"
+                            >
+                                <div
+                                    v-if="mobileActiveAccordion === link.label"
+                                    class="mt-0.5 flex flex-col gap-0.5 pl-2"
+                                >
+                                    <a
+                                        v-for="item in link.dropdown"
+                                        :key="item.href"
+                                        :href="item.href"
+                                        class="flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors hover:bg-surface"
+                                        @click="closeMobileMenu"
+                                    >
+                                        <div
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary-light"
+                                        >
+                                            <component
+                                                :is="item.icon"
+                                                v-if="item.icon"
+                                                :size="16"
+                                                class="text-primary"
+                                            />
+                                        </div>
+                                        <div class="flex min-w-0 flex-col gap-0.5">
+                                            <span
+                                                class="font-body text-sm font-medium text-foreground"
+                                            >
+                                                {{ item.label }}
+                                            </span>
+                                            <span
+                                                v-if="item.description"
+                                                class="font-body text-xs text-subtle"
+                                            >
+                                                {{ item.description }}
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </Transition>
+                        </div>
+
+                        <!-- Plain link -->
+                        <a
+                            v-else
+                            :href="link.href"
+                            class="rounded-md px-4 py-3 font-body text-base font-medium text-secondary transition-colors hover:bg-surface hover:text-foreground"
+                            @click="closeMobileMenu"
+                        >
+                            {{ link.label }}
+                        </a>
+                    </template>
                 </div>
 
                 <!-- Mobile Action Buttons -->
@@ -293,7 +494,6 @@ onUnmounted(() => {
                                         <p class="text-sm text-secondary">
                                             {{ t("nav.search.searchingFor") }} "{{ searchQuery }}"
                                         </p>
-                                        <!-- TODO: Add search results here -->
                                     </div>
                                 </div>
                             </form>

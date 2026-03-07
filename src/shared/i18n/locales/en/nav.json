@@ -7,6 +7,76 @@
             "resources": "Resources",
             "company": "Company"
         },
+        "dropdown": {
+            "products": {
+                "clients": {
+                    "label": "Customer Management",
+                    "description": "Register and manage your clients"
+                },
+                "billing": {
+                    "label": "Payments & Collections",
+                    "description": "Automate billing and payments"
+                },
+                "network": {
+                    "label": "Network Automation",
+                    "description": "MikroTik integration"
+                },
+                "notifications": {
+                    "label": "Notifications",
+                    "description": "WhatsApp, SMS and email"
+                },
+                "invoicing": {
+                    "label": "Electronic Invoicing",
+                    "description": "DIAN integrated invoices"
+                }
+            },
+            "solutions": {
+                "smallIsp": {
+                    "label": "For small ISPs",
+                    "description": "Up to 100 clients"
+                },
+                "mediumIsp": {
+                    "label": "For medium ISPs",
+                    "description": "100 to 1,000 clients"
+                },
+                "wisps": {
+                    "label": "For WISPs",
+                    "description": "Wireless networks"
+                }
+            },
+            "resources": {
+                "blog": {
+                    "label": "Blog",
+                    "description": "Articles and guides for ISPs"
+                },
+                "helpCenter": {
+                    "label": "Help Center",
+                    "description": "Support and FAQs"
+                },
+                "apiDocs": {
+                    "label": "API Documentation",
+                    "description": "Full technical reference"
+                },
+                "caseStudies": {
+                    "label": "Success Stories",
+                    "description": "Successful ISP stories"
+                }
+            },
+            "company": {
+                "about": {
+                    "label": "About us",
+                    "description": "Our mission and team"
+                },
+                "contact": {
+                    "label": "Contact",
+                    "description": "Get in touch with us"
+                },
+                "partners": {
+                    "label": "Partners",
+                    "description": "Partner program"
+                }
+            }
+        },
         "login": "Log in",
         "freeTrial": "Free trial",
         "search": {

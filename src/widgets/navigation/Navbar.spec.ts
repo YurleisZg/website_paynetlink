@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue";
 import { createRouter, createMemoryHistory } from "vue-router";
+import { Users, CreditCard } from "lucide-vue-next";
 import Navbar from "./Navbar.vue";
 import type { NavLink } from "./Navbar.vue";
 
@@ -471,6 +472,172 @@ describe("Navbar", () => {
             await waitFor(() => {
                 const searchInput = screen.getByLabelText("Search input") as HTMLInputElement;
                 expect(searchInput.type).toBe("search");
+            });
+        });
+    });
+
+    describe("Dropdown Menu Functionality", () => {
+        const navLinksWithDropdown: NavLink[] = [
+            {
+                label: "Products",
+                dropdown: [
+                    {
+                        label: "Customer Management",
+                        description: "Register clients",
+                        href: "#clients",
+                        icon: Users,
+                    },
+                    {
+                        label: "Payments",
+                        description: "Automate billing",
+                        href: "#billing",
+                        icon: CreditCard,
+                    },
+                ],
+            },
+            { label: "Pricing", href: "#pricing" },
+        ];
+
+        it("renders dropdown trigger button for nav items with dropdown", () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            expect(trigger).toBeDefined();
+        });
+
+        it("dropdown trigger has aria-haspopup attribute", () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            expect(trigger.getAttribute("aria-haspopup")).toBe("true");
+        });
+
+        it("dropdown trigger has aria-expanded false by default", () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            expect(trigger.getAttribute("aria-expanded")).toBe("false");
+        });
+
+        it("opens dropdown when trigger is clicked", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            await fireEvent.click(trigger);
+
+            await waitFor(() => {
+                expect(screen.getByRole("menu", { name: /products menu/i })).toBeDefined();
+            });
+        });
+
+        it("aria-expanded updates to true when dropdown is open", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            await fireEvent.click(trigger);
+
+            await waitFor(() => {
+                expect(trigger.getAttribute("aria-expanded")).toBe("true");
+            });
+        });
+
+        it("renders dropdown items when dropdown is open", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            await fireEvent.click(trigger);
+
+            await waitFor(() => {
+                expect(
+                    screen.getByRole("menuitem", { name: /customer management/i })
+                ).toBeDefined();
+                expect(screen.getByRole("menuitem", { name: /payments/i })).toBeDefined();
+            });
+        });
+
+        it("renders dropdown item descriptions", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            await fireEvent.click(trigger);
+
+            await waitFor(() => {
+                expect(screen.getByText("Register clients")).toBeDefined();
+                expect(screen.getByText("Automate billing")).toBeDefined();
+            });
+        });
+
+        it("closes dropdown when trigger is clicked again", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+
+            await fireEvent.click(trigger);
+            await waitFor(() => {
+                expect(screen.getByRole("menu", { name: /products menu/i })).toBeDefined();
+            });
+
+            await fireEvent.click(trigger);
+            await waitFor(() => {
+                expect(screen.queryByRole("menu", { name: /products menu/i })).toBeNull();
+            });
+        });
+
+        it("closes dropdown on Escape key", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const trigger = screen.getByRole("button", { name: /products/i });
+            await fireEvent.click(trigger);
+
+            await waitFor(() => {
+                expect(screen.getByRole("menu", { name: /products menu/i })).toBeDefined();
+            });
+
+            await fireEvent.keyDown(document, { key: "Escape" });
+
+            await waitFor(() => {
+                expect(screen.queryByRole("menu", { name: /products menu/i })).toBeNull();
+            });
+        });
+
+        it("renders plain link for nav items without dropdown", () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const pricingLink = screen.getByText("Pricing");
+            expect(pricingLink.tagName.toLowerCase()).toBe("a");
+        });
+
+        it("renders mobile accordion for dropdown items in mobile menu", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const menuButton = screen.getByLabelText("Toggle menu");
+            await fireEvent.click(menuButton);
+
+            await waitFor(() => {
+                const accordionButtons = screen.getAllByRole("button", { name: /products/i });
+                expect(accordionButtons.length).toBeGreaterThan(0);
+            });
+        });
+
+        it("expands accordion in mobile menu when clicked", async () => {
+            renderNavbar({ props: { links: navLinksWithDropdown } });
+
+            const menuButton = screen.getByLabelText("Toggle menu");
+            await fireEvent.click(menuButton);
+
+            await waitFor(async () => {
+                const allProductButtons = screen.getAllByRole("button", { name: /products/i });
+                // Find the one that is an accordion (has aria-expanded)
+                const accordionBtn = allProductButtons.find(
+                    (btn) => btn.getAttribute("aria-expanded") !== null
+                );
+                expect(accordionBtn).toBeDefined();
+
+                if (accordionBtn) {
+                    expect(accordionBtn.getAttribute("aria-expanded")).toBe("false");
+                    await fireEvent.click(accordionBtn);
+                    expect(accordionBtn.getAttribute("aria-expanded")).toBe("true");
+                }
             });
         });
     });
