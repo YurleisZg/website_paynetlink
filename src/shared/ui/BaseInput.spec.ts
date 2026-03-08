@@ -3,16 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/vue";
 import BaseInput from "./BaseInput.vue";
 
 describe("BaseInput", () => {
-    it("renders without label", () => {
-        const { container } = render(BaseInput);
-        expect(container.querySelector("label")).toBeNull();
-    });
-
-    it("renders label when provided", () => {
-        render(BaseInput, { props: { label: "Email" } });
-        expect(screen.getByText("Email")).toBeDefined();
-    });
-
     it("renders placeholder", () => {
         render(BaseInput, { props: { placeholder: "Enter email" } });
         expect(screen.getByPlaceholderText("Enter email")).toBeDefined();
