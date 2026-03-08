@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { Navbar } from "@/widgets/navigation";
 import { Footer } from "@/widgets/footer";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { useI18n } from "vue-i18n";
 import { Activity, Link2, Router, Shield, Zap } from "lucide-vue-next";
 import screenshot from "@/assets/images/network-automation.png";
 
 defineOptions({ name: "NetworkAutomationPage" });
+useSeo(PAGE_SEO["network-automation"]!);
 
 const { t } = useI18n();
 const { navLinks } = useNavLinks();

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { BaseInput, BaseSelect, BaseTextarea, Button, ContactInfoItem, Logo } from "@/shared/ui";
+import { useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { ArrowLeft, Clock, Mail, Phone } from "lucide-vue-next";
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "ContactSalesPage" });
+useSeo(PAGE_SEO["contact-sales"]!);
 
 const { t } = useI18n();
 

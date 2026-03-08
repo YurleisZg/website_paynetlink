@@ -2,7 +2,8 @@
 import { Navbar } from "@/widgets/navigation";
 import { Footer } from "@/widgets/footer";
 import { BaseInput, BaseSelect, BaseTextarea, Button } from "@/shared/ui";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { useI18n } from "vue-i18n";
 import {
     Bell,
@@ -20,6 +21,7 @@ import {
 import { ref, computed } from "vue";
 
 defineOptions({ name: "CustomerSupportPage" });
+useSeo(PAGE_SEO["customer-support"]!);
 
 const { t, tm } = useI18n();
 const { navLinks } = useNavLinks();

@@ -2,12 +2,17 @@ import { config } from "@vue/test-utils";
 import { vi } from "vitest";
 import { defineComponent, h } from "vue";
 import { setupI18n, setI18nLanguage } from "@/shared/i18n/setup";
+import { createUnhead, headSymbol } from "@unhead/vue";
 
 // Install vue-i18n globally for all tests with Spanish locale
 // (existing tests assert Spanish text)
 const i18n = setupI18n();
 setI18nLanguage("es");
 config.global.plugins.push(i18n);
+
+// Provide unhead globally so useSeo composable works in component tests
+const head = createUnhead();
+config.global.provide = { ...config.global.provide, [headSymbol]: head };
 
 // Stub component to replace all lucide-vue-next icons in tests.
 // Avoids "Cannot destructure property 'slots' of undefined" caused by

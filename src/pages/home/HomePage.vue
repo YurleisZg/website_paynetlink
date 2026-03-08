@@ -9,7 +9,8 @@ import { Navbar } from "@/widgets/navigation";
 import { PricingSection } from "@/widgets/pricing";
 import { SocialProof } from "@/widgets/social-proof";
 import { TestimonialsSection } from "@/widgets/testimonials";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import {
     BarChart3,
     Bell,
@@ -32,6 +33,7 @@ import mikrotikDashboard from "@/assets/images/mikrotik-dashboard.png";
 import paymentAutomation from "@/assets/images/payment-automation.png";
 
 defineOptions({ name: "HomePage" });
+useSeo(PAGE_SEO["home"]!);
 
 const { t, tm } = useI18n();
 

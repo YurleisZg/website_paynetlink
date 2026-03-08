@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { Navbar } from "@/widgets/navigation";
 import { Footer } from "@/widgets/footer";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "PrivacyPage" });
+useSeo(PAGE_SEO["privacy"]!);
 
 const { t } = useI18n();
 const { navLinks } = useNavLinks();
