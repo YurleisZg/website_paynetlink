@@ -1,9 +1,9 @@
 export const SEO_CONFIG = {
     siteName: "PayNetLink",
-    siteUrl: "https://paynetlink.com",
+    siteUrl: "https://paynetlink.com.co",
     defaultLocale: "es_CO",
     twitterHandle: "@paynetlink",
-    defaultImage: "https://paynetlink.com/og-image.jpg",
+    defaultImage: "https://paynetlink.com.co/og-image.jpg",
     defaultImageWidth: 1200,
     defaultImageHeight: 630,
     themeColor: "#2563eb",
