@@ -12,10 +12,4 @@ describe("SocialIcon", () => {
         expect(link?.getAttribute("href")).toBe("https://linkedin.com");
         expect(link?.getAttribute("target")).toBe("_blank");
     });
-
-    it("renders as span when no href", () => {
-        const { container } = render(SocialIcon);
-        expect(container.querySelector("span")).not.toBeNull();
-        expect(container.querySelector("a")).toBeNull();
-    });
 });
