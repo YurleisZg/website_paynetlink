@@ -76,9 +76,9 @@ describe("PlansPage", () => {
 
     it("renders monthly prices by default", () => {
         renderPage();
-        expect(screen.getByText("$89.900")).toBeTruthy();
-        expect(screen.getByText("$189.900")).toBeTruthy();
-        expect(screen.getByText("$349.900")).toBeTruthy();
+        expect(screen.getByText("$60.900")).toBeTruthy();
+        expect(screen.getByText("$120.000")).toBeTruthy();
+        expect(screen.getByText("$350.900")).toBeTruthy();
     });
 
     it("renders annual prices after toggling", async () => {
@@ -89,9 +89,9 @@ describe("PlansPage", () => {
                 (b) => b.hasAttribute("aria-pressed") && /anual|annual/i.test(b.textContent ?? "")
             );
         await fireEvent.click(annualBtn!);
-        expect(screen.getByText("$71.920")).toBeTruthy();
-        expect(screen.getByText("$151.920")).toBeTruthy();
-        expect(screen.getByText("$279.920")).toBeTruthy();
+        expect(screen.getByText("$51.920")).toBeTruthy();
+        expect(screen.getByText("$100.920")).toBeTruthy();
+        expect(screen.getByText("$300.920")).toBeTruthy();
     });
 
     it("renders the FAQ section heading", () => {

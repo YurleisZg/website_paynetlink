@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { Container } from "@/shared/ui";
 import ActionLink from "@/shared/ui/ActionLink.vue";
 import VideoPlayer from "@/shared/ui/VideoPlayer.vue";
@@ -8,6 +9,7 @@ import { Navbar } from "@/widgets/navigation";
 import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "DemoPage" });
+useSeo(PAGE_SEO["demo"]!);
 
 const { t } = useI18n();
 const { navLinks } = useNavLinks();

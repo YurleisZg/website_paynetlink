@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { Footer } from "@/widgets/footer";
 import { Navbar } from "@/widgets/navigation";
 import { Download, FileCheck, FileText, ShieldCheck } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "ElectronicInvoicesPage" });
+useSeo(PAGE_SEO["electronic-invoicing"]!);
 
 const { t } = useI18n();
 const { navLinks } = useNavLinks();

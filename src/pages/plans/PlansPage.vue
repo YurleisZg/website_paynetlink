@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { Navbar } from "@/widgets/navigation";
 import { Footer } from "@/widgets/footer";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { useI18n } from "vue-i18n";
 import { Check, ChevronDown, Tag } from "lucide-vue-next";
 import { ref, computed } from "vue";
 
 defineOptions({ name: "PlansPage" });
+useSeo(PAGE_SEO["plans"]!);
 
 const { t } = useI18n();
 const { navLinks } = useNavLinks();

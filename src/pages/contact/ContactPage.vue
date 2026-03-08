@@ -2,12 +2,14 @@
 import { Navbar } from "@/widgets/navigation";
 import { Footer } from "@/widgets/footer";
 import { BaseInput, BaseTextarea, Button } from "@/shared/ui";
-import { useNavLinks } from "@/shared/composables";
+import { useNavLinks, useSeo } from "@/shared/composables";
+import { PAGE_SEO } from "@/shared/config";
 import { Mail, MapPin, Phone } from "lucide-vue-next";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 defineOptions({ name: "ContactPage" });
+useSeo(PAGE_SEO["contact"]!);
 
 const { t } = useI18n();
 

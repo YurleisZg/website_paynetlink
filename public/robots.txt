@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow internal/auth pages
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /contact-sales
+Disallow: /contact-advisor
+
+Sitemap: https://paynetlink.com/sitemap.xml
